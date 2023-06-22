@@ -3,10 +3,11 @@
 use App\Http\Controllers\PhimController;
 use App\Http\Controllers\PhongChieuController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\TrangChuController;
 use App\Models\Phim;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [TestController::class, 'index']);
+Route::get('/', [TrangChuController::class, 'index']);
 
 
 Route::group(['prefix'  =>  '/admin'], function() {

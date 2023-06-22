@@ -8,6 +8,6 @@ class TestController extends Controller
 {
     public function index()
     {
-        return view('admin.share.master');
+        return view('client.share.master');
     }
 }
