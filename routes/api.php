@@ -19,5 +19,8 @@ Route::group(['prefix'  =>  '/admin'], function() {
     Route::group(['prefix'  =>  '/phong-chieu'], function() {
         Route::post('/create', [APIPhongChieuController::class, 'store'])->name('phongChieuStore');
         Route::post('/data', [APIPhongChieuController::class, 'data'])->name('phongChieuData');
+        Route::post('/status', [APIPhongChieuController::class, 'status'])->name('phongStatus');
+        Route::post('/info', [APIPhongChieuController::class, 'info'])->name('phongInfo');
+        Route::post('/del', [APIPhongChieuController::class, 'destroy'])->name('phongDel');
     });
 });
