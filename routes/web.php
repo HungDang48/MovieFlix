@@ -8,6 +8,7 @@ use App\Models\Phim;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [TrangChuController::class, 'index']);
+Route::get('/film-detail/{id}', [TrangChuController::class, 'detailPhim']);
 
 
 Route::group(['prefix'  =>  '/admin'], function() {
