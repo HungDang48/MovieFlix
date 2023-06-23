@@ -99,43 +99,45 @@
         <div class="card border-primary border-bottom border-3 border-0">
             <div class="card-header">
                 <div class="card-body">
-                    <table id="tableA" class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th class="text-center">Tên Phim</th>
-                                <th class="text-center">Thể Loại</th>
-                                <th class="text-center">Hình Ảnh</th>
-                                <th class="text-center">Thời Gian Chiếu</th>
-                                <th class="text-center">Tình Trạng</th>
-                                <th class="text-center">Hiển Thị</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th class="text-center align-middle">1</th>
-                                <td class="align-middle">AAAAA</td>
-                                <td class="align-middle">AAAAA</td>
-                                <td class="align-middle text-center">
-                                    <img class="rounded-circle p-1 border" width="90px" height="90px" src="https://w7.pngwing.com/pngs/431/803/png-transparent-rodimus-bumblebee-transformers-logo-autobot-transformers-s-sticker-transformers-prime-area.png" alt="">
-                                </td>
-                                <td class="text-nowrap align-middle">
-                                    114 phút
-                                </td>
-                                <td class="text-nowrap align-middle text-center">
-                                    <button class="btn btn-primary">Phim Đang Chiếu</button>
-                                </td>
-                                <td class="text-nowrap align-middle text-center">
-                                    <button class="btn btn-primary">Hiển Thị</button>
-                                </td>
-                                <td class="text-nowrap align-middle text-center">
-                                    <button class="btn btn-info">Cập Nhật</button>
-                                    <button class="btn btn-danger">Hủy Bỏ</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table id="tableA" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Tên Phim</th>
+                                    <th class="text-center">Thể Loại</th>
+                                    <th class="text-center">Hình Ảnh</th>
+                                    <th class="text-center">Thời Gian Chiếu</th>
+                                    <th class="text-center">Tình Trạng</th>
+                                    <th class="text-center">Hiển Thị</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th class="text-center align-middle">1</th>
+                                    <td class="align-middle">AAAAA</td>
+                                    <td class="align-middle">AAAAA</td>
+                                    <td class="align-middle text-center">
+                                        <img class="rounded-circle p-1 border" width="90px" height="90px" src="https://w7.pngwing.com/pngs/431/803/png-transparent-rodimus-bumblebee-transformers-logo-autobot-transformers-s-sticker-transformers-prime-area.png" alt="">
+                                    </td>
+                                    <td class="text-nowrap align-middle">
+                                        114 phút
+                                    </td>
+                                    <td class="text-nowrap align-middle text-center">
+                                        <button class="btn btn-primary">Phim Đang Chiếu</button>
+                                    </td>
+                                    <td class="text-nowrap align-middle text-center">
+                                        <button class="btn btn-primary">Hiển Thị</button>
+                                    </td>
+                                    <td class="text-nowrap align-middle text-center">
+                                        <button class="btn btn-info">Cập Nhật</button>
+                                        <button class="btn btn-danger">Hủy Bỏ</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
