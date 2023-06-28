@@ -13,6 +13,8 @@ Route::group(['prefix'  =>  '/admin'], function() {
         Route::post('/status', [APIPhimController::class, 'status'])->name('phimStatus');
         Route::post('/info', [APIPhimController::class, 'info'])->name('phimInfo');
         Route::post('/del', [APIPhimController::class, 'destroy'])->name('phimDel');
+        Route::post('/update', [APIPhimController::class, 'update'])->name('phimUpdate');
+
     });
 
     // Quản Lý Phòng Chiếu
@@ -22,5 +24,6 @@ Route::group(['prefix'  =>  '/admin'], function() {
         Route::post('/status', [APIPhongChieuController::class, 'status'])->name('phongStatus');
         Route::post('/info', [APIPhongChieuController::class, 'info'])->name('phongInfo');
         Route::post('/del', [APIPhongChieuController::class, 'destroy'])->name('phongDel');
+        Route::post('/update', [APIPhongChieuController::class, 'update'])->name('phongUpdate');
     });
 });

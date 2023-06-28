@@ -19,6 +19,25 @@ class APIPhimController extends Controller
         ]);
     }
 
+    public function update(Request $request)
+    {
+        $phim   = Phim::find($request->id);
+        if($phim) {
+            $data   = $request->all();
+            $phim->update($data);
+
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã xóa phim thành công!'
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Phim không tồn tại!'
+            ]);
+        }
+    }
+
     public function data()
     {
         $data   = Phim::get();

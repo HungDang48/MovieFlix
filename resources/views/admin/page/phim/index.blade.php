@@ -165,6 +165,91 @@
                           </div>
                         </div>
                     </div>
+                    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Cập Nhật Phim</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row mb-2">
+                                        <input type="text" id="e_id">
+                                        <div class="col">
+                                            <label class="mb-2">Tên Phim</label>
+                                            <input id="e_ten_phim" type="text" class="form-control" placeholder="Nhập vào tên phim">
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Slug Phim</label>
+                                            <input id="e_slug_phim" type="text" class="form-control" placeholder="Nhập vào slug phim">
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Hình Ảnh</label>
+                                            <input id="e_hinh_anh" type="text" class="form-control" placeholder="Nhập vào ảnh đại diện">
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Tên Đạo Diễn</label>
+                                            <input id="e_dao_dien" type="text" class="form-control" placeholder="Nhập vào danh sách đạo diễn">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label class="mb-2">Diễn Viên</label>
+                                            <input id="e_dien_vien" type="text" class="form-control" placeholder="Nhập vào danh sách diễn viên">
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Thể Loại</label>
+                                            <input id="e_the_loai" type="text" class="form-control" placeholder="Nhập vào thể loại">
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Thời Lượng Chiếu</label>
+                                            <input id="e_thoi_luong" type="number" class="form-control" placeholder="Nhập vào số phút chiếu">
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Ngôn Ngữ</label>
+                                            <input id="e_ngon_ngu" type="text" class="form-control" placeholder="Nhập vào ngôn ngữ">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label class="mb-2">Rated</label>
+                                            <input id="e_rated" type="text" class="form-control" placeholder="Nhập vào Rated">
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Link youtube</label>
+                                            <input id="e_trailer" type="text" class="form-control" placeholder="Nhập vào link youtube">
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Thời Gian Bắt Đầu</label>
+                                            <input id="e_bat_dau" type="date" class="form-control" placeholder="Nhập vào số phút chiếu">
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Thời Gian Kết Thúc</label>
+                                            <input id="e_ket_thuc" type="date" class="form-control" placeholder="Nhập vào ngôn ngữ">
+                                        </div>
+
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-3">
+                                            <label class="mb-2">Tình Trạng</label>
+                                            <select id="e_hien_thi" class="form-control">
+                                                <option value="1">Hiển Thị Trang Chủ</option>
+                                                <option value="0">Không Hiển thị</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-9">
+                                            <label class="mb-2">Mô Tả</label>
+                                            <textarea id="e_mo_ta" name="mo_ta" class="form-control" cols="30" rows="5" placeholder="Nhập vào mô tả phim"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button id="aUpdate" type="button" class="btn btn-primary">Cập Nhật Phim</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -177,6 +262,7 @@
 <script>
     $(document).ready(function() {
         CKEDITOR.replace('mo_ta');
+        CKEDITOR.replace('e_mo_ta');
     });
 
     $("#themPhim").click(function() {
@@ -204,6 +290,38 @@
                     toastr.success(res.data.message);
                     $('#themPhimModal').modal('hide');
                     loadData();
+                }
+            });
+    });
+
+    $("#aUpdate").click(function() {
+        var new_phim    =   {
+            'id'            : $("#e_id").val(),
+            'ten_phim'      : $("#e_ten_phim").val(),
+            'slug_phim'     : $("#e_slug_phim").val(),
+            'hinh_anh'      : $("#e_hinh_anh").val(),
+            'dien_vien'     : $("#e_dien_vien").val(),
+            'the_loai'      : $("#e_the_loai").val(),
+            'dao_dien'      : $("#e_dao_dien").val(),
+            'thoi_luong'    : $("#e_thoi_luong").val(),
+            'rated'         : $("#e_rated").val(),
+            'mo_ta'         : CKEDITOR.instances['e_mo_ta'].getData(),
+            'ngon_ngu'      : $("#e_ngon_ngu").val(),
+            'ket_thuc'      : $("#e_ket_thuc").val(),
+            'trailer'       : $("#e_trailer").val(),
+            'bat_dau'       : $("#e_bat_dau").val(),
+            'hien_thi'      : $("#e_hien_thi").val(),
+        };
+        // axios => chỉ gửi được object
+        axios
+            .post("{{ Route('phimUpdate') }}", new_phim)
+            .then((res) => {
+                if(res.data.status == true) {
+                    toastr.success(res.data.message);
+                    $('#editModal').modal('hide');
+                    loadData();
+                } else {
+                    toastr.error(res.data.message);
                 }
             });
     });
@@ -239,7 +357,7 @@
                     }
                     noi_dung += '</td>';
                     noi_dung += '<td class="text-nowrap align-middle text-center">';
-                    noi_dung += '<button class="btn btn-info m-1">Cập Nhật</button>';
+                    noi_dung += '<button data-id="'+ v.id +'" class="edit btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#editModal">Cập Nhật</button>';
                     noi_dung += '<button data-id="'+ v.id +'" class="del btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">Hủy Bỏ</button>';
                     noi_dung += '</td>';
                     noi_dung += '</tr>';
@@ -288,6 +406,40 @@
             });
     });
 
+    $("body").on('click', '.edit', function() {
+        var id  = $(this).data('id');
+        var payload     =   {
+            'id'    :   id,
+        };
+        axios
+            .post('{{ Route("phimInfo") }}', payload)
+            .then((res) => {
+                if(res.data.status) {
+                    $("#e_id").val(res.data.data.id);
+                    $('#e_ten_phim').val(res.data.data.ten_phim);
+                    $('#e_slug_phim').val(res.data.data.slug_phim);
+                    $('#e_hinh_anh').val(res.data.data.hinh_anh);
+                    $('#e_dien_vien').val(res.data.data.dien_vien);
+                    $('#e_the_loai').val(res.data.data.the_loai);
+                    $('#e_dao_dien').val(res.data.data.dao_dien);
+                    $('#e_thoi_luong').val(res.data.data.thoi_luong);
+                    $('#e_rated').val(res.data.data.rated);
+                    // $('#e_mo_ta').val(res.data.data.mo_ta);
+                    CKEDITOR.instances.e_mo_ta.setData(res.data.data.mo_ta);
+                    $('#e_ngon_ngu').val(res.data.data.ngon_ngu);
+                    $('#e_ket_thuc').val(res.data.data.ket_thuc);
+                    $('#e_trailer').val(res.data.data.trailer);
+                    $('#e_bat_dau').val(res.data.data.bat_dau);
+                    $('#e_hien_thi').val(res.data.data.hien_thi);
+                } else {
+                    toastr.error(res.data.message, 'Error');
+                    setTimeout(() => {
+                        $('#delModal').modal('hide');
+                    }, 500);
+                }
+            });
+    });
+
     $("body").on('click', '#aDel', function() {
         var id = $("#id_xoa").val();
         var payload     =   {
@@ -304,5 +456,6 @@
                 }
             });
     });
+
 </script>
 @endsection
