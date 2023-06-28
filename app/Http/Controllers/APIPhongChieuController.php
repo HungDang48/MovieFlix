@@ -83,4 +83,21 @@ class APIPhongChieuController extends Controller
             ]);
         }
     }
+    public function update(Request $request) {
+
+        $phong  = PhongChieu::find($request->id);
+        if ($phong){
+            $data = $request->all();
+            $phong->update($data);
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Cập nhật thành công!'
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Phòng không tồn tại!'
+            ]);
+        }
+    }
 }
