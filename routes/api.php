@@ -13,6 +13,7 @@ Route::group(['prefix'  =>  '/admin'], function() {
         Route::post('/status', [APIPhimController::class, 'status'])->name('phimStatus');
         Route::post('/info', [APIPhimController::class, 'info'])->name('phimInfo');
         Route::post('/del', [APIPhimController::class, 'destroy'])->name('phimDel');
+        Route::post('/update', [APIPhimController::class, 'update'])->name('phimUpdate');
     });
 
     // Quản Lý Phòng Chiếu

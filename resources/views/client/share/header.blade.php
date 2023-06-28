@@ -2,14 +2,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-4">
-                <a href="./" id="logo" title="Tenguu" class="logo-image"
-                    data-bg-image="images/logo.png">Tenguu
+                <a href="./" id="logo" title="Tenguu" class="logo-image-white"
+                    data-bg-image="images/logo-white.png">Tenguu
                 </a>
             </div>
             <div class="col-md-4 col-md-offset-2 col-sm-6 col-xs-8 phl0">
                 <div class="header_author">
                     <a href="#">Amanda green</a>
-                    <img src="/assets_client/images/user.png" class="user" alt="user">
+                    <img src="images/user.png" class="user" alt="user">
                 </div>
                 <div class="header_ticket">
                     <a href="#order" class="order_btn">My tickets</a>
