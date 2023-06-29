@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\APIGheChieuController;
 use App\Http\Controllers\APIPhimController;
 use App\Http\Controllers\APIPhongChieuController;
 use Illuminate\Http\Request;
@@ -25,5 +26,10 @@ Route::group(['prefix'  =>  '/admin'], function() {
         Route::post('/info', [APIPhongChieuController::class, 'info'])->name('phongInfo');
         Route::post('/del', [APIPhongChieuController::class, 'destroy'])->name('phongDel');
         Route::post('/update', [APIPhongChieuController::class, 'update'])->name('phongUpdate');
+    });
+
+    // Quản Lý Ghế Chiếu
+    Route::group(['prefix'  =>  '/ghe-chieu'], function() {
+        Route::post('/create', [APIGheChieuController::class, 'store'])->name('gheChieuStore');
     });
 });
