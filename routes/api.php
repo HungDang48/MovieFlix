@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\APIDanhSachTaiKhoanController;
 use App\Http\Controllers\APIGheChieuController;
 use App\Http\Controllers\APIPhimController;
 use App\Http\Controllers\APIPhongChieuController;
@@ -26,6 +27,16 @@ Route::group(['prefix'  =>  '/admin'], function() {
         Route::post('/info', [APIPhongChieuController::class, 'info'])->name('phongInfo');
         Route::post('/del', [APIPhongChieuController::class, 'destroy'])->name('phongDel');
         Route::post('/update', [APIPhongChieuController::class, 'update'])->name('phongUpdate');
+    });
+
+    Route::group(['prefix'  =>  '/danh-sach-tai-khoan'], function() {
+        Route::post('/create', [APIDanhSachTaiKhoanController::class, 'store'])->name('taiKhoanStore');
+        Route::post('/data', [APIDanhSachTaiKhoanController::class, 'data'])->name('taiKhoanData');
+        Route::post('/status', [APIDanhSachTaiKhoanController::class, 'status'])->name('taiKhoanStatus');
+        Route::post('/block', [APIDanhSachTaiKhoanController::class, 'block'])->name('taiKhoanBlock');
+        Route::post('/info', [APIDanhSachTaiKhoanController::class, 'info'])->name('taiKhoanInfo');
+        Route::post('/del', [APIDanhSachTaiKhoanController::class, 'destroy'])->name('taiKhoanDel');
+        Route::post('/update', [APIDanhSachTaiKhoanController::class, 'update'])->name('taiKhoanUpdate');
     });
 
     // Quản Lý Ghế Chiếu

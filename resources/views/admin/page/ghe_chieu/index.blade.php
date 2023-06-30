@@ -10,25 +10,29 @@
     <div class="col-12">
         <div class="card border-primary border-bottom border-3 border-0">
             <div class="card-body">
-                <table class="table table-bordered">
-                    <tr>
-                        <th colspan="100%" class="bg-warning text-center align-middle">
-                            <h5 class="mt-2 text-danger"><b>MÀN CHIẾU</b></h5>
-                        </th>
-                    </tr>
-                    <tr style="height: 70px">
-                        <td colspan="100%"></td>
-                    </tr>
-                    {{-- @for($i = 0; $i < $phong->hang_doc; $i++)
-                    <tr>
-                        @for($j = 0; $j < $phong->hang_ngang; $j++)
-                        <th class="text-center align-middle">
-                            <i class="fa-solid fa-couch fa-2x"></i><br>
-                            A01
-                        </th>
-                        @endfor
-                    </tr>
-                    @endfor --}}
+                <table class="table table-bordered" id="table">
+                    <thead>
+                        <tr>
+                            <th colspan="100%" class="bg-warning text-center align-middle">
+                                <h5 class="mt-2 text-danger"><b>MÀN CHIẾU</b></h5>
+                            </th>
+                        </tr>
+                        <tr style="height: 70px">
+                            <td colspan="100%"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{-- @for($i = 0; $i < $phong->hang_doc; $i++)
+                        <tr>
+                            @for($j = 0; $j < $phong->hang_ngang; $j++)
+                            <th class="text-center align-middle">
+                                <i class="fa-solid fa-couch fa-2x"></i><br>
+                                A01
+                            </th>
+                            @endfor
+                        </tr>
+                        @endfor --}}
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -53,9 +57,18 @@
                         var tt_phong        = res.data.data;
                         var hang_doc        = tt_phong.hang_doc;
                         var hang_ngang      = tt_phong.hang_ngang;
-
-                        console.log(hang_doc, hang_ngang);
-
+                        var noi_dung        = '';
+                        // console.log(hang_doc, hang_ngang);
+                        for(var i = 0; i < hang_doc; i++) {
+                            noi_dung +='<tr>';
+                            for(var j = 0; j < hang_ngang; j++) {
+                                noi_dung +='<th class="text-center align-middle">';
+                                noi_dung +='<i class="fa-solid fa-couch fa-2x"></i><br><span>'+ String.fromCharCode((65 + i) * 1) +''+ (j + 1) * 1 +'</span>';
+                                noi_dung +='</th>';
+                            }
+                            noi_dung +='</tr>';
+                        }
+                        $("#table tbody").html(noi_dung);
                     } else {
                         toastr.error(res.data.message, 'Error');
                     }

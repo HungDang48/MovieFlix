@@ -71,7 +71,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="">Save changes</button>
+                            <button type="button" class="btn btn-primary" id="themPhim">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -90,9 +90,8 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">#</th>
-                                        <th class="text-center">Email</th>
-                                        <th class="text-center">Mật Khẩu</th>
                                         <th class="text-center">Họ Và Tên</th>
+                                        <th class="text-center">Email</th>
                                         <th class="text-center">Số Điện Thoại</th>
                                         <th class="text-center">Is Block</th>
                                         <th class="text-center">Tình Trạng</th>
@@ -100,26 +99,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="align-middle">
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">123@gmail.com</td>
-                                        <td class="text-center">Qazwsx123</td>
-                                        <td class="text-center">Mr A</td>
-                                        <td class="text-center">0123456789</td>
-                                        <td class="text-center">
-                                            {{-- <button class="btn btn-danger">Yes</button> --}}
-                                            <button class="btn btn-warning">Chưa kích hoạt</button>
-                                        </td>
-                                        <td class="text-center">
-                                            <button class="btn btn-primary">Đang Hoạt Động</button>
-                                        </td>
-                                        <td class="text-center">
-                                            <button data-bs-toggle="modal" data-bs-target="#editAccModal" type="button"
-                                                class="btn btn-info">Cập Nhật</button>
-                                            <button data-bs-toggle="modal" data-bs-target="#delAccModal" type="button"
-                                                class="btn btn-danger">Xóa Bỏ</button>
-                                        </td>
-                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -142,7 +122,7 @@
                                                 <div class="ms-3">
                                                     <h6 class="mb-0 text-dark">Warning Alerts</h6>
                                                     <div class="text-dark text-wrap">Bạn chắc chắn muốn xóa <b
-                                                            id="">XXX</b> này không?</div>
+                                                            id="tk_xoa">XXX</b> này không?</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -150,7 +130,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Đóng</button>
-                                        <button id="" type="button" class="btn btn-primary"
+                                        <button id="aDel" type="button" class="btn btn-primary"
                                             data-bs-dismiss="modal">Xác Nhận Xóa</button>
                                     </div>
                                 </div>
@@ -166,51 +146,52 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
+                                            <input id="e_id" type="hidden" class="form-control mb-2">
                                             <div class="col">
                                                 <label class="mb-2">Email</label>
-                                                <input id="" type="email" class="form-control mb-2"
+                                                <input id="e_email" type="email" class="form-control mb-2"
                                                     placeholder="Nhập vào Email">
                                             </div>
                                             <div class="col">
                                                 <label class="mb-2">Mật Khẩu</label>
-                                                <input id="" type="text" class="form-control mb-2"
+                                                <input id="e_password" type="text" class="form-control mb-2"
                                                     placeholder="Nhập vào mật khẩu">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
                                                 <label class="mb-2">Họ Và Tên</label>
-                                                <input id="" type="text" class="form-control mb-2"
+                                                <input id="e_ho_va_ten" type="text" class="form-control mb-2"
                                                     placeholder="Nhập vào họ và tên">
                                             </div>
                                             <div class="col">
                                                 <label class="mb-2">Số Điện Thoại</label>
-                                                <input id="" type="tel" class="form-control mb-2"
+                                                <input id="e_so_dien_thoai" type="tel" class="form-control mb-2"
                                                     placeholder="Nhập vào số điện thoại">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
                                                 <label class="mb-2">Ngày Sinh</label>
-                                                <input id="" type="date" class="form-control mb-2"
+                                                <input id="e_ngay_sinh" type="date" class="form-control mb-2"
                                                     placeholder="Nhập vào ngày sinh">
                                             </div>
                                             <div class="col">
                                                 <label class="mb-2">Địa chỉ</label>
-                                                <textarea id="dia_chi" rows="1" class="form-control mb-2" placeholder="Nhập vào địa chỉ"></textarea>
+                                                <textarea id="e_dia_chi" rows="1" class="form-control mb-2" placeholder="Nhập vào địa chỉ"></textarea>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
                                                 <label class="mb-2">Is Block</label>
-                                                <select class="form-control mb-2" id="">
+                                                <select class="form-control mb-2" id="e_is_block">
                                                     <option value="1">Yes</option>
                                                     <option value="0">No</option>
                                                 </select>
                                             </div>
                                             <div class="col">
                                                 <label class="mb-2">Tình Trạng</label>
-                                                <select class="form-control mb-2" id="">
+                                                <select class="form-control mb-2" id="e_tinh_trang">
                                                     <option value="1">Đang Hoạt Động</option>
                                                     <option value="0">Dừng Hoạt Động</option>
                                                 </select>
@@ -221,7 +202,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save
+                                        <button id="aUpdate" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save
                                             changes</button>
                                     </div>
                                 </div>
@@ -234,4 +215,192 @@
     </div>
 @endsection
 @section('js')
+<script>
+    $("#themPhim").click(function() {
+        var tai_khoan    =   {
+            'email'         : $("#email").val(),
+            'password'      : $("#password").val(),
+            'so_dien_thoai' : $("#so_dien_thoai").val(),
+            'ngay_sinh'     : $("#ngay_sinh").val(),
+            'dia_chi'       : $("#dia_chi").val(),
+            'ho_va_ten'     : $("#ho_va_ten").val(),
+            'is_block'      : $("#is_block").val(),
+            'tinh_trang'    : $("#tinh_trang").val(),
+        };
+        // axios => chỉ gửi được object
+        axios
+            .post("{{ Route('taiKhoanStore') }}", tai_khoan)
+            .then((res) => {
+                if(res.data.status == true) {
+                    toastr.success(res.data.message);
+                    $('#themAccModal').modal('hide');
+                    loadData();
+                }
+            });
+    });
+
+
+
+    loadData();
+
+    function loadData()
+    {
+        axios
+            .post('{{ Route("taiKhoanData") }}')
+            .then((res) => {
+                var data = res.data.xxx;
+                var noi_dung = '';
+                $.each(data, function(k, v) {
+                    noi_dung +='<tr class="align-middle">';
+                    noi_dung +='<td class="text-center">'+ (k + 1) +'</td>';
+                    noi_dung +='<td >'+ v.ho_va_ten +'</td>';
+                    noi_dung +='<td >'+ v.email +'</td>';
+                    noi_dung +='<td class="text-center">'+ v.so_dien_thoai +'</td>';
+                    noi_dung +='<td class="text-center">';
+                    if (v.is_block == 0) {
+                        noi_dung +='<button  data-id="'+ v.id +'" class="block btn btn-warning" style="width: 150px">Chưa Kích Hoạt</button>';
+                    } else {
+                        noi_dung +='<button  data-id="'+ v.id +'" class="block btn btn-primary" style="width: 150px">Đã Kích Hoạt</button>';
+                    }
+                    noi_dung +='</td>';
+                    noi_dung +='<td class="text-center">';
+                    if (v.tinh_trang == 0) {
+                        noi_dung +='<button  data-id="'+ v.id +'" class="status btn btn-danger">Chưa Hoạt Động</button>';
+                    } else {
+                        noi_dung +='<button  data-id="'+ v.id +'" class="status btn btn-primary">Đang Hoạt Động</button>';
+                    }
+                    noi_dung +='</td>';
+                    noi_dung +='<td class="text-center">';
+                    noi_dung +='<button data-id="'+ v.id +'" data-bs-toggle="modal" data-bs-target="#editAccModal" type="button"class="edit btn btn-info">Cập Nhật</button>';
+                    noi_dung +='<button data-id="'+ v.id +'" data-bs-toggle="modal" data-bs-target="#delAccModal" type="button"class="del btn btn-danger" style="margin-left: 10px">Xóa Bỏ</button>';
+                    noi_dung +='</td>';
+                });
+                $("#tableA tbody").html(noi_dung);
+            });
+    }
+
+    $("body").on('click', '.status', function() {
+        var id  = $(this).data('id');
+        var payload     =   {
+            'id'    :   id,
+        };
+        axios
+            .post('{{ Route("taiKhoanStatus") }}', payload)
+            .then((res) => {
+                if(res.data.status) {
+                    toastr.success(res.data.message, 'Success');
+                    loadData();
+                } else {
+                    toastr.error(res.data.message, 'Error');
+                }
+            });
+    });
+
+    $("body").on('click', '.block', function() {
+        var id  = $(this).data('id');
+        var payload     =   {
+            'id'    :   id,
+        };
+        axios
+            .post('{{ Route("taiKhoanBlock") }}', payload)
+            .then((res) => {
+                if(res.data.status) {
+                    toastr.success(res.data.message, 'Success');
+                    loadData();
+                } else {
+                    toastr.error(res.data.message, 'Error');
+                }
+            });
+    });
+
+    $("body").on('click', '.del', function() {
+        var id  = $(this).data('id');
+        var payload     =   {
+            'id'    :   id,
+        };
+        axios
+            .post('{{ Route("taiKhoanInfo") }}', payload)
+            .then((res) => {
+                if(res.data.status) {
+                    $("#tk_xoa").text(res.data.data.ho_va_ten);
+                    $("#id_xoa").val(res.data.data.id);
+                } else {
+                    toastr.error(res.data.message, 'Error');
+                    setTimeout(() => {
+                        $('#delModal').modal('hide');
+                    }, 500);
+                }
+            });
+    });
+
+    $("body").on('click', '.edit', function() {
+        var id  = $(this).data('id');
+        var payload     =   {
+            'id'    :   id,
+        };
+        axios
+            .post('{{ Route("taiKhoanInfo") }}', payload)
+            .then((res) => {
+                if(res.data.status) {
+                    $("#e_id").val(res.data.data.id);
+                    $('#e_email').val(res.data.data.email);
+                    $('#e_password').val(res.data.data.password);
+                    $('#e_so_dien_thoai').val(res.data.data.so_dien_thoai);
+                    $('#e_ngay_sinh').val(res.data.data.ngay_sinh);
+                    $('#e_dia_chi').val(res.data.data.dia_chi);
+                    $('#e_ho_va_ten').val(res.data.data.ho_va_ten);
+                    $('#e_is_block').val(res.data.data.is_block);
+                    $('#e_tinh_trang').val(res.data.data.tinh_trang);
+                } else {
+                    toastr.error(res.data.message, 'Error');
+                    setTimeout(() => {
+                        $('#delModal').modal('hide');
+                    }, 500);
+                }
+            });
+    });
+
+    $("body").on('click', '#aDel', function() {
+        var id = $("#id_xoa").val();
+        var payload     =   {
+            'id'    :   id,
+        };
+        axios
+            .post('{{ Route("taiKhoanDel") }}', payload)
+            .then((res) => {
+                if(res.data.status) {
+                    toastr.success(res.data.message, 'Success');
+                    loadData();
+                } else {
+                    toastr.error(res.data.message, 'Error');
+                }
+            });
+    });
+
+    $("#aUpdate").click(function() {
+        var new_phim    =   {
+            'id'            : $("#e_id").val(),
+            'email'         : $("#e_email").val(),
+            'password'      : $("#e_password").val(),
+            'so_dien_thoai' : $("#e_so_dien_thoai").val(),
+            'ngay_sinh'     : $("#e_ngay_sinh").val(),
+            'dia_chi'       : $("#e_dia_chi").val(),
+            'ho_va_ten'     : $("#e_ho_va_ten").val(),
+            'is_block'      : $("#e_is_block").val(),
+            'tinh_trang'    : $("#e_tinh_trang").val(),
+        };
+        // axios => chỉ gửi được object
+        axios
+            .post("{{ Route('taiKhoanUpdate') }}", new_phim)
+            .then((res) => {
+                if(res.data.status == true) {
+                    toastr.success(res.data.message);
+                    $('#editAccModal').modal('hide');
+                    loadData();
+                } else {
+                    toastr.error(res.data.message);
+                }
+            });
+    });
+</script>
 @endsection
