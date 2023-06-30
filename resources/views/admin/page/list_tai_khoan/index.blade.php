@@ -239,8 +239,6 @@
             });
     });
 
-
-
     loadData();
 
     function loadData()

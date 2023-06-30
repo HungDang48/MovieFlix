@@ -22,16 +22,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @for($i = 0; $i < $phong->hang_doc; $i++)
-                        <tr>
-                            @for($j = 0; $j < $phong->hang_ngang; $j++)
-                            <th class="text-center align-middle">
-                                <i class="fa-solid fa-couch fa-2x"></i><br>
-                                A01
-                            </th>
-                            @endfor
-                        </tr>
-                        @endfor --}}
+
                     </tbody>
                 </table>
             </div>
