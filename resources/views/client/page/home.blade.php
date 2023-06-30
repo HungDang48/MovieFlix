@@ -167,8 +167,28 @@
                                                 <a href="https://vimeo.com/28177848"
                                                     class="btn-trailers video-player">watch trailer</a>
                                                 <a href="#order" class="btn-ticket order_btn ">buy ticket</a>
-                                                <a href="/film-detail/{{ $value->id }}" class="btn-trailers" style="margin-top: 10px">film detail</a>
                                             </div>
+                                        </div>
+                                        <div class="entry-desc">
+                                            <div class="rating">
+                                                <input name="stars" type="radio">
+                                                <label>☆</label>
+                                                <input name="stars" type="radio">
+                                                <label>☆</label>
+                                                <input name="stars" type="radio">
+                                                <label>☆</label>
+                                                <input name="stars" type="radio">
+                                                <label>☆</label>
+                                                <input name="stars" type="radio">
+                                                <label>☆</label>
+                                            </div>
+                                            <h3 class="entry-title">{{ $value->ten_phim }}</h3>
+                                            <ul class="entry-date">
+                                                <li>11 :00</li>
+                                                <li>13 :50</li>
+                                                <li>14 :00</li>
+                                                <li>18 :00</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -196,8 +216,28 @@
                                                 <a href="https://vimeo.com/28177848"
                                                     class="btn-trailers video-player">watch trailer</a>
                                                 <a href="#order" class="btn-ticket order_btn ">buy ticket</a>
-                                                <a href="/film-detail/{{ $value->id }}" class="btn-trailers" style="margin-top: 10px">film detail</a>
                                             </div>
+                                        </div>
+                                        <div class="entry-desc">
+                                            <div class="rating">
+                                                <input name="stars" type="radio">
+                                                <label>☆</label>
+                                                <input name="stars" type="radio">
+                                                <label>☆</label>
+                                                <input name="stars" type="radio">
+                                                <label>☆</label>
+                                                <input name="stars" type="radio">
+                                                <label>☆</label>
+                                                <input name="stars" type="radio">
+                                                <label>☆</label>
+                                            </div>
+                                            <h3 class="entry-title">{{ $value->ten_phim }}</h3>
+                                            <ul class="entry-date">
+                                                <li>11 :00</li>
+                                                <li>13 :50</li>
+                                                <li>14 :00</li>
+                                                <li>18 :00</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>

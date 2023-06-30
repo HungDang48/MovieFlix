@@ -89,42 +89,7 @@
                           </div>
                         </div>
                     </div>
-                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Phòng Chiếu</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <input type="hidden" id="edit_id" placeholder="ID ở đây">
-                                <div class="modal-body">
-                                    <label class="mb-2">Tên Phòng Chiếu</label>
-                                    <input id="edit_ten_phong" type="text" class="form-control mb-2" placeholder="Nhập vào tên phòng">
-                                    <label class="mb-2">Loại Máy Chiếu</label>
-                                    <input id="edit_loai_may_chieu" type="text" class="form-control mb-2" placeholder="Nhập vào loại máy chiếu">
-                                    <label class="mb-2">Hàng Ngang</label>
-                                    <input id="edit_hang_ngang" type="number" class="form-control mb-2" placeholder="Nhập vào số ghế hàng ngang">
-                                    <label class="mb-2">Hàng Dọc</label>
-                                    <input id="edit_hang_doc" type="number" class="form-control mb-2" placeholder="Nhập vào số ghế hàng dọc">
-                                    <label class="mb-2">Tình Trạng</label>
-                                    <select class="form-control mb-2" id="edit_tinh_trang">
-                                        <option value="1">Đang Hoạt Động</option>
-                                        <option value="0">Dừng Hoạt Động</option>
-                                    </select>
-                                    <label class="mb-2">Loại Phòng</label>
-                                    <select class="form-control mb-2" id="edit_loai_phong">
-                                        <option value="Phòng 2D">Phòng 2D</option>
-                                        <option value="Phòng 3D">Phòng 3D</option>
-                                        <option value="Phòng IMAX">Phòng IMAX</option>
-                                    </select>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" id="aUpdate">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -180,7 +145,7 @@
                         noi_dung += '<td class="align-middle text-center">'+ v.hang_ngang +'</td>';
                         noi_dung += '<td class="align-middle text-center">'+ v.hang_doc +'</td>';
                         noi_dung += '<td class="text-center align-middle text-nowrap">';
-                        noi_dung += '<button class="edit btn btn-info m-1"  data-id="'+ v.id +'" data-bs-toggle="modal" data-bs-target="#editModal">Cập Nhật</button>';
+                        noi_dung += '<button class="btn btn-info m-1">Cập Nhật</button>';
                         noi_dung += '<button class="del btn btn-danger" data-id="'+ v.id +'" data-bs-toggle="modal" data-bs-target="#delModal">Xóa Bỏ</button>';
                         noi_dung += '</td>';
                         noi_dung += '</tr>';
@@ -240,57 +205,6 @@
                         loadData();
                     } else {
                         toastr.error(res.data.message, 'Error');
-                    }
-                });
-        });
-
-        $("body").on('click', '.edit', function() {
-            var id = $(this).data('id');
-            var payload = {
-                'id' : id,
-            };
-
-            axios
-                .post('{{ Route('phongInfo') }}', payload)
-                .then( (res) => {
-                    if(res.data.status) {
-                        // console.log(res.data.data);
-                        $("#edit_id").val(res.data.data.id);
-                        $("#edit_ten_phong").val(res.data.data.ten_phong);
-                        $("#edit_loai_may_chieu").val(res.data.data.loai_may_chieu);
-                        $("#edit_hang_ngang").val(res.data.data.hang_ngang);
-                        $("#edit_hang_doc").val(res.data.data.hang_doc);
-                        $("#edit_tinh_trang").val(res.data.data.tinh_trang);
-                        $("#edit_loai_phong").val(res.data.data.loai_phong);
-                    } else {
-                        toastr.error(res.data.message, 'Error');
-                        setTimeout(() => {
-                            $('#delModal').modal('hide');
-                        }, 500);
-                    }
-                });
-        });
-
-        $("#aUpdate").click(function() {
-            var update_phong = {
-                'id'                :   $("#edit_id").val(),
-                'ten_phong'         :   $("#edit_ten_phong").val(),
-                'loai_may_chieu'    :   $("#edit_loai_may_chieu").val(),
-                'hang_ngang'        :   $("#edit_hang_ngang").val(),
-                'hang_doc'          :   $("#edit_hang_doc").val(),
-                'tinh_trang'        :   $("#edit_tinh_trang").val(),
-                'loai_phong'        :   $("#edit_loai_phong").val(),
-            };
-            axios
-                .post('{{Route("phongUpdate")}}', update_phong)
-                .then( (res) => {
-                    if (res.data.status == 1) {
-                        toastr.success(res.data.message, 'Success');
-                        $('#editModal').modal('hide');
-                        loadData();
-                    } else {
-                        toastr.error(res.data.message, 'Error');
-                        $('#editModal').modal('hide');
                     }
                 });
         });
