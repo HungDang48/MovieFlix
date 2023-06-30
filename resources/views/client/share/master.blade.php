@@ -5,7 +5,7 @@
     @include('client.share.css')
 </head>
 
-<body class="sticky-menu stick">
+<body class="sticky-menu">
     <div class="wrapper">
 
         @include('client.share.header')
