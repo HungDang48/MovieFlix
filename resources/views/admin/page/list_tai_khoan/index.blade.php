@@ -71,7 +71,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="themPhim">Save changes</button>
+                            <button type="button" class="btn btn-primary" id="themTaiKhoan">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -216,7 +216,7 @@
 @endsection
 @section('js')
 <script>
-    $("#themPhim").click(function() {
+    $("#themTaiKhoan").click(function() {
         var tai_khoan    =   {
             'email'         : $("#email").val(),
             'password'      : $("#password").val(),

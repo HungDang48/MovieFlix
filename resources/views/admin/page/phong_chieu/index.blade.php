@@ -70,13 +70,12 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <input type="hidden" id="id_xoa">
                                 <div class="alert alert-warning border-0 bg-warning alert-dismissible fade show py-2">
 									<div class="d-flex align-items-center">
 										<div class="font-35 text-dark"><i class='bx bx-info-circle'></i>
 										</div>
 										<div class="ms-3">
-                                            <input type="text" name="" id="id_phong_can_tao_ghe">
+                                            <input type="hidden" id="id_phong_can_tao_ghe">
 											<h6 class="mb-0 text-dark">Warning Alerts</h6>
 											<div class="text-dark text-wrap">
                                                 Bạn có muốn tạo <b class="text-danger" id="tong_ghe">xxx</b> ghế. <br> Bao gồm <b class="text-danger" id="hang_ngang_a">yyy</b> hàng ngang và <b class="text-danger" id="hang_doc_a">zzz</b> hàng dọc không?!</div>
