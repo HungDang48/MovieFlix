@@ -117,7 +117,42 @@
                           </div>
                         </div>
                     </div>
-
+                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Phòng Chiếu</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <input type="hidden" id="edit_id" placeholder="ID ở đây">
+                                <div class="modal-body">
+                                    <label class="mb-2">Tên Phòng Chiếu</label>
+                                    <input id="edit_ten_phong" type="text" class="form-control mb-2" placeholder="Nhập vào tên phòng">
+                                    <label class="mb-2">Loại Máy Chiếu</label>
+                                    <input id="edit_loai_may_chieu" type="text" class="form-control mb-2" placeholder="Nhập vào loại máy chiếu">
+                                    <label class="mb-2">Hàng Ngang</label>
+                                    <input id="edit_hang_ngang" type="number" class="form-control mb-2" placeholder="Nhập vào số ghế hàng ngang">
+                                    <label class="mb-2">Hàng Dọc</label>
+                                    <input id="edit_hang_doc" type="number" class="form-control mb-2" placeholder="Nhập vào số ghế hàng dọc">
+                                    <label class="mb-2">Tình Trạng</label>
+                                    <select class="form-control mb-2" id="edit_tinh_trang">
+                                        <option value="1">Đang Hoạt Động</option>
+                                        <option value="0">Dừng Hoạt Động</option>
+                                    </select>
+                                    <label class="mb-2">Loại Phòng</label>
+                                    <select class="form-control mb-2" id="edit_loai_phong">
+                                        <option value="Phòng 2D">Phòng 2D</option>
+                                        <option value="Phòng 3D">Phòng 3D</option>
+                                        <option value="Phòng IMAX">Phòng IMAX</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="aUpdate">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

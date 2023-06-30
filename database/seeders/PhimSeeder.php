@@ -32,7 +32,7 @@ class PhimSeeder extends Seeder
                     'ngon_ngu'          => "Tiếng Hàn - Phụ đề tiếng Việt, tiếng Anh",
                     'rated'             => "T18 - PHIM ĐƯỢC PHỔ BIẾN ĐẾN NGƯỜI XEM TỪ ĐỦ 18 TUỔI TRỞ LÊN (18+)",
                     'mo_ta'             => "Quý Công Tử xoay quanh người đàn ông bí ẩn được biết đến với tên gọi “Quý Công Tử”. Gã đột nhiên xuất hiện trước mắt Marco, một thanh niên người Philippines mơ ước trở thành vận động viên boxing chuyên nghiệp, lang thang khắp các sàn đấu bất hợp pháp tại đây. Nhằm chi trả cho viện phí của mẹ, Marco đến Hàn Quốc để tìm người cha đã bỏ rơi hai mẹ con cậu từ lâu.",
-                    'trailer'           => "https://www.youtube.com/watch?v=ybcWiZOjJj8&t=6s",
+                    'trailer'           => "https://www.youtube.com/embed/ybcWiZOjJj8",
                     'bat_dau'           => '2023-05-10',
                     'ket_thuc'          => '2023-06-10',
                     'hien_thi'          => 1,
