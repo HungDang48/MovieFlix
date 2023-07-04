@@ -174,7 +174,6 @@
                 'tinh_trang'        :   $("#tinh_trang").val(),
                 'loai_phong'        :   $("#loai_phong").val(),
             };
-
             axios
                 .post('{{ Route("phongChieuStore") }}', phongChieu)
                 .then((res) => {
