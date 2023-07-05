@@ -29,4 +29,61 @@ class APIDichVuController extends Controller
             'data'      => $data,
         ]);
     }
+
+    public function destroy(Request $request)
+    {
+        $dichVu     =   DichVu::find($request->id);
+
+        if($dichVu) {
+            $dichVu->delete();
+
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã xóa dịch vụ thành công!',
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Dịch vụ không tồn tại!',
+            ]);
+        }
+    }
+
+    public function update(Request $request)
+    {
+        $dichVu     =   DichVu::find($request->id);
+        if($dichVu) {
+            $data   = $request->all();
+            $dichVu->update($data);
+
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã cập nhật dịch vụ thành công!',
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Dịch vụ không tồn tại!',
+            ]);
+        }
+    }
+
+    public function status(Request $request)
+    {
+        $dichVu     =   DichVu::find($request->id);
+        if($dichVu) {
+            $dichVu->tinh_trang     =   $dichVu->tinh_trang == 1 ? 0 : 1;
+            $dichVu->save();
+
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã cập nhật dịch vụ thành công!',
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Dịch vụ không tồn tại!',
+            ]);
+        }
+    }
 }
