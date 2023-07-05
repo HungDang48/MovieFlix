@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('hinh_anh');
             $table->integer('gia_ban');
             $table->integer('tinh_trang');
+            $table->string('id_don_vi');
             $table->timestamps();
         });
     }

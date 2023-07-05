@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\API\APIDichVuController;
-use App\Http\Controllers\APIDanhSachTaiKhoanController;
-use App\Http\Controllers\APIGheChieuController;
+use App\Http\Controllers\API\APIDanhSachTaiKhoanController;
+use App\Http\Controllers\API\APIDonViController;
+use App\Http\Controllers\API\APIGheChieuController;
 use App\Http\Controllers\API\APIPhimController;
 use App\Http\Controllers\API\APIPhongChieuController;
 use Illuminate\Http\Request;
@@ -49,5 +50,11 @@ Route::group(['prefix'  =>  '/admin'], function() {
     Route::group(['prefix'  =>  '/dich-vu'], function() {
         Route::post('/create', [APIDichVuController::class, 'store'])->name('dichVuStore');
         Route::post('/data', [APIDichVuController::class, 'data'])->name('dichVuData');
+    });
+
+    // Quản Lý Dịc Vụ
+    Route::group(['prefix'  =>  '/don-vi'], function() {
+        Route::post('/create', [APIDonViController::class, 'store'])->name('donViStore');
+        Route::post('/data', [APIDonViController::class, 'data'])->name('donViData');
     });
 });

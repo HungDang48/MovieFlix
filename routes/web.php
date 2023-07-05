@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DanhSachTaiKhoanController;
 use App\Http\Controllers\DichVuController;
+use App\Http\Controllers\DonViController;
 use App\Http\Controllers\GheChieuController;
 use App\Http\Controllers\PhimController;
 use App\Http\Controllers\PhongChieuController;
@@ -35,5 +36,8 @@ Route::group(['prefix'  =>  '/admin'], function() {
     });
     Route::group(['prefix'  =>  '/dich-vu'], function() {
         Route::get('/', [DichVuController::class, 'index']);
+    });
+    Route::group(['prefix'  =>  '/don-vi'], function() {
+        Route::get('/', [DonViController::class, 'index']);
     });
 });

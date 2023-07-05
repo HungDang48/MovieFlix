@@ -21,6 +21,12 @@
                 <input v-model="them_moi.gia_ban" type="number" class="form-control mb-2" placeholder="Nhập vào giá bán">
                 <label class="mb-2">Hình Ảnh</label>
                 <input v-model="them_moi.hinh_anh" type="text" class="form-control mb-2" placeholder="Nhập vào hình ảnh">
+                <label class="mb-2">Đơn Vị</label>
+                <select v-model="them_moi.id_don_vi" class="form-control mb-2">
+                    @foreach ($don_vi as $key => $value)
+                        <option value="{{$value->id}}">{{$value->ten_don_vi}}</option>
+                    @endforeach
+                </select>
                 <label class="mb-2">Tình Trạng</label>
                 <select v-model="them_moi.tinh_trang" class="form-control mb-2">
                     <option value="1">Còn Kinh Doanh</option>
@@ -46,6 +52,7 @@
                                 <th class="text-center">Tên Dịch Vụ</th>
                                 <th class="text-center">Hình Ảnh</th>
                                 <th class="text-center">Đơn Giá</th>
+                                <th class="text-center">Đơn Vị</th>
                                 <th class="text-center">Mô Tả</th>
                                 <th class="text-center">Tình Trạng</th>
                                 <th class="text-center">Action</th>
@@ -61,6 +68,9 @@
                                     </td>
                                     <td class="align-middle text-end">
                                         @{{ format(v.gia_ban) }}
+                                    </td>
+                                    <td class="align-middle text-end">
+                                        @{{ v.id_don_vi }}
                                     </td>
                                     <td class="text-center align-middle">
                                         <i class="text-success fa-solid fa-circle-info fa-2x"></i>

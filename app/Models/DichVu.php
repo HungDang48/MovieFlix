@@ -17,5 +17,6 @@ class DichVu extends Model
         'hinh_anh',
         'gia_ban',
         'tinh_trang',
+        'id_don_vi',
     ];
 }
