@@ -151,8 +151,8 @@
                                             </td>
                                             <td class="text-center">@{{value.cccd}}</td>
                                             <td class="text-center">
-                                                <button v-on:click="doiTrangThaiBlock(value)" v-if="value.is_block == 0" class="block btn btn-warning" style="width: 150px">Chưa Kích Hoạt</button>
-                                                <button v-on:click="doiTrangThaiBlock(value)" v-else class="block btn btn-primary" style="width: 150px">Đã Kích Hoạt</button>
+                                                <button v-on:click="doiTrangThaiBlock(value)" v-if="value.is_block == 0" class="block btn btn-warning" style="width: 150px">Chưa Block</button>
+                                                <button v-on:click="doiTrangThaiBlock(value)" v-else class="block btn btn-primary" style="width: 150px">Đã Block</button>
                                             </td>
                                             <td class="text-center">
                                                 <button v-on:click="tt_capNhat = Object.assign({}, value)" data-bs-toggle="modal" data-bs-target="#editAccModal" type="button"class="edit btn btn-info">Cập Nhật</button>
