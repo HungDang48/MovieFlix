@@ -20,6 +20,7 @@ Route::get('/admin/login' , [AdminController::class , 'viewLogin']);
 Route::get('/film-detail/{id}', [TrangChuController::class, 'detailPhim']);
 
 Route::group(['prefix'  =>  '/admin'], function() {
+    Route::get('/', [AdminController::class, 'index']);
     // Quản Lý Phim
     Route::group(['prefix'  =>  '/phim'], function() {
         Route::get('/', [PhimController::class, 'index']);
