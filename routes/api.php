@@ -50,11 +50,16 @@ Route::group(['prefix'  =>  '/admin'], function() {
     Route::group(['prefix'  =>  '/dich-vu'], function() {
         Route::post('/create', [APIDichVuController::class, 'store'])->name('dichVuStore');
         Route::post('/data', [APIDichVuController::class, 'data'])->name('dichVuData');
+        Route::post('/del', [APIDichVuController::class, 'destroy'])->name('dichVuDel');
+        Route::post('/update', [APIDichVuController::class, 'update'])->name('dichVuUpdate');
+        Route::post('/status', [APIDichVuController::class, 'status'])->name('dichVuStatus');
     });
 
     // Quản Lý Dịc Vụ
     Route::group(['prefix'  =>  '/don-vi'], function() {
         Route::post('/create', [APIDonViController::class, 'store'])->name('donViStore');
         Route::post('/data', [APIDonViController::class, 'data'])->name('donViData');
+        Route::post('/del', [APIDonViController::class, 'destroy'])->name('donViDel');
+        Route::post('/update', [APIDonViController::class, 'update'])->name('donViUpdate');
     });
 });
