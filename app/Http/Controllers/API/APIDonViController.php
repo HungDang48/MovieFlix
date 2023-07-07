@@ -47,4 +47,24 @@ class APIDonViController extends Controller
             'data'    => $data,
         ]);
     }
+
+    public function destroy(Request $request)
+    {
+        $Don_vi     =   DonVi::find($request->id);
+
+        if($Don_vi) {
+            $Don_vi->delete();
+
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã xóa đơn vị thành công!',
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Đơn vị không tồn tại!',
+            ]);
+        }
+    }
+
 }

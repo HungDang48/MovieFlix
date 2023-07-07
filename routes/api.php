@@ -59,5 +59,7 @@ Route::group(['prefix'  =>  '/admin'], function() {
     Route::group(['prefix'  =>  '/don-vi'], function() {
         Route::post('/create', [APIDonViController::class, 'store'])->name('donViStore');
         Route::post('/data', [APIDonViController::class, 'data'])->name('donViData');
+        Route::post('/del', [APIDonViController::class, 'destroy'])->name('donViDel');
+        Route::post('/update', [APIDonViController::class, 'update'])->name('donViUpdate');
     });
 });
