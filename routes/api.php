@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\APIAdminComtroller;
 use App\Http\Controllers\API\APIDichVuController;
 use App\Http\Controllers\API\APIDanhSachTaiKhoanController;
 use App\Http\Controllers\API\APIDonViController;
@@ -10,6 +11,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix'  =>  '/admin'], function() {
+    Route::post('/create', [APIAdminComtroller::class, 'store'])->name('adminStore');
+    Route::post('/data', [APIAdminComtroller::class, 'data'])->name('adminData');
+    Route::post('/del', [APIAdminComtroller::class, 'destroy'])->name('adminDel');
+    Route::post('/update', [APIAdminComtroller::class, 'update'])->name('adminUpdate');
+    Route::post('/block', [APIAdminComtroller::class, 'block'])->name('taiKhoanAdminBlock');
+
+
     // Quản Lý Phim
     Route::group(['prefix'  =>  '/phim'], function() {
         Route::post('/create', [APIPhimController::class, 'store'])->name('phimStore');
