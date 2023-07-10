@@ -24,6 +24,7 @@ Route::group(['prefix'  =>  '/admin'], function() {
     // Quản Lý Phim
     Route::group(['prefix'  =>  '/phim'], function() {
         Route::get('/', [PhimController::class, 'index']);
+        Route::get('/vue', [PhimController::class, 'indexVue']);
     });
     Route::group(['prefix'  =>  '/phong-chieu'], function() {
         Route::get('/', [PhongChieuController::class, 'index']);
@@ -31,6 +32,7 @@ Route::group(['prefix'  =>  '/admin'], function() {
     });
     Route::group(['prefix'  =>  '/danh-sach-tai-khoan'], function() {
         Route::get('/', [DanhSachTaiKhoanController::class, 'index']);
+        Route::get('/vue', [DanhSachTaiKhoanController::class, 'indexVue']);
     });
     Route::group(['prefix'  =>  '/ghe-chieu'], function() {
         Route::get('/{id_phong}', [GheChieuController::class, 'index']);

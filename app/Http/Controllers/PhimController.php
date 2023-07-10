@@ -11,4 +11,9 @@ class PhimController extends Controller
     {
         return view('admin.page.phim.index');
     }
+
+    public function indexVue()
+    {
+        return view('admin.page.phim.index_vue');
+    }
 }
