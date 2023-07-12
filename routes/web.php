@@ -6,6 +6,7 @@ use App\Http\Controllers\DanhSachTaiKhoanController;
 use App\Http\Controllers\DichVuController;
 use App\Http\Controllers\DonViController;
 use App\Http\Controllers\GheChieuController;
+use App\Http\Controllers\LichChieuController;
 use App\Http\Controllers\PhimController;
 use App\Http\Controllers\PhongChieuController;
 use App\Http\Controllers\TestController;
@@ -44,5 +45,8 @@ Route::group(['prefix'  =>  '/admin'], function() {
     });
     Route::group(['prefix'  =>  '/don-vi'], function() {
         Route::get('/', [DonViController::class, 'index']);
+    });
+    Route::group(['prefix'  =>  '/lich-chieu'], function() {
+        Route::get('/', [LichChieuController::class, 'index']);
     });
 });

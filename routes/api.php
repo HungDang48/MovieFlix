@@ -5,6 +5,7 @@ use App\Http\Controllers\API\APIDichVuController;
 use App\Http\Controllers\API\APIDanhSachTaiKhoanController;
 use App\Http\Controllers\API\APIDonViController;
 use App\Http\Controllers\API\APIGheChieuController;
+use App\Http\Controllers\API\APILichChieuController;
 use App\Http\Controllers\API\APIPhimController;
 use App\Http\Controllers\API\APIPhongChieuController;
 use Illuminate\Http\Request;
@@ -64,11 +65,18 @@ Route::group(['prefix'  =>  '/admin'], function() {
         Route::post('/status', [APIDichVuController::class, 'status'])->name('dichVuStatus');
     });
 
-    // Quản Lý Dịc Vụ
+    // Quản Lý Dịch Vụ
     Route::group(['prefix'  =>  '/don-vi'], function() {
         Route::post('/create', [APIDonViController::class, 'store'])->name('donViStore');
         Route::post('/data', [APIDonViController::class, 'data'])->name('donViData');
         Route::post('/del', [APIDonViController::class, 'destroy'])->name('donViDel');
         Route::post('/update', [APIDonViController::class, 'update'])->name('donViUpdate');
+    });
+
+    // Quản Lý Lịch Chiếu
+    Route::group(['prefix'  =>  '/lich-chieu'], function() {
+        Route::post('/create', [APILichChieuController::class, 'store'])->name('lichChieuStore');
+        Route::post('/data', [APILichChieuController::class, 'data'])->name('lichChieuData');
+        Route::post('/status', [APILichChieuController::class, 'status'])->name('lichChieuStatus');
     });
 });

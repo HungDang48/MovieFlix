@@ -1,6 +1,6 @@
 @extends('admin.share.master')
 @section('noi_dung')
-    <div class="row mt-3">
+    <div id="app" class="row mt-3">
         <div class="col">
             <div class="card">
                 <div class="card-header">
@@ -27,7 +27,11 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label class="form-label">Tên Phim</label>
-                                                <input type="text" class="form-control" placeholder="Nhập vào tên phim">
+                                                <select v-model="add.id_phim" class="form-control">
+                                                    <template v-for="(v, k) in list_phim">
+                                                        <option v-bind:value="v.id">@{{ v.ten_phim }}</option>
+                                                    </template>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -35,13 +39,13 @@
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Thời Gian Bắt Đầu</label>
-                                                <input type="date" class="form-control">
+                                                <input v-model="add.gio_bat_dau" type="datetime-local" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Thời Gian Kết Thúc</label>
-                                                <input type="date" class="form-control">
+                                                <input v-model="add.gio_ket_thuc" type="datetime-local" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -49,18 +53,17 @@
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label class="form-label">Phòng Chiếu</label>
-                                                <select class="form-control">
-                                                    <option value="1">Dz FullStack 1</option>
-                                                    <option value="2">Dz FullStack 2</option>
-                                                    <option value="3">Dz FullStack 3</option>
-                                                    <option value="4">Dz FullStack 4</option>
+                                                <select v-model="add.id_phong" class="form-control">
+                                                    <template v-for="(v, k) in list_phong">
+                                                        <option v-bind:value="v.id">@{{ v.ten_phong }}</option>
+                                                    </template>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Tình Trạng</label>
-                                            <select class="form-control">
-                                                <option value="1">Hiểm Thị</option>
+                                            <select v-model="add.trang_thai" class="form-control">
+                                                <option value="1">Hiển Thị</option>
                                                 <option value="0">Tạm Tắt</option>
                                             </select>
                                         </div>
@@ -68,7 +71,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                                    <button type="button" class="btn btn-primary">Thêm Mới</button>
+                                    <button v-on:click="themMoi()" type="button" class="btn btn-primary">Thêm Mới</button>
                                 </div>
                             </div>
                         </div>
@@ -89,14 +92,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="text-center align-middle">1</td>
-                                    <td class="align-middle">Lời Nguyền Của Đá</td>
-                                    <td class="text-center align-middle">10/07/2023</td>
-                                    <td class="text-center align-middle">16/07/2023</td>
-                                    <td class="align-middle">Dz FullStack 1</td>
+                                <tr v-for="(v, k) in list">
+                                    <td class="text-center align-middle">@{{ k + 1 }}</td>
+                                    <td class="align-middle">@{{ v.ten_phim }}</td>
+                                    <td class="text-center align-middle">@{{ v.gio_bat_dau }}</td>
+                                    <td class="text-center align-middle">@{{ v.gio_ket_thuc }}</td>
+                                    <td class="align-middle">@{{ v.ten_phong }}</td>
                                     <td class="text-center align-middle">
-                                        <button class="btn btn-primary">Hoạt Động</button>
+                                        <button v-on:click="doiTrangThai(v)" v-if="v.trang_thai" class="btn btn-primary">Hoạt Động</button>
+                                        <button v-on:click="doiTrangThai(v)" v-else class="btn btn-warning">Tạm Tắt</button>
                                     </td>
                                     <td class="text-center align-middle">
                                         <button class="btn btn-success" data-bs-toggle="modal"
@@ -196,4 +200,66 @@
     </div>
 @endsection
 @section('js')
+<script>
+    $(document).ready(function() {
+        new Vue({
+            el      :   '#app',
+            data    :   {
+                add         :   {},
+                list        :   [],
+                list_phim   :   [],
+                list_phong  :   [],
+            },
+            created()   {
+                this.loadData();
+            },
+            methods :   {
+                loadData() {
+                    axios
+                        .post('{{ Route("lichChieuData") }}')
+                        .then((res) => {
+                            this.list           = res.data.data;
+                            this.list_phim      = res.data.ds_phim;
+                            this.list_phong     = res.data.ds_phong;
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0], 'Error');
+                            });
+                        });
+                },
+                themMoi() {
+                    axios
+                        .post('{{ Route("lichChieuStore") }}', this.add)
+                        .then((res) => {
+                            if(res.data.status) {
+                                toastr.success(res.data.message, 'Success');
+                                $('#themMoiModal').modal('hide');
+                                this.loadData();
+                            } else {
+                                toastr.error(res.data.message, 'Error');
+                            }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0], 'Error');
+                            });
+                        });
+                },
+                doiTrangThai(payload) {
+                    axios
+                        .post('{{ Route("lichChieuStatus") }}', payload)
+                        .then((res) => {
+                            if(res.data.status) {
+                                toastr.success(res.data.message, 'Success');
+                                this.loadData();
+                            } else {
+                                toastr.error(res.data.message, 'Error');
+                            }
+                        });
+                },
+            },
+        });
+    });
+</script>
 @endsection
