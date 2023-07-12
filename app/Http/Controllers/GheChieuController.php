@@ -10,7 +10,13 @@ class GheChieuController extends Controller
 {
     public function index($id_phong)
     {
-        return view('admin.page.ghe_chieu.index');
+        $phong  = PhongChieu::find($id_phong);
+
+        if($phong) {
+            return view('admin.page.ghe_chieu.index', compact('phong'));
+        } else {
+            return redirect('/admin/phong-chieu/vue');
+        }
     }
 }
 

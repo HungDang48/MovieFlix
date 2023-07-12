@@ -4,11 +4,46 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\GheChieu;
+use App\Models\PhongChieu;
 
 class APIGheChieuController extends Controller
 {
     public function store(Request $request)
     {
-        dd($request->all());
+        GheChieu::where('id_phong_chieu', $request->id)->delete();
+
+        for($i = 0; $i < $request->hang_doc; $i++) {
+			for($j = 0; $j < $request->hang_ngang; $j++) {
+                if($j < 9) {
+                    $ten_ghe = chr($i + 65) . '0' . ($j + 1);
+                } else {
+                    $ten_ghe = chr($i + 65) . ($j + 1);
+                }
+
+				GheChieu::create([
+					'tinh_trang'		=> 	1,
+					'gia_mac_dinh'		=>  $request->gia_mac_dinh,
+					'id_phong_chieu'	=>	$request->id,
+					'ten_ghe'			=>	$ten_ghe,
+				]);
+			}
+		}
+
+        return response()->json([
+            'status'    => 1,
+            'message'   => 'Đã tạo ra tổng cộng ' . $request->hang_ngang * $request->hang_doc . ' ghế!',
+        ]);
+    }
+
+    public function infoPhongGhe(Request $request)
+    {
+        $phong      = PhongChieu::find($request->id_phong);
+        $ds_ghe     = GheChieu::where('id_phong_chieu', $request->id_phong)->get(); // Trả về 1 array
+
+        return response()->json([
+            'phong_chieu'   =>  $phong,
+            'ds_ghe'        =>  $ds_ghe,
+        ]);
     }
 }

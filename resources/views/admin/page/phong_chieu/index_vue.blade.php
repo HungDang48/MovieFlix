@@ -100,6 +100,7 @@
 										</div>
 									</div>
 								</div>
+                                <input type="text" class="form-control" v-model="gia_mac_dinh">
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
@@ -186,6 +187,7 @@
                 edit            : {},
                 del             : {},
                 create          : {},
+                gia_mac_dinh    : 0,
             },
             created()   {
                 this.loadData();
@@ -212,13 +214,15 @@
                         });
                 },
                 taoGhe() {
-                    var payload     =   {
-                        'id'    :   this.create.id,
-                    };
+                    this.create.gia_mac_dinh    =   this.gia_mac_dinh;
                     axios
-                        .post('{{ Route("gheChieuStore") }}', payload)
+                        .post('{{ Route("gheChieuStore") }}', this.create)
                         .then((res) => {
-
+                            if(res.data.status) {
+                                toastr.success(res.data.message, 'Success');
+                            } else {
+                                toastr.error(res.data.message, 'Error');
+                            }
                         });
                 },
                 aDel() {
