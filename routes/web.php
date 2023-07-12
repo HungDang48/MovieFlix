@@ -13,6 +13,8 @@ use App\Http\Controllers\TrangChuController;
 use App\Models\Phim;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/test', [TestController::class, 'index']);
+
 Route::get('/', [TrangChuController::class, 'index']);
 Route::get('/register', [CustomerController::class, 'viewRegister']);
 Route::get('/login', [CustomerController::class, 'viewLogin']);

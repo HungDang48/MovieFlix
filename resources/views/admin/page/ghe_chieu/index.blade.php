@@ -6,7 +6,7 @@
     </div>
 </div>
 <hr/>
-<div class="row">
+<div class="row" id="app">
     <div class="col-12">
         <div class="card border-primary border-bottom border-3 border-0">
             <div class="card-body">
@@ -22,7 +22,40 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        {{-- @for($i = 0; $i < $phong->hang_doc; $i++)
+                        <tr>
+                            @for($j = 0; $j < $phong->hang_ngang; $j++)
+                            <th class="text-center align-middle">
+                                <i class="fa-solid fa-couch fa-2x"></i>
+                                <br>
+                                A01
+                            </th>
+                            @endfor
+                        </tr>
+                        @endfor
+                        <tr style="height: 40px">
+                            <td colspan="100%">PHÍA TRÊN LÀ COMPACT</td>
+                        </tr> --}}
+                        <template v-for="i in phong_chieu.hang_doc">
+                            <tr>
+                                <template v-for="j in phong_chieu.hang_ngang">
+                                    <th class="text-center align-middle">
+                                        <i class="fa-solid fa-couch fa-2x"></i>
+                                        <br>
+                                        A01
+                                        {{-- <template v-if="list_ghe[(i - 1) * phong_chieu.hang_ngang + j - 1].tinh_trang == 1">
+                                            <i class="fa-solid fa-couch fa-2x"></i>
+                                        </template>
+                                        <template v-else>
+                                            <i class="text-danger fa-solid fa-couch fa-2x"></i>
+                                        </template>
+                                        <br>
+                                        @{{ list_ghe[(i - 1) * phong_chieu.hang_ngang + j - 1].ten_ghe}} /
+                                        @{{ list_ghe[(i - 1) * phong_chieu.hang_ngang + j - 1].gia_mac_dinh}} --}}
+                                    </th>
+                                </template>
+                            </tr>
+                        </template>
                     </tbody>
                 </table>
             </div>
@@ -33,45 +66,43 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        var currentURL = window.location.href;
-        var parts = currentURL.split('/');
-        var number = parts[parts.length - 1];
-        if (!isNaN(number)) {
-            var payload = {
-                'id'    :   number
-            };
-
-            axios
-                .post('{{ Route("phongInfo") }}', payload)
-                .then((res) => {
-                    if(res.data.status) {
-                        var tt_phong        = res.data.data;
-                        var hang_doc        = tt_phong.hang_doc;
-                        var hang_ngang      = tt_phong.hang_ngang;
-                        var noi_dung        = '';
-                        // console.log(hang_doc, hang_ngang);
-                        for(var i = 0; i < hang_doc; i++) {
-                            noi_dung +='<tr>';
-                            for(var j = 0; j < hang_ngang; j++) {
-                                noi_dung +='<th class="text-center align-middle">';
-                                noi_dung +='<i class="fa-solid fa-couch fa-2x"></i><br><span>'+ String.fromCharCode((65 + i) * 1) +''+ (j + 1) * 1 +'</span>';
-                                noi_dung +='</th>';
-                            }
-                            noi_dung +='</tr>';
-                        }
-                        $("#table tbody").html(noi_dung);
+        new Vue({
+            el      :   '#app',
+            data    :   {
+                id_phong    :   '',
+                phong_chieu :   {'hang_ngang' : 2, 'hang_doc' : 10},
+                list_ghe    :   [],
+            },
+            created()   {
+                this.getIdPhong();
+            },
+            methods :   {
+                getIdPhong() {
+                    var currentURL = window.location.href;
+                    var parts = currentURL.split('/');
+                    var number = parts[parts.length - 1];
+                    if (!isNaN(number)) {
+                        this.id_phong   = number;
+                        this.loadData();
                     } else {
-                        toastr.error(res.data.message, 'Error');
+                        console.log('Không tìm thấy số');
                     }
-                })
-                .catch((res) => {
-                    $.each(res.response.data.errors, function(k, v) {
-                        toastr.error(v[0], 'Error');
-                    });
-                });
-        } else {
-            console.log('Không tìm thấy số');
-        }
+                },
+                loadData()  {
+                    var payload = {
+                        'id_phong'  : this.id_phong
+                    };
+
+                    axios
+                        .post('{{ Route("infoPhongGhe") }}', payload)
+                        .then((res) => {
+                            this.phong_chieu    = res.data.phong_chieu;
+                            this.list_ghe       = res.data.ds_ghe;
+                            console.log(this.list_ghe);
+                        });
+                },
+            },
+        });
     });
 </script>
 @endsection
