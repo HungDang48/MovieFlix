@@ -112,7 +112,7 @@
                                                 <a href="https://vimeo.com/28177848"
                                                     class="btn-trailers video-player">watch trailer</a>
                                                 <a href="#order" class="btn-ticket order_btn ">buy ticket</a>
-                                                <a href="/film-detail/{{ $value->id }}" class="btn-trailers" style="margin-top: 10px">film detail</a>
+                                                <a href="/film-detail/vue/{{ $value->id }}" class="btn-trailers" style="margin-top: 10px">film detail</a>
                                             </div>
                                         </div>
                                         <div class="entry-desc">

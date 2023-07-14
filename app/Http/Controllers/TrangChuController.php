@@ -39,4 +39,11 @@ class TrangChuController extends Controller
             return redirect('/');
         }
     }
+
+    public function indexVue()
+    {
+        return view('client.page.homvue');
+    }
+
+
 }

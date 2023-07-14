@@ -87,4 +87,39 @@ class APILichChieuController extends Controller
             ]);
         }
     }
+
+    public function update(Request $request){
+        $lichChieu   = LichChieu::find($request->id);
+        if($lichChieu) {
+            $data   = $request->all();
+            $lichChieu->update($data);
+
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã cập thành công!'
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Lịch chiếu không tồn tại!'
+            ]);
+        }
+    }
+    public function destroy(Request $request){
+        $lichChieu     =   LichChieu::find($request->id);
+
+        if($lichChieu) {
+            $lichChieu->delete();
+
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã xóa lịch chiếu thành công!',
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'lịch chiếu không tồn tại!',
+            ]);
+        }
+    }
 }
