@@ -40,10 +40,7 @@
                             <tr>
                                 <template v-for="j in phong_chieu.hang_ngang">
                                     <th class="text-center align-middle">
-                                        <i class="fa-solid fa-couch fa-2x"></i>
-                                        <br>
-                                        A01
-                                        {{-- <template v-if="list_ghe[(i - 1) * phong_chieu.hang_ngang + j - 1].tinh_trang == 1">
+                                        <template v-if="1">
                                             <i class="fa-solid fa-couch fa-2x"></i>
                                         </template>
                                         <template v-else>
@@ -51,7 +48,7 @@
                                         </template>
                                         <br>
                                         @{{ list_ghe[(i - 1) * phong_chieu.hang_ngang + j - 1].ten_ghe}} /
-                                        @{{ list_ghe[(i - 1) * phong_chieu.hang_ngang + j - 1].gia_mac_dinh}} --}}
+                                        @{{ list_ghe[(i - 1) * phong_chieu.hang_ngang + j - 1].gia_mac_dinh}}
                                     </th>
                                 </template>
                             </tr>
