@@ -6,44 +6,64 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\GheChieu;
 use App\Models\PhongChieu;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class APIGheChieuController extends Controller
 {
     public function store(Request $request)
     {
-        GheChieu::where('id_phong_chieu', $request->id)->delete();
+        DB::beginTransaction();
+        try {
 
-        for($i = 0; $i < $request->hang_doc; $i++) {
-			for($j = 0; $j < $request->hang_ngang; $j++) {
-                if($j < 9) {
-                    $ten_ghe = chr($i + 65) . '0' . ($j + 1);
-                } else {
-                    $ten_ghe = chr($i + 65) . ($j + 1);
+            GheChieu::where('id_phong_chieu', $request->id)->delete();
+
+            for($i = 0; $i < $request->hang_doc; $i++) {
+                for($j = 0; $j < $request->hang_ngang; $j++) {
+                    if($j < 9) {
+                        $ten_ghe = chr($i + 65) . '0' . ($j + 1);
+                    } else {
+                        $ten_ghe = chr($i + 65) . ($j + 1);
+                    }
+
+                    GheChieu::create([
+                        'tinh_trang'		=> 	1,
+                        'gia_mac_dinh'		=>  $request->gia_mac_dinh,
+                        'id_phong_chieu'	=>	$request->id,
+                        'ten_ghe'			=>	$ten_ghe,
+                    ]);
                 }
+            }
+            DB::commit();
 
-				GheChieu::create([
-					'tinh_trang'		=> 	1,
-					'gia_mac_dinh'		=>  $request->gia_mac_dinh,
-					'id_phong_chieu'	=>	$request->id,
-					'ten_ghe'			=>	$ten_ghe,
-				]);
-			}
-		}
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã tạo ra tổng cộng ' . $request->hang_ngang * $request->hang_doc . ' ghế!',
+            ]);
+        } catch(Exception $e) {
+            Log::error($e);
+            DB::rollBack();
+        }
 
-        return response()->json([
-            'status'    => 1,
-            'message'   => 'Đã tạo ra tổng cộng ' . $request->hang_ngang * $request->hang_doc . ' ghế!',
-        ]);
     }
 
     public function infoPhongGhe(Request $request)
     {
-        $phong      = PhongChieu::find($request->id_phong);
-        $ds_ghe     = GheChieu::where('id_phong_chieu', $request->id_phong)->get(); // Trả về 1 array
+        DB::beginTransaction();
+        try {
 
-        return response()->json([
-            'phong_chieu'   =>  $phong,
-            'ds_ghe'        =>  $ds_ghe,
-        ]);
+            $phong      = PhongChieu::find($request->id_phong);
+            $ds_ghe     = GheChieu::where('id_phong_chieu', $request->id_phong)->get(); // Trả về 1 array
+            DB::commit();
+
+            return response()->json([
+                'phong_chieu'   =>  $phong,
+                'ds_ghe'        =>  $ds_ghe,
+            ]);
+        } catch(Exception $e) {
+            Log::error($e);
+            DB::rollBack();
+        }
     }
 }
