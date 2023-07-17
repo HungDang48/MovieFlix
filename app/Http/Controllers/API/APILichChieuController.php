@@ -136,20 +136,27 @@ class APILichChieuController extends Controller
 
     public function update(Request $request)
     {
-        $lichChieu   = LichChieu::find($request->id);
-        if ($lichChieu) {
-            $data   = $request->all();
-            $lichChieu->update($data);
+        DB::beginTransaction();
+        try {
+            $lichChieu   = LichChieu::find($request->id);
+            if ($lichChieu) {
+                $data   = $request->all();
+                $lichChieu->update($data);
+                DB::commit();
 
-            return response()->json([
-                'status'    => 1,
-                'message'   => 'Đã cập thành công!'
-            ]);
-        } else {
-            return response()->json([
-                'status'    => 0,
-                'message'   => 'Lịch chiếu không tồn tại!'
-            ]);
+                return response()->json([
+                    'status'    => 1,
+                    'message'   => 'Đã cập thành công!'
+                ]);
+            } else {
+                return response()->json([
+                    'status'    => 0,
+                    'message'   => 'Lịch chiếu không tồn tại!'
+                ]);
+            }
+        } catch(Exception $e) {
+            Log::error($e);
+            DB::rollBack();
         }
     }
 

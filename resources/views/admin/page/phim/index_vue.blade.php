@@ -279,12 +279,13 @@
             },
             methods:        {
                 themPhim() {
-                    this.them_moi.mo_to = CKEDITOR.instances['mo_ta'].getData();
+                    this.them_moi.mo_ta = CKEDITOR.instances['mo_ta'].getData();
                     axios
                         .post('{{ Route("phimStore") }}', this.them_moi)
                         .then((res) => {
                             if(res.data.status) {
                                 toastr.success(res.data.message, 'Success');
+                                $("#themPhimModal").modal('hide');
                                 this.loadData();
                             } else {
                                 toastr.error(res.data.message, 'Error');
