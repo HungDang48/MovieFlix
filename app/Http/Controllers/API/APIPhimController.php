@@ -16,7 +16,6 @@ class APIPhimController extends Controller
         DB::beginTransaction();
         try {
             $data   = $request->all();
-
             Phim::create($data);
             DB::commit();
 

@@ -18,6 +18,7 @@ class APIGheChieuController extends Controller
         try {
 
             GheChieu::where('id_phong_chieu', $request->id)->delete();
+            DB::commit();
 
             for($i = 0; $i < $request->hang_doc; $i++) {
                 for($j = 0; $j < $request->hang_ngang; $j++) {
@@ -36,7 +37,6 @@ class APIGheChieuController extends Controller
                 }
             }
             DB::commit();
-
             return response()->json([
                 'status'    => 1,
                 'message'   => 'Đã tạo ra tổng cộng ' . $request->hang_ngang * $request->hang_doc . ' ghế!',
