@@ -58,6 +58,7 @@ Route::group(['prefix'  =>  '/admin'], function() {
     Route::group(['prefix'  =>  '/ghe-chieu'], function() {
         Route::post('/create', [APIGheChieuController::class, 'store'])->name('gheChieuStore');
         Route::post('/info', [APIGheChieuController::class, 'infoPhongGhe'])->name('infoPhongGhe');
+        Route::post('/status', [APIGheChieuController::class, 'status'])->name('gheChieuStatus');
     });
 
     // Quản Lý Dịc Vụ

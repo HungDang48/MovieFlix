@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function viewRegister(){
+    public function viewRegister()
+    {
         return view('client.register_login.index');
     }
-    public function viewLogin(){
+
+    public function viewLogin()
+    {
         return view('client.register_login.index');
     }
 }

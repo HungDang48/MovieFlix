@@ -102,6 +102,9 @@
                                             <input class="account__login--input" placeholder="Password" type="password">
                                         </label>
                                         <label>
+                                            <input class="account__login--input" placeholder="Nhập lại mật khẩu" type="password">
+                                        </label>
+                                        <label>
                                             <input class="account__login--input" placeholder="Số điện thoại" type="password">
                                         </label>
                                         <button class="account__login--btn primary__btn mb-10" type="submit">Đăng Ký</button>

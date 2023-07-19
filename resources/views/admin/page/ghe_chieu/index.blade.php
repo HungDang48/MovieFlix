@@ -40,15 +40,14 @@
                             <tr>
                                 <template v-for="j in phong_chieu.hang_ngang">
                                     <th class="text-center align-middle">
-                                        <template v-if="1">
-                                            <i class="fa-solid fa-couch fa-2x"></i>
+                                        <template v-for="(v, k) in list_ghe">
+                                            <template v-if="k == ((i - 1) * phong_chieu.hang_ngang + j - 1)">
+                                                <i v-on:click="doiTinhTrang(v)" v-if="v.tinh_trang == 1" class="fa-solid fa-couch fa-2x"></i>
+                                                <i v-on:click="doiTinhTrang(v)" v-else class="text-danger fa-solid fa-couch fa-2x"></i>
+                                                <br>
+                                                @{{ v.ten_ghe }} / @{{ v.gia_mac_dinh }}
+                                            </template>
                                         </template>
-                                        <template v-else>
-                                            <i class="text-danger fa-solid fa-couch fa-2x"></i>
-                                        </template>
-                                        <br>
-                                        @{{ list_ghe[(i - 1) * phong_chieu.hang_ngang + j - 1].ten_ghe}} /
-                                        @{{ list_ghe[(i - 1) * phong_chieu.hang_ngang + j - 1].gia_mac_dinh}}
                                     </th>
                                 </template>
                             </tr>
@@ -95,7 +94,23 @@
                         .then((res) => {
                             this.phong_chieu    = res.data.phong_chieu;
                             this.list_ghe       = res.data.ds_ghe;
-                            console.log(this.list_ghe);
+                        });
+                },
+                doiTinhTrang(payload) {
+                    axios
+                        .post('{{ Route("gheChieuStatus") }}', payload)
+                        .then((res) => {
+                            if(res.data.status) {
+                                toastr.success(res.data.message, 'Success');
+                                this.loadData();
+                            } else {
+                                toastr.error(res.data.message, 'Error');
+                            }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0], 'Error');
+                            });
                         });
                 },
             },
