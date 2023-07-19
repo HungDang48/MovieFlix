@@ -27,11 +27,11 @@ class APILichChieuController extends Controller
         $today      =   Carbon::today();
 
         $ds_phim    =   Phim::where('hien_thi', 1)
-            ->where('ket_thuc', '>', $today)
-            ->get();
+                            ->where('ket_thuc', '>', $today)
+                            ->get();
 
         $ds_phong   =   PhongChieu::where('tinh_trang', 1)
-            ->get();
+                                  ->get();
 
         return response()->json([
             'data'      =>  $data,
@@ -90,8 +90,26 @@ class APILichChieuController extends Controller
                         'message'   => 'Đã hủy lịch chiếu phim!',
                     ]);
                 } else {
+                    $r_gbd      = $request->gio_bat_dau;
+                    $r_gkt      = $request->gio_ket_thuc;
                     // a. Kiểm tra lịch chiếu có trùng không?   => Quên đi và ta chưa code
-
+                    $check      =   LichChieu::where('trang_thai', 1)
+                                             ->where('id_phong', $request->id_phong)
+                                             ->where(function ($query) use ($request) {
+                                                $query->where('gio_bat_dau', '>=', $request->gio_bat_dau)
+                                                      ->where('gio_ket_thuc', '<=', $request->gio_ket_thuc);
+                                                $query->orWhere('gio_bat_dau', '<=', $request->gio_bat_dau)
+                                                      ->Where('gio_ket_thuc', '>=', $request->gio_bat_dau);
+                                                $query->orWhere('gio_bat_dau', '<=', $request->gio_ket_thuc)
+                                                      ->Where('gio_ket_thuc', '>=', $request->gio_ket_thuc);
+                                            })
+                                            ->first();
+                    if($check)  {
+                        return response()->json([
+                            'status'    => 0,
+                            'message'   => 'Phòng chiếu này đã có lịch chiếu!',
+                        ]);
+                    }
                     // b. Kiểm tra xem phòng chiếu này đã có ghế hay chưa?
                     $gheChieu   =   GheChieu::where('id_phong_chieu', $request->id_phong)->get();
 

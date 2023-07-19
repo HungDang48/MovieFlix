@@ -66,4 +66,60 @@ class APIGheChieuController extends Controller
             DB::rollBack();
         }
     }
+
+    public function status(Request $request)
+    {
+        DB::beginTransaction();
+
+        try {
+            $gheChieu   = GheChieu::find($request->id);
+            if($gheChieu) {
+                $gheChieu->tinh_trang   = !$gheChieu->tinh_trang;
+                $gheChieu->save();
+
+                DB::commit();
+
+                return response()-> json([
+                    'status'    => 1,
+                    'message'   => 'Đã đổi trạng thái ghế!',
+                ]);
+            } else {
+                return response()->json([
+                    'status'    => 0,
+                    'message'   => 'Ghế chiếu không tồn tại!',
+                ]);
+            }
+
+        } catch(Exception $e) {
+            Log::error($e);
+            DB::rollBack();
+        }
+    }
+
+    public function update(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+
+            $gheChieu     =   GheChieu::find($request->id);
+            if($gheChieu) {
+                $data   = $request->all();
+                $gheChieu->update($data);
+                DB::commit();
+
+                return response()->json([
+                    'status'    => 1,
+                    'message'   => 'Đã cập nhật ghế chiếu thành công!',
+                ]);
+            } else {
+                return response()->json([
+                    'status'    => 0,
+                    'message'   => 'Ghế chiếu không tồn tại!',
+                ]);
+            }
+        } catch(Exception $e) {
+            Log::error($e);
+            DB::rollBack();
+        }
+    }
 }

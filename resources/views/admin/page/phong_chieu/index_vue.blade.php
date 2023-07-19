@@ -66,7 +66,7 @@
                                     <td class="align-middle text-nowrap text-center">@{{value.loai_may_chieu}}</td>
                                     <td class="align-middle text-nowrap">@{{value.loai_phong}}</td>
                                     <td class="text-center align-middle text-nowrap">
-                                        <button v-on:click="status(value.id)" v-if="value.tinh_trang == 0" class="status btn btn-primary">Đang Hoạt Động</button>
+                                        <button v-on:click="status(value.id)" v-if="value.tinh_trang == 1" class="status btn btn-primary">Đang Hoạt Động</button>
                                         <button v-on:click="status(value.id)" v-else class="status btn btn-warning">Dừng Hoạt Động</button>
                                     </td>
                                     <td class="align-middle text-center">@{{value.hang_ngang}}</td>
