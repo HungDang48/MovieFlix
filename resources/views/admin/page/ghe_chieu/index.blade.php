@@ -45,7 +45,9 @@
                                                 <i v-on:click="doiTinhTrang(v)" v-if="v.tinh_trang == 1" class="fa-solid fa-couch fa-2x"></i>
                                                 <i v-on:click="doiTinhTrang(v)" v-else class="text-danger fa-solid fa-couch fa-2x"></i>
                                                 <br>
-                                                @{{ v.ten_ghe }} / @{{ v.gia_mac_dinh }}
+                                                <span v-on:click="edit = v" data-bs-toggle="modal" data-bs-target="#updateModal">
+                                                    @{{ v.ten_ghe }} / @{{ v.gia_mac_dinh }}
+                                                </span>
                                             </template>
                                         </template>
                                     </th>
@@ -54,6 +56,39 @@
                         </template>
                     </tbody>
                 </table>
+                <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                                <div class="col">
+                                    <label class="mb-2">Giá Mặc Định</label>
+                                    <input v-model="edit.gia_mac_dinh" type="number" class="form-control">
+                                </div>
+                          </div>
+                          <div class="row">
+                            <div class="mt-3">
+                                <div class="col">
+                                    <label class="mb-2">Tình Trạng</label>
+                                    <select v-model="edit.tinh_trang" class="form-control">
+                                        <option value="1">Hiển Thị</option>
+                                        <option value="0">Tạm Tắt</option>
+                                    </select>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                          <button v-on:click="capNhapGheChieu()" type="button" class="btn btn-primary">Cập Nhật</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -68,6 +103,7 @@
                 id_phong    :   '',
                 phong_chieu :   {'hang_ngang' : 2, 'hang_doc' : 10},
                 list_ghe    :   [],
+                edit        :   {},
             },
             created()   {
                 this.getIdPhong();
@@ -113,6 +149,24 @@
                             });
                         });
                 },
+                capNhapGheChieu() {
+                    axios
+                        .post('{{Route("gheChieuUpdate")}}', this.edit)
+                        .then((res) => {
+                            if(res.data.status) {
+                                toastr.success(res.data.message);
+                                $("#updateModal").modal('hide');
+                                this.loadData();
+                            } else {
+                                toastr.error(res.data.message);
+                            }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
+                        });
+                }
             },
         });
     });
