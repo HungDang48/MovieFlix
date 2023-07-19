@@ -86,5 +86,6 @@ Route::group(['prefix'  =>  '/admin'], function() {
         Route::post('/delete', [APILichChieuController::class, 'destroy'])->name('lichChieuDelete');
         Route::post('/data', [APILichChieuController::class, 'data'])->name('lichChieuData');
         Route::post('/status', [APILichChieuController::class, 'status'])->name('lichChieuStatus');
+        Route::post('/info', [APILichChieuController::class, 'info'])->name('lichChieuInfo');
     });
 });

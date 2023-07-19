@@ -107,10 +107,10 @@
                                     <td class="text-center align-middle">
                                         <button style="width: 100px;" v-on:click="edit = v" class="btn btn-success" data-bs-toggle="modal"
                                             data-bs-target="#capNhatModal">Cập Nhập</button>
-                                        <button style="width: 100px;" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#gheBanModal">Ghế Bán</button>
                                         <button style="width: 100px;" v-on:click="del = v" class="btn btn-danger" data-bs-toggle="modal"
                                             data-bs-target="#xoaModal">Xóa</button>
+                                        <button v-on:click="detail = v; getTT(v)" style="width: 100px;" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#gheBanModal">DS Vé</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -194,20 +194,53 @@
                         </div>
                         <div class="modal fade" id="gheBanModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
+                            <div class="modal-dialog modal-fullscreen">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Ghế Bán</h1>
+                                        <h1 class="modal-title fs-5">
+                                            DANH SÁCH VÉ - "@{{ detail.ten_phim }}" - "@{{ detail.ten_phong }}" - "@{{ detail.gio_bat_dau }} ĐẾN @{{ detail.gio_ket_thuc }}"
+                                        </h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save</button>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th colspan="100%" class="text-center bg-warning">
+                                                    <h4 class="text-danger">
+                                                        <b>MÀN CHIẾU</b>
+                                                    </h4>
+                                                </th>
+                                            </tr>
+                                            <tr style="height: 100px;">
+                                                <th colspan="100%"></th>
+                                            </tr>
+                                            <template v-if="detail.trang_thai == 0">
+                                                <tr>
+                                                    <th class="text-center" colspan="100%">LỊCH CHIẾU CHƯA KÍCH HOẠT NÊN CHƯA CÓ VÉ</th>
+                                                </tr>
+                                            </template>
+                                            <template v-else>
+                                                <template v-for="j in detail.hang_doc">
+                                                    <tr>
+                                                        <template v-for="i in detail.hang_ngang">
+                                                            <template v-for="(v, k) in ds_ve">
+                                                                <template v-if="k == (detail.hang_doc + 1) * (j - 1) + i - 1">
+                                                                    <td class="text-center">
+                                                                        <i v-if="v.tinh_trang == -1" class="text-danger fa-solid fa-couch fa-2x"></i>
+                                                                        <i v-else-if="v.tinh_trang == 0" class="fa-solid fa-couch fa-2x"></i>
+                                                                        <i v-else-if="v.tinh_trang == 1" class="text-warning fa-solid fa-couch fa-2x"></i>
+                                                                        <i v-else class="text-success fa-solid fa-couch fa-2x"></i>
+                                                                        <br>
+                                                                        <b>@{{ v.so_ghe }}</b>
+                                                                    </td>
+                                                                </template>
+                                                            </template>
+                                                        </template>
+                                                    </tr>
+                                                </template>
+                                            </template>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -224,17 +257,31 @@
             new Vue({
                 el: '#app',
                 data: {
-                    add: {'trang_thai' : 0},
-                    list: [],
-                    list_phim: [],
-                    list_phong: [],
-                    edit: {},
-                    del: {},
+                    add             : {'trang_thai' : 0},
+                    list            : [],
+                    list_phim       : [],
+                    list_phong      : [],
+                    edit            : {},
+                    del             : {},
+                    detail          : {},
+                    ds_ve           : [],
                 },
                 created() {
                     this.loadData();
                 },
                 methods: {
+                    getTT(payload) {
+                        axios
+                            .post('{{ Route("lichChieuInfo") }}', payload)
+                            .then((res) => {
+                                this.ds_ve  = res.data.data;
+                            })
+                            .catch((res) => {
+                                $.each(res.response.data.errors, function(k, v) {
+                                    toastr.error(v[0], 'Error');
+                                });
+                            });
+                    },
                     loadData() {
                         axios
                             .post('{{ Route('lichChieuData') }}')
@@ -305,7 +352,10 @@
                                     toastr.error(res.data.message, 'Error');
                                 }
                             });
-                    }
+                    },
+                    date_format(now) {
+                        return moment(now).format('DD/MM/yyyy HH:mm');
+                    },
                 },
             });
         });
