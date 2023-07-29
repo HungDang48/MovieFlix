@@ -12,7 +12,6 @@ use App\Http\Controllers\API\APIPhongChieuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/data', [APIHomepageController::class, 'getDataHome'])->name('getDataHome');
 Route::post('/getID/film-detail', [APIHomepageController::class, 'getIdFilmDetail'])->name('getIdFilmDetail');
 
 Route::group(['prefix'  =>  '/admin'], function() {

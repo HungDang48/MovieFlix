@@ -13,13 +13,11 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TrangChuController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [TrangChuController::class, 'indexVue']);
-
-// Route::get('/', [TrangChuController::class, 'index']);
+Route::get('/', [TrangChuController::class, 'index']);
 Route::get('/register', [CustomerController::class, 'viewRegister']);
 Route::get('/login', [CustomerController::class, 'viewLogin']);
 Route::get('/admin/login' , [AdminController::class , 'viewLogin']);
-Route::get('/film-detail/vue/{id}', [TrangChuController::class, 'detailPhim']);
+Route::get('/film-detail/{id}', [TrangChuController::class, 'detailPhim']);
 
 Route::group(['prefix'  =>  '/admin'], function() {
     Route::get('/', [AdminController::class, 'index']);
