@@ -13,6 +13,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TrangChuController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/on-bai', [AdminController::class, 'onbai']);
+
 Route::get('/', [TrangChuController::class, 'indexVue']);
 
 // Route::get('/', [TrangChuController::class, 'index']);
