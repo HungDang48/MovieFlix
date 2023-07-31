@@ -12,7 +12,6 @@ use App\Http\Controllers\API\APIPhongChieuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/data', [APIHomepageController::class, 'getDataHome'])->name('getDataHome');
 Route::post('/getID/film-detail', [APIHomepageController::class, 'getIdFilmDetail'])->name('getIdFilmDetail');
 
 Route::group(['prefix'  =>  '/admin'], function() {
@@ -86,5 +85,6 @@ Route::group(['prefix'  =>  '/admin'], function() {
         Route::post('/delete', [APILichChieuController::class, 'destroy'])->name('lichChieuDelete');
         Route::post('/data', [APILichChieuController::class, 'data'])->name('lichChieuData');
         Route::post('/status', [APILichChieuController::class, 'status'])->name('lichChieuStatus');
+        Route::post('/info', [APILichChieuController::class, 'info'])->name('lichChieuInfo');
     });
 });

@@ -1,70 +1,76 @@
-<footer id="footer">
-    <div class="container footer-container">
-        <div class="row">
-            <div class="col-md-2 col-sm-6">
-                <div class="widget">
-                    <h5 class="widget-title">Menu</h5>
-                    <ul class="menu">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Coming soon</a></li>
-                        <li><a href="#">Order</a></li>
-                        <li><a href="#">Terms of service</a></li>
-                        <li><a href="#">Pricing</a></li>
-                    </ul>
-                </div>
-                <div class="widget">
-                    <div class="social-links">
-                        <a href="javascript:;"><i class="fa fa-facebook"></i></a>
-                        <a href="javascript:;"><i class="fa fa-twitter"></i></a>
-                        <a href="javascript:;"><i class="fa fa-google-plus"></i></a>
+<!-- footer-area -->
+<footer>
+    <div class="footer-top-wrap">
+        <div class="container">
+            <div class="footer-menu-wrap">
+                <div class="row align-items-center">
+                    <div class="col-lg-3">
+                        <div class="footer-logo">
+                            <a href="index.html"><img src="/assets_client/img/logo/logo.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="footer-menu">
+                            <nav>
+                                <ul class="navigation">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="index.html">Movie</a></li>
+                                    <li><a href="index.html">tv show</a></li>
+                                    <li><a href="index.html">pages</a></li>
+                                    <li><a href="pricing.html">Pricing</a></li>
+                                </ul>
+                                <div class="footer-search">
+                                    <form action="#">
+                                        <input type="text" placeholder="Find Favorite Movie">
+                                        <button><i class="fas fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="widget">
-                    <h5 class="widget-title">Address information</h5>
-                    <p>
-                        California. AMC Dine-In Theatres Marina,
-                        Street 26, Distritc 543 #108
-                    </p>
-                    <p>
-                        <i class="fa fa-mail"></i>Example@mail.com<br>
-                        <i class="fa fa-phone"></i> + 123 456 7890
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-6">
-                <div class="widget">
-                    <h5 class="widget-title">Leave a message</h5>
-                    <form class="contact_form transparent">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <input type="text" class="inputValidation" name="name"
-                                    placeholder="Name *">
-                            </div>
-                            <div class="col-sm-12">
-                                <input type="text" class="inputValidation" name="email"
-                                    placeholder="Email *">
-                            </div>
-                            <div class="col-sm-12 ">
-                                <textarea class="inputValidation" placeholder="Message *"></textarea>
-                                <button type="submit" class="button fill rectangle">Send to us</button>
-                            </div>
+            <div class="footer-quick-link-wrap">
+                <div class="row align-items-center">
+                    <div class="col-md-7">
+                        <div class="quick-link-list">
+                            <ul>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Help Center</a></li>
+                                <li><a href="#">Terms of Use</a></li>
+                                <li><a href="#">Privacy</a></li>
+                            </ul>
                         </div>
-                    </form>
-                    <div class="errorMessage"></div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="footer-social">
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="sub-footer">
+    <div class="copyright-wrap">
         <div class="container">
-            <div class="row copyright-text">
-                <div class="col-sm-12 text-center">
-                    <p class="mv3 mvt0">&copy; Copyrights 2017 Tenguu. All rights reserved</p>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="copyright-text">
+                        <p>Copyright &copy; 2021. All Rights Reserved By <a href="index.html">Movflx</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="payment-method-img text-center text-md-right">
+                        <img src="/assets_client/img/images/card_img.png" alt="img">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+<!-- footer-area-end -->

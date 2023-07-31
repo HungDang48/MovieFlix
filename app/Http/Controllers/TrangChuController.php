@@ -20,29 +20,12 @@ class TrangChuController extends Controller
                               ->whereDate('bat_dau', '>', $today)
                               ->get();
 
-        return view('client.page.home', compact('phimDangChieu', 'phimSapChieu'));
+        return view('client.page.homepage', compact('phimDangChieu', 'phimSapChieu'));
     }
 
-    public function detailPhim($id)
+    public function detailPhim()
     {
-        $phim   = Phim::find($id);
-
-        if($phim) {
-            $today          = Carbon::today();
-            $phimDangChieu  = Phim::where('hien_thi', 1)
-                                  ->whereDate('bat_dau', '<=', $today)
-                                  ->whereDate('ket_thuc', '>=', $today)
-                                  ->get();
-
-            return view('client.page.film-detail', compact('phim', 'phimDangChieu'));
-        } else {
-            return redirect('/');
-        }
-    }
-
-    public function indexVue()
-    {
-        return view('client.page.homvue');
+        return view('client.page.film-detail');
     }
 
 

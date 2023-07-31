@@ -21,8 +21,8 @@ class VeXemPhim extends Model
     ];
 
     // Do thằng code/ phân tích hệ thống nó quy ước => Không đúng/Không sai
-    CONST VE_KHONG_THE_BAN  = -1;
-    CONST VE_CO_THE_BAN     =  0;
-    CONST VE_DANG_GIU_CHO   =  1;
-    CONST VE_DA_BAN         =  2;
+    CONST VE_KHONG_THE_BAN  = -1;   // danger
+    CONST VE_CO_THE_BAN     =  0;   // bình thường
+    CONST VE_DANG_GIU_CHO   =  1;   // warning
+    CONST VE_DA_BAN         =  2;   // success
 }

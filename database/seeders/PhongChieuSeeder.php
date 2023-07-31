@@ -41,14 +41,6 @@ class PhongChieuSeeder extends Seeder
                     'loai_phong'    => "Phòng 3D",
                 ],
                 [
-                    'ten_phong'     =>"DZ FullStack 3",
-                    'loai_may_chieu'=>"Optoma UHD65",
-                    'tinh_trang'    => rand(0,1),
-                    'hang_doc'      => rand(7,10),
-                    'hang_ngang'    => rand(7,10),
-                    'loai_phong'    => "Phòng IMAX",
-                ],
-                [
                     'ten_phong'     =>"DZ FullStack 4",
                     'loai_may_chieu'=>"Sony VPL-VW270ES",
                     'tinh_trang'    => rand(0,1),

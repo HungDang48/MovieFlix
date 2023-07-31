@@ -9,26 +9,12 @@ use Illuminate\Http\Request;
 
 class APIHomepageController extends Controller
 {
-    public function getDataHome()
+    public function getIdFilmDetail(Request $request)
     {
-        $today          = Carbon::today();
-        $phimDangChieu  = Phim::where('hien_thi', 1)
-                              ->whereDate('bat_dau', '<=', $today)
-                              ->whereDate('ket_thuc', '>=', $today)
-                              ->get();
-
-        $phimSapChieu  = Phim::where('hien_thi', 1)
-                              ->whereDate('bat_dau', '>', $today)
-                              ->get();
+        $data = Phim::find($request->id);
 
         return response()->json([
-            'phimDangChieu' => $phimDangChieu,
-            'phimSapChieu'  => $phimSapChieu,
+            'data'   => $data,
         ]);
-    }
-
-    public function getDataFilmDetail(Request $request)
-    {
-
     }
 }
