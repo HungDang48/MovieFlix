@@ -70,7 +70,6 @@
                             .post('{{ Route('getIdFilmDetail') }}', payload)
                             .then((res) => {
                                 this.phim = res.data.data;
-                                console.log(this.phim);
                             })
                             .catch((res) => {
                                 $.each(res.response.data.errors, function(k, v) {

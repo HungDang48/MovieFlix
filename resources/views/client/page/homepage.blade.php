@@ -8,7 +8,7 @@
                 <div class="col-lg-6">
                     <div class="section-title title-style-three text-center text-lg-left">
                         <span class="sub-title">ONLINE STREAMING</span>
-                        <h2 class="title">New Release Movies</h2>
+                        <h2 class="title">DANH SÁCH CÁC PHIM</h2>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -30,7 +30,7 @@
                 <div class="tab-pane fade show active" id="tvShow" role="tabpanel" aria-labelledby="tvShow-tab">
                     <div class="ucm-active-two owl-carousel">
                         @foreach ($phimDangChieu as $key => $value)
-                            <div class="movie-item movie-item-two mb-30 ">
+                            <div class="movie-item movie-item-two mb-30 " style="height: 550px">
                                 <div class="movie-poster">
                                     <a href="/film-detail/{{$value->id}}"><img style="height: 285px; width: 195px" src="{{ $value->hinh_anh}}"
                                             alt=""></a>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="movies" role="tabpanel" aria-labelledby="movies-tab">
-                    <div class="ucm-active-two owl-carousel">
+                    <div class="ucm-active-two owl-carousel" style="height: 550px">
                         @foreach ($phimSapChieu as $key => $value)
                             <div class="movie-item movie-item-two mb-30 ">
                                 <div class="movie-poster">
