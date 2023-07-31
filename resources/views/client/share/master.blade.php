@@ -1,26 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        @include('client.share.css')
+    </head>
+    <body>
 
-<head>
-    @include('client.share.css')
-</head>
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <i class="fas fa-angle-up"></i>
+        </button>
 
-<body class="sticky-menu stick">
-    <div class="wrapper">
+
 
         @include('client.share.header')
 
-        @yield('noi_dung')
+
+        <main>
+
+            @yield('noi_dung')
+
+        </main>
+
 
         @include('client.share.footer')
-    </div>
-    <!-- Overlay Search -->
-    @include('client.share.search')
 
-    @include('client.share.order')
+		@include('client.share.js')
+        @yield('js')
 
-    @include('client.share.js')
-    @yield('js')
-</body>
-
+    </body>
 </html>
