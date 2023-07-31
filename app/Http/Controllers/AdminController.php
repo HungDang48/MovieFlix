@@ -15,4 +15,9 @@ class AdminController extends Controller
 
         return view('admin.page.admin.index');
     }
+
+    public function onbai()
+    {
+        return view('admin.page.on_bai');
+    }
 }

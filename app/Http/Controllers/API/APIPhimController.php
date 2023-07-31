@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\Phim;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -101,7 +102,6 @@ class APIPhimController extends Controller
 
     public function info(Request $request)
     {
-
         DB::beginTransaction();
         try {
 
@@ -150,5 +150,30 @@ class APIPhimController extends Controller
             DB::rollBack();
         }
 
+    }
+
+    public function phimDangChieu(Request $request)
+    {
+        $today          = Carbon::today();
+        $phimDangChieu  = Phim::where('hien_thi', 1)
+                              ->whereDate('bat_dau', '<=', $today)
+                              ->whereDate('ket_thuc', '>=', $today)
+                              ->get();
+        return response()->json([
+            'status'    => 1,
+            'data'      => $phimDangChieu,
+        ]);
+    }
+
+    public function phimSapChieu(Request $request)
+    {
+        $today          = Carbon::today();
+        $phimSapChieu  = Phim::where('hien_thi', 1)
+                              ->whereDate('bat_dau', '>', $today)
+                              ->get();
+        return response()->json([
+            'status'    => 1,
+            'data'      => $phimSapChieu,
+        ]);
     }
 }

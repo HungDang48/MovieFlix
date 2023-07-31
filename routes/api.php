@@ -9,9 +9,16 @@ use App\Http\Controllers\API\APIHomepageController;
 use App\Http\Controllers\API\APILichChieuController;
 use App\Http\Controllers\API\APIPhimController;
 use App\Http\Controllers\API\APIPhongChieuController;
+use App\Http\Controllers\APISlideController;
+use App\Http\Controllers\PhimController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::post('/phim/phim-dang-chieu', [APIPhimController::class, 'phimDangChieu']);
+Route::post('/phim/phim-sap-chieu', [APIPhimController::class, 'phimSapChieu']);
+Route::post('/slide-hien-thi', [APISlideController::class, 'slideHienThi']);
+
+Route::post('/data', [APIHomepageController::class, 'getDataHome'])->name('getDataHome');
 Route::post('/getID/film-detail', [APIHomepageController::class, 'getIdFilmDetail'])->name('getIdFilmDetail');
 
 Route::group(['prefix'  =>  '/admin'], function() {
@@ -20,7 +27,6 @@ Route::group(['prefix'  =>  '/admin'], function() {
     Route::post('/del', [APIAdminComtroller::class, 'destroy'])->name('adminDel');
     Route::post('/update', [APIAdminComtroller::class, 'update'])->name('adminUpdate');
     Route::post('/block', [APIAdminComtroller::class, 'block'])->name('taiKhoanAdminBlock');
-
 
     // Quản Lý Phim
     Route::group(['prefix'  =>  '/phim'], function() {
