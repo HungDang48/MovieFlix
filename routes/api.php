@@ -14,6 +14,8 @@ use App\Http\Controllers\PhimController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::post('/register', [APIDanhSachTaiKhoanController::class, 'register'])->name('register');
+Route::post('/login', [APIDanhSachTaiKhoanController::class, 'login'])->name('login');
 Route::post('/phim/phim-dang-chieu', [APIPhimController::class, 'phimDangChieu']);
 Route::post('/phim/phim-sap-chieu', [APIPhimController::class, 'phimSapChieu']);
 Route::post('/slide-hien-thi', [APISlideController::class, 'slideHienThi']);

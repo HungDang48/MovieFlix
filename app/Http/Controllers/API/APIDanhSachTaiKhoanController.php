@@ -184,4 +184,36 @@ class APIDanhSachTaiKhoanController extends Controller
         }
 
     }
+
+    public function register(Request $request)
+    {
+        $data               = $request->all();
+        $data['is_block']   =   0;
+        $data['tinh_trang'] =   0;
+
+        DanhSachTaiKhoan::create($data);
+
+        return response()->json([
+            'status'    => 1,
+            'message'   => 'Đã thêm mới tài khoản thành công!',
+        ]);
+    }
+
+    public function login(Request $request)
+    {
+        $check  =   DanhSachTaiKhoan::where('email', $request->email)
+                                    ->where('password', $request->password)
+                                    ->first();
+        if($check)  {
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã đăng nhập thành công!',
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Tài khoản hoặc mật khẩu không đúng!',
+            ]);
+        }
+    }
 }
