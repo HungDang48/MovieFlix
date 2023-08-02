@@ -15,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/on-bai', [AdminController::class, 'onbai']);
 
-// Route::get('/', [TrangChuController::class, 'indexVue']);
-
 Route::get('/', [TrangChuController::class, 'index']);
+
 Route::get('/register', [CustomerController::class, 'viewRegister']);
 Route::get('/login', [CustomerController::class, 'viewLogin']);
 Route::get('/admin/login' , [AdminController::class , 'viewLogin']);
