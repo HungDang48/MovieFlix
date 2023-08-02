@@ -18,7 +18,7 @@ Route::post('/register', [APIDanhSachTaiKhoanController::class, 'register'])->na
 Route::post('/login', [APIDanhSachTaiKhoanController::class, 'login'])->name('login');
 Route::post('/phim/phim-dang-chieu', [APIPhimController::class, 'phimDangChieu']);
 Route::post('/phim/phim-sap-chieu', [APIPhimController::class, 'phimSapChieu']);
-Route::post('/slide-hien-thi', [APISlideController::class, 'slideHienThi']);
+Route::get('/slide-hien-thi', [APISlideController::class, 'slideHienThi']);
 
 Route::post('/getID/film-detail', [APIHomepageController::class, 'getIdFilmDetail'])->name('getIdFilmDetail');
 

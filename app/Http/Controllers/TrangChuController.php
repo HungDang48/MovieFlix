@@ -27,6 +27,4 @@ class TrangChuController extends Controller
     {
         return view('client.page.film-detail');
     }
-
-
 }
