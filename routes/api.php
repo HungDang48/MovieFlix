@@ -20,7 +20,6 @@ Route::post('/phim/phim-dang-chieu', [APIPhimController::class, 'phimDangChieu']
 Route::post('/phim/phim-sap-chieu', [APIPhimController::class, 'phimSapChieu']);
 Route::post('/slide-hien-thi', [APISlideController::class, 'slideHienThi']);
 
-Route::post('/data', [APIHomepageController::class, 'getDataHome'])->name('getDataHome');
 Route::post('/getID/film-detail', [APIHomepageController::class, 'getIdFilmDetail'])->name('getIdFilmDetail');
 
 Route::group(['prefix'  =>  '/admin'], function() {
