@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class APIDanhSachTaiKhoanController extends Controller
 {
@@ -190,6 +191,7 @@ class APIDanhSachTaiKhoanController extends Controller
         $data               = $request->all();
         $data['is_block']   =   0;
         $data['tinh_trang'] =   0;
+        $data['password']   = bcrypt($request->password);  // Gốc 123456 -> Lưu: e10adc3949ba59abbe56e057f20f883e
 
         DanhSachTaiKhoan::create($data);
 
@@ -201,10 +203,17 @@ class APIDanhSachTaiKhoanController extends Controller
 
     public function login(Request $request)
     {
-        $check  =   DanhSachTaiKhoan::where('email', $request->email)
-                                    ->where('password', $request->password)
-                                    ->first();
-        if($check)  {
+        $check      =   DanhSachTaiKhoan::where('email', $request->email)
+                                        // ->where('password', $request->password)
+                                        ->first();
+        $mk_luu     =   $check->password;
+        $mk_nhap    =   $request->password;
+
+        if($check && password_verify($mk_nhap, $mk_luu))  {
+            // Ở đây nghĩa là ta check email và password nó giống ở database
+            // Ta cần tạo 1 biến auth và giá trị và thông tin tài khoản của user vừa đăng nhập
+            // Session::start();
+            Session::put('auth', $check);
             return response()->json([
                 'status'    => 1,
                 'message'   => 'Đã đăng nhập thành công!',
