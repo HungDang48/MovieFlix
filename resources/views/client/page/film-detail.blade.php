@@ -30,7 +30,9 @@
                                 </ul>
                             </div>
                             <p>@{{ phim.mo_ta }}</p>
-                            <button class="btn mt-3" data-toggle="modal" data-target="#exampleModal">02/08/2023</button>
+                            <template v-for="(v, k) in ds_lich">
+                                <button v-on:click="getTT(v)" class="btn m-2" data-toggle="modal" data-target="#exampleModal">@{{ v.gio_bat_dau }}</button>
+                            </template>
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-xl" role="document">
                                   <div class="modal-content">
@@ -43,14 +45,24 @@
                                     <div class="modal-body">
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
-                                                <template v-for="(value, key) in hang_doc">
+                                                <template v-for="i in c_phong_chieu.hang_doc">
                                                     <tr>
-                                                        <template v-for="(v, k) in hang_ngang">
-                                                            <th class="text-center">
-                                                                <i class="fa-solid fa-couch fa-2x"></i>
-                                                                <br/>
-                                                                @{{convertIntToChar(value - 1)}}-@{{v}}
-                                                            </th>
+                                                        <template v-for="j in c_phong_chieu.hang_ngang">
+                                                            <template v-for="(v, k) in c_ds_ve">
+                                                                <template v-if="k == ((i - 1) * c_phong_chieu.hang_ngang + j - 1)">
+                                                                    <td class="text-center">
+                                                                        <template v-if="v.tinh_trang == 0" >
+                                                                            <i v-if="v.choose == 1" v-on:click="v.choose = 0" class="text-success fa-solid fa-couch fa-2x"></i>
+                                                                            <i v-if="v.choose == 0" v-on:click="v.choose = 1" class="fa-solid fa-couch fa-2x"></i>
+                                                                        </template>
+                                                                        <template v-else>
+                                                                            <i class="text-danger fa-solid fa-couch fa-2x"></i>
+                                                                        </template>
+                                                                        <br>
+                                                                        <b>@{{ v.so_ghe }}</b>
+                                                                    </td>
+                                                                </template>
+                                                            </template>
                                                         </template>
                                                     </tr>
                                                 </template>
@@ -85,8 +97,11 @@
                 el: '#app',
                 data: {
                     phim: {},
-                    hang_doc    : 7,
-                    hang_ngang  : 10,
+                    hang_doc        : 7,
+                    hang_ngang      : 10,
+                    ds_lich         : [],
+                    c_phong_chieu   : {},
+                    c_ds_ve         : [],
                 },
                 created() {
                     this.loadData();
@@ -111,7 +126,30 @@
                                     toastr.error(v[0], 'Error');
                                 });
                             });
-                    }
+                        axios
+                            .post('{{ Route('lichChieuTheoFilm') }}', payload)
+                            .then((res) => {
+                                this.ds_lich = res.data.lich_chieu;
+                            })
+                            .catch((res) => {
+                                $.each(res.response.data.errors, function(k, v) {
+                                    toastr.error(v[0], 'Error');
+                                });
+                            });
+                    },
+                    getTT(payload) {
+                        axios
+                            .post('{{ Route("infoLichClient") }}', payload)
+                            .then((res) => {
+                                this.c_phong_chieu  = res.data.phong_chieu;
+                                this.c_ds_ve        = res.data.ds_ve;
+                            })
+                            .catch((res) => {
+                                $.each(res.response.data.errors, function(k, v) {
+                                    toastr.error(v[0], 'Error');
+                                });
+                            });
+                    },
                 },
             });
         });

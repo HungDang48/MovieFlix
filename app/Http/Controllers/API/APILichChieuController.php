@@ -13,6 +13,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Str;
 
 class APILichChieuController extends Controller
@@ -225,6 +226,35 @@ class APILichChieuController extends Controller
 
         return response()->json([
             'data'    =>  $lichChieu
+        ]);
+    }
+
+    public function lichChieuTheoFilm(Request $request)
+    {
+        $now    = Carbon::now();
+        // Lấy từ lịch chiếu phim có id = $client gửi lên và hoạt động và chưa chiếu (now < bắt đầu chiếu)
+        $data   = LichChieu::where('id_phim', $request->id)
+                           ->where('trang_thai', 1)
+                           ->where('gio_bat_dau', '>', $now)
+                           ->get();
+
+        return response()->json([
+            'lich_chieu'    =>  $data,
+        ]);
+    }
+
+    public function infoLichClient(Request $request)
+    {
+        $phong_chieu    = PhongChieu::find($request->id_phong);
+        $ds_ve          = VeXemPhim::where('id_lich_chieu', $request->id)->get();
+
+        foreach($ds_ve as $k => $v) {
+            $v->choose  = 0;
+        }
+
+        return response()->json([
+            'phong_chieu'   =>  $phong_chieu,
+            'ds_ve'         =>  $ds_ve
         ]);
     }
 }

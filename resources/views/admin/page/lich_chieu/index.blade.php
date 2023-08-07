@@ -221,11 +221,11 @@
                                                 </tr>
                                             </template>
                                             <template v-else>
-                                                <template v-for="j in detail.hang_doc">
+                                                <template v-for="i in detail.hang_doc">
                                                     <tr>
-                                                        <template v-for="i in detail.hang_ngang">
+                                                        <template v-for="j in detail.hang_ngang">
                                                             <template v-for="(v, k) in ds_ve">
-                                                                <template v-if="k == (detail.hang_doc + 1) * (j - 1) + i - 1">
+                                                                <template v-if="k == ((i - 1) * detail.hang_ngang + j - 1)">
                                                                     <td class="text-center">
                                                                         <i v-if="v.tinh_trang == -1" class="text-danger fa-solid fa-couch fa-2x"></i>
                                                                         <i v-else-if="v.tinh_trang == 0" class="fa-solid fa-couch fa-2x"></i>
