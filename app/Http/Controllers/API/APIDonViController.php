@@ -17,7 +17,7 @@ class APIDonViController extends Controller
         try {
             $data   = $request->all();
 
-            DonVi$data);
+            DonVi::create($data);
             DB::commit();
 
             return response()->json([
