@@ -9,6 +9,7 @@ use App\Http\Controllers\API\APIHomepageController;
 use App\Http\Controllers\API\APILichChieuController;
 use App\Http\Controllers\API\APIPhimController;
 use App\Http\Controllers\API\APIPhongChieuController;
+use App\Http\Controllers\API\APIVeXemPhimController;
 use App\Http\Controllers\APISlideController;
 use App\Http\Controllers\PhimController;
 use Illuminate\Http\Request;
@@ -23,6 +24,7 @@ Route::post('/getID/film-detail', [APIHomepageController::class, 'getIdFilmDetai
 
 Route::group(['prefix'  =>  '/client'], function() {
     Route::post('/danh-sach-lich-chieu-theo-film', [APILichChieuController::class, 'lichChieuTheoFilm'])->name('lichChieuTheoFilm');
+    Route::post('/dat-ve-xem-phim', [APIVeXemPhimController::class, 'datVeXemPhim'])->name('datVeXemPhim');
 });
 
 Route::post('/lich-chieu/info', [APILichChieuController::class, 'infoLichClient'])->name('infoLichClient');
