@@ -146,6 +146,9 @@
                             .then((res) => {
                                 this.c_phong_chieu  = res.data.phong_chieu;
                                 this.c_ds_ve        = res.data.ds_ve;
+                                if(res.data.status == 0) {
+                                    toastr.error(res.data.message, 'Error');
+                                }
                             })
                             .catch((res) => {
                                 $.each(res.response.data.errors, function(k, v) {
