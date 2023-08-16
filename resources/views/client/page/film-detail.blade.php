@@ -69,6 +69,9 @@
                                             </table>
                                         </div>
                                     </div>
+                                    <div class="modal-footer text-right">
+                                        <button data-dismiss="modal" aria-label="Close" v-on:click="datVe()" class="btn btn-primary">Đặt Vé Xem Phim</button>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -143,6 +146,25 @@
                             .then((res) => {
                                 this.c_phong_chieu  = res.data.phong_chieu;
                                 this.c_ds_ve        = res.data.ds_ve;
+                            })
+                            .catch((res) => {
+                                $.each(res.response.data.errors, function(k, v) {
+                                    toastr.error(v[0], 'Error');
+                                });
+                            });
+                    },
+                    datVe() {
+                        var payload = {
+                            'ds_ve'     :   this.c_ds_ve
+                        };
+                        axios
+                            .post('{{ Route("datVeXemPhim") }}', payload)
+                            .then((res) => {
+                                if(res.data.status) {
+                                    toastr.success(res.data.message, 'Success');
+                                } else {
+                                    toastr.error(res.data.message, 'Error');
+                                }
                             })
                             .catch((res) => {
                                 $.each(res.response.data.errors, function(k, v) {

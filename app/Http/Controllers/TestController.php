@@ -30,10 +30,7 @@ class TestController extends Controller
     public function read(Request $request)
     {
         // Lấy giá trị s_1 của session. Không cần Request vì Session nó được lưu ở Server
-        $s_value        =   Session::get('s_1');
-        $s_value_2      =   Session::get('s_2');
-        // Lấy giá trị c_1 từ cookie. Lấy từ client gửi lên cho nên phải dùng Request
-        $c_value        =   $request->cookie('c_1');
-        dd($s_value, $c_value, $s_value_2);
+        $value        =   Session::get('auth');
+        dd($value);
     }
 }
