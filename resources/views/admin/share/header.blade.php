@@ -366,7 +366,7 @@
                     <img src="/assets_admin/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
                     <div class="user-info ps-3">
                         @php
-                            $s_v    = Auth::guard('admin')->user();
+                            $s_v    = Session::get('auth');
                             if($s_v) {
                                 $ho_ten = $s_v->ho_va_ten;
                             } else {
