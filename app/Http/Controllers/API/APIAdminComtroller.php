@@ -6,17 +6,34 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class APIAdminComtroller extends Controller
 {
-    public function store(Request $request)
+    public function Adminlogin(Request $request)
+    {
+        $check  = Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password]);
+        if($check == true) {
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã đăng nhập thành công!',
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Tài khoản hoặc mật khẩu không đúng!',
+            ]);
+        }
+    }
+
+	public function store(Request $request)
     {
         DB::beginTransaction();
         try {
             $data   = $request->all();
-
+            $data['password'] = bcrypt($data['password']);
             Admin::create($data);
             DB::commit();
 
@@ -39,6 +56,7 @@ class APIAdminComtroller extends Controller
             $admin   = Admin::find($request->id);
             if($admin) {
                 $data   = $request->all();
+                $data['password'] = bcrypt($data['password']);
                 $admin->update($data);
                 DB::commit();
                 return response()->json([

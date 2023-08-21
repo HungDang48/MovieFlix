@@ -30,7 +30,7 @@ class PhimSeeder extends Seeder
                 'mo_ta'             => "Quý Công Tử xoay quanh người đàn ông bí ẩn được biết đến với tên gọi “Quý Công Tử”. Gã đột nhiên xuất hiện trước mắt Marco, một thanh niên người Philippines mơ ước trở thành vận động viên boxing chuyên nghiệp, lang thang khắp các sàn đấu bất hợp pháp tại đây. Nhằm chi trả cho viện phí của mẹ, Marco đến Hàn Quốc để tìm người cha đã bỏ rơi hai mẹ con cậu từ lâu.",
                 'trailer'           => "https://www.youtube.com/embed/ybcWiZOjJj8",
                 'bat_dau'           => '2023-05-10',
-                'ket_thuc'          => '2023-09-10',
+                'ket_thuc'          => '2023-11-10',
                 'hien_thi'          => 1,
 
             ],
@@ -47,7 +47,7 @@ class PhimSeeder extends Seeder
                 'mo_ta'             => "Mùa hè này, đa thế giới sẽ va chạm khốc liệt với những bước chạy của FLASH",
                 'trailer'           => "https://www.youtube.com/watch?v=0j_EK9OwNwc",
                 'bat_dau'           => '2023-04-12',
-                'ket_thuc'          => '2023-09-13',
+                'ket_thuc'          => '2023-11-13',
                 'hien_thi'          => 1,
 
             ],
@@ -58,13 +58,13 @@ class PhimSeeder extends Seeder
                 'dao_dien'          => "Peter Sohn",
                 'dien_vien'         => "Leah Lewis, Mamoudou Athie",
                 'the_loai'          => "Gia đình, Hài, Hoạt Hình",
-                'thoi_luong'        => 109,
+                'thoi_luong'        => 110,
                 'ngon_ngu'          => "Tiếng Anh - Phụ đề Tiếng Việt; Lồng tiếng",
                 'rated'             => "K - PHIM ĐƯỢC PHỔ BIẾN ĐẾN NGƯỜI XEM DƯỚI 13 TUỔI VÀ CÓ NGƯỜI BẢO HỘ ĐI KÈM",
                 'mo_ta'             => "Xứ Sở Các Nguyên Tố từ Disney và Pixar lấy bối cảnh tại thành phố các nguyên tố, nơi lửa, nước, đất và không khí cùng chung sống với nhau. Câu chuyện xoay quanh nhân vật Ember, một cô nàng cá tính, thông minh, mạnh mẽ và đầy sức hút. Tuy nhiên, mối quan hệ của cô với Wade - một anh chàng hài hước, luôn thuận thế đẩy dòng - khiến Ember cảm thấy ngờ vực với thế giới này. Được đạo diễn bởi Peter Sohn, sản xuất bởi Denise Ream",
                 'trailer'           => "https://www.youtube.com/watch?v=8qTBWDKtyYU",
                 'bat_dau'           => '2023-05-17',
-                'ket_thuc'          => '2023-09-20',
+                'ket_thuc'          => '2023-11-20',
                 'hien_thi'          => 1,
 
             ],
@@ -82,7 +82,7 @@ class PhimSeeder extends Seeder
                 'mo_ta'             => "Bộ phim dựa trên sự kiện Beast Wars trong loạt phim hoạt hình 'Transformers', nơi mà các robot có khả năng biến thành động vật khổng lồ cùng chiến đấu chống lại một mối đe dọa tiềm tàng.",
                 'trailer'           => "https://www.youtube.com/watch?v=lRBA1AKyUaI",
                 'bat_dau'           => '2023-06-01',
-                'ket_thuc'          => '2023-09-15',
+                'ket_thuc'          => '2023-11-15',
                 'hien_thi'          => 1,
 
             ],
@@ -99,7 +99,7 @@ class PhimSeeder extends Seeder
                 'mo_ta'             => "Phim kể về cặp vợ chồng Ning, Kwin và cô con gái 7 tuổi với tên gọi Ing. Vì khó khăn về tài chính, hai vợ chồng quyết định cho thuê ngôi nhà đang ở và chuyển đến một căn hộ chung cư giá rẻ để sinh sống. Sau khi những người thuê nhà chuyển đến, Ning nhận thấy chồng bắt đầu có những hành vi bất thường. Anh ta trở nên bí mật và thường biến mất khỏi căn hộ và lúc 4 giờ sáng. Kwin thậm chí còn có một hình xăm kỳ lạ ở ngực tựa như ký hiệu đặc biệt của một hội tà giáo bí ẩn.",
                 'trailer'           => "https://www.youtube.com/watch?v=0oc92jGXE54",
                 'bat_dau'           => '2023-06-04',
-                'ket_thuc'          => '2023-09-14',
+                'ket_thuc'          => '2023-11-14',
                 'hien_thi'          => 1,
 
             ],
@@ -116,7 +116,7 @@ class PhimSeeder extends Seeder
                 'mo_ta'             => "Không dành cho bé dưới 18!.. Red Band Trailer với Jennifer Lawrence trở lại, nóng bỏng cả mắt trong tựa phim hài-bựa-lầy nhất hè năm nay #NoHardFeelings - VÚ EM DẠY 'YÊU. Duy nhất tại rạp. Dự",
                 'trailer'           => "https://www.youtube.com/watch?v=q_XWWWlA39k",
                 'bat_dau'           => '2023-06-01',
-                'ket_thuc'          => '2023-09-10',
+                'ket_thuc'          => '2023-11-10',
                 'hien_thi'          => 1,
 
             ],
@@ -133,7 +133,7 @@ class PhimSeeder extends Seeder
                 'mo_ta'             => "Rơi nước mắt cùng những câu chuyện cuối đời từ những người cha, người mẹ và những đứa trẻ đang phải kiên cường bên bờ tuyệt vọng chiến đấu với căn bệnh ung thư. Dù ngắn ngủi đến đâu, giây phút đẹp nhất cuộc đời là khi ta còn được ở bên cạnh người mình yêu thương.",
                 'trailer'           => "https://www.youtube.com/watch?v=q_XWWWlA39k",
                 'bat_dau'           => '2023-05-28',
-                'ket_thuc'          => '2023-09-08',
+                'ket_thuc'          => '2023-11-08',
                 'hien_thi'          => 1,
 
             ],
@@ -150,7 +150,7 @@ class PhimSeeder extends Seeder
                 'mo_ta'             => "Miles Morales tái xuất trong phần tiếp theo của bom tấn hoạt hình từng đoạt giải Oscar - Spider-Man: Across the Spider-Verse. Sau khi gặp lại Gwen Stacy, chàng Spider-Man thân thiện đến từ Brooklyn phải du hành qua đa vũ trụ và gặp một nhóm Người Nhện chịu trách nhiệm bảo vệ các vũ trụ song song. Nhưng khi nhóm siêu anh hùng xung đột về cách xử lý một mối đe dọa mới",
                 'trailer'           => "https://www.youtube.com/watch?v=SUz8Aw28vrc",
                 'bat_dau'           => '2023-05-22',
-                'ket_thuc'          => '2023-09-11',
+                'ket_thuc'          => '2023-11-11',
                 'hien_thi'          => 1,
 
             ],
@@ -167,7 +167,7 @@ class PhimSeeder extends Seeder
                 'mo_ta'             => "Phim điện ảnh Doraemon: Nobita Và Vùng Đất Lý Tưởng Trên Bầu Trời kể câu chuyện khi Nobita tìm thấy một hòn đảo hình lưỡi liềm trên trời mây. Ở nơi đó, tất cả đều hoàn hảo… đến mức cậu nhóc Nobita mê ngủ ngày cũng có thể trở thành một thần đồng toán học, một siêu sao thể thao. Cả hội Doraemon cùng sử dụng một món bảo bối độc đáo chưa từng xuất hiện trước đây để đến với vương quốc tuyệt vời này. ",
                 'trailer'           => "https://www.youtube.com/watch?v=SthaOnp5uDs",
                 'bat_dau'           => '2023-06-01',
-                'ket_thuc'          => '2023-09-01',
+                'ket_thuc'          => '2023-11-01',
                 'hien_thi'          => 1,
 
             ],
@@ -201,7 +201,7 @@ class PhimSeeder extends Seeder
                 'rated'             => "T16 - PHIM ĐƯỢC PHỔ BIẾN ĐẾN NGƯỜI XEM TỪ ĐỦ 16 TUỔI TRỞ LÊN (16+)",
                 'mo_ta'             => "Indiana Jones 5 sẽ pha trộn giữa thực tế, hư cấu khi lấy bối cảnh năm 1969, lần này Indiana Jones sẽ đối mặt với Đức quốc xã trong thời gian diễn ra cuộc chạy đua vào không gian.",
                 'trailer'           => "https://www.youtube.com/watch?v=RjBcBt4ukCo",
-                'bat_dau'           => '2023-09-27',
+                'bat_dau'           => '2023-11-27',
                 'ket_thuc'          => '2023-11-05',
                 'hien_thi'          => 1,
 

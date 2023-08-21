@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
             [
                 'username'          =>  'admin',
                 'email'             =>  "admin@master.com",
-                'password'          =>  "123456",
+                'password'          =>  bcrypt(123456),
                 'ho_va_ten'         =>  "Admin",
                 'id_quyen'          =>  1,
                 'ngay_sinh'         =>  "2001-05-04",
@@ -31,7 +31,7 @@ class AdminSeeder extends Seeder
             [
                 'username'          =>  'nguyenquoclong',
                 'email'             =>  "admin@master.com",
-                'password'          =>  "123456",
+                'password'          =>  bcrypt(123456),
                 'ho_va_ten'         =>  "Nguyễn Quốc Long",
                 'id_quyen'          =>  1,
                 'ngay_sinh'         =>  "2000-11-22",
@@ -44,7 +44,7 @@ class AdminSeeder extends Seeder
             [
                 'username'          =>  'lethanhtruong',
                 'email'             =>  "thanhtruong@gmail.com",
-                'password'          =>  "123456",
+                'password'          =>  bcrypt(123456),
                 'ho_va_ten'         =>  "Lê Thanh Trường",
                 'id_quyen'          =>  2,
                 'ngay_sinh'         =>  "2001-10-12",
@@ -57,7 +57,7 @@ class AdminSeeder extends Seeder
             [
                 'username'          =>  'vodinhquochuy',
                 'email'             =>  "vodinhquochuy@gmail.com",
-                'password'          =>  "123456",
+                'password'          =>  bcrypt(123456),
                 'ho_va_ten'         =>  "Võ Đình Quốc Huy",
                 'id_quyen'          =>  3,
                 'ngay_sinh'         =>  "2001-03-12",
@@ -70,7 +70,7 @@ class AdminSeeder extends Seeder
             [
                 'username'          =>  'phungvanmanh',
                 'email'             =>  "phungvanmanh@gmail.com",
-                'password'          =>  "123456",
+                'password'          =>  bcrypt(123456),
                 'ho_va_ten'         =>  "Phùng Văn Mạnh",
                 'id_quyen'          =>  3,
                 'ngay_sinh'         =>  "2001-03-01",

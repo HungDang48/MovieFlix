@@ -266,6 +266,9 @@
                         .post('{{ Route("taiKhoanData") }}')
                         .then((res) => {
                             this.list_tai_khoan   = res.data.xxx;
+                            if(res.data.status == 0) {
+                                toastr.error(res.data.message);
+                            }
                         });
                 },
                 xoaTaiKhoan() {

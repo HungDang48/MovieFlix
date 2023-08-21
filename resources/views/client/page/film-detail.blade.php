@@ -37,7 +37,7 @@
                                 <div class="modal-dialog modal-xl" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title mt-2" id="exampleModalLabel" style="color: black">Danh Sách Ghế Ngày 02/08/2023</h5>
+                                      <h5 class="modal-title mt-2" id="exampleModalLabel" style="color: black">Danh Sách Ghế Ngày 02/08/2023 tại phòng chiếu @{{c_phong_chieu.ten_phong}}</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>

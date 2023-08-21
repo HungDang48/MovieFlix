@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [APIDanhSachTaiKhoanController::class, 'register'])->name('register');
 Route::post('/login', [APIDanhSachTaiKhoanController::class, 'login'])->name('login');
+Route::post('/admin/login', [APIAdminComtroller::class, 'Adminlogin'])->name('adminLogin');
 Route::post('/phim/phim-dang-chieu', [APIPhimController::class, 'phimDangChieu']);
 Route::post('/phim/phim-sap-chieu', [APIPhimController::class, 'phimSapChieu']);
 Route::get('/slide-hien-thi', [APISlideController::class, 'slideHienThi']);
@@ -28,7 +29,7 @@ Route::group(['prefix'  =>  '/client', 'middleware' => 'APIClient'], function() 
     Route::post('/dat-ve-xem-phim', [APIVeXemPhimController::class, 'datVeXemPhim'])->name('datVeXemPhim');
 });
 
-Route::group(['prefix'  =>  '/admin'], function() {
+Route::group(['prefix'  =>  '/admin', 'middleware' => 'APIAdmin'], function() {
     Route::post('/create', [APIAdminComtroller::class, 'store'])->name('adminStore');
     Route::post('/data', [APIAdminComtroller::class, 'data'])->name('adminData');
     Route::post('/del', [APIAdminComtroller::class, 'destroy'])->name('adminDel');

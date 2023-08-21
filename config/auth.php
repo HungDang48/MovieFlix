@@ -28,6 +28,10 @@ return [
             'driver'    => 'session',
             'provider'  => 'client',
         ],
+        'admin' => [
+            'driver'    => 'session',
+            'provider'  => 'admin',
+        ],
     ],
 
     'providers' => [
@@ -39,7 +43,10 @@ return [
             'driver' => 'eloquent',
             'model'  => App\Models\DanhSachTaiKhoan::class,
         ],
-
+        'admin' => [
+            'driver' => 'eloquent',
+            'model'  => App\Models\Admin::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

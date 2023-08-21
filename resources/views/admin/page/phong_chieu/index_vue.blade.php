@@ -211,6 +211,9 @@
                         .post('{{ Route("phongChieuData") }}')
                         .then((res) => {
                             this.list_phong_chieu   = res.data.data;
+                            if(res.data.status == 0) {
+                                toastr.error(res.data.message);
+                            }
                         });
                 },
                 taoGhe() {
