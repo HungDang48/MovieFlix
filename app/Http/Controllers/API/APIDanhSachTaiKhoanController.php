@@ -6,6 +6,7 @@ use App\Models\DanhSachTaiKhoan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -203,17 +204,9 @@ class APIDanhSachTaiKhoanController extends Controller
 
     public function login(Request $request)
     {
-        $check      =   DanhSachTaiKhoan::where('email', $request->email)
-                                        // ->where('password', $request->password)
-                                        ->first();
-        $mk_luu     =   $check->password;
-        $mk_nhap    =   $request->password;
-
-        if($check && password_verify($mk_nhap, $mk_luu))  {
-            // Ở đây nghĩa là ta check email và password nó giống ở database
-            // Ta cần tạo 1 biến auth và giá trị và thông tin tài khoản của user vừa đăng nhập
-            // Session::start();
-            Session::put('auth', $check);
+        $check  = Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password]);
+        if($check == true) {
+            // Đã đúng email và mật khẩu + đã cấp session   => Biến session tên gì và dùng như thế nào?
             return response()->json([
                 'status'    => 1,
                 'message'   => 'Đã đăng nhập thành công!',
@@ -224,5 +217,26 @@ class APIDanhSachTaiKhoanController extends Controller
                 'message'   => 'Tài khoản hoặc mật khẩu không đúng!',
             ]);
         }
+        // $check      =   DanhSachTaiKhoan::where('email', $request->email)
+        //                                 // ->where('password', $request->password)
+        //                                 ->first();
+        // $mk_luu     =   $check->password;
+        // $mk_nhap    =   $request->password;
+
+        // if($check && password_verify($mk_nhap, $mk_luu))  {
+        //     // Ở đây nghĩa là ta check email và password nó giống ở database
+        //     // Ta cần tạo 1 biến auth và giá trị và thông tin tài khoản của user vừa đăng nhập
+        //     // Session::start();
+        //     Session::put('auth', $check);
+        //     return response()->json([
+        //         'status'    => 1,
+        //         'message'   => 'Đã đăng nhập thành công!',
+        //     ]);
+        // } else {
+        //     return response()->json([
+        //         'status'    => 0,
+        //         'message'   => 'Tài khoản hoặc mật khẩu không đúng!',
+        //     ]);
+        // }
     }
 }

@@ -326,6 +326,9 @@
                             .post("{{Route('adminData')}}")
                             .then((res) => {
                                 this.list_admin = res.data.data;
+                                if(res.data.status == 0) {
+                                    toastr.error(res.data.message);
+                                }
                             });
                     },
                     xoaAdmin() {

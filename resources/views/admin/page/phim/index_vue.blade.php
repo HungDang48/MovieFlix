@@ -297,6 +297,9 @@
                         .post('{{ Route("phimData") }}')
                         .then((res) => {
                             this.list_phim   = res.data.xxx;
+                            if(res.data.status == 0) {
+                                toastr.error(res.data.message);
+                            }
                         });
                 },
                 xoaPhim() {

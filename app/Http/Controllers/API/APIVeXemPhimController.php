@@ -8,6 +8,7 @@ use App\Models\DonVi;
 use App\Models\VeXemPhim;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -16,7 +17,7 @@ class APIVeXemPhimController extends Controller
 {
     public function datVeXemPhim(Request $request)
     {
-        $nguoi_login    =   Session::get('auth');
+        $nguoi_login    =   Auth::guard('client')->user();
         if($nguoi_login) {
             DB::beginTransaction();
 

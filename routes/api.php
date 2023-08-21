@@ -17,19 +17,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [APIDanhSachTaiKhoanController::class, 'register'])->name('register');
 Route::post('/login', [APIDanhSachTaiKhoanController::class, 'login'])->name('login');
+Route::post('/admin/login', [APIAdminComtroller::class, 'Adminlogin'])->name('adminLogin');
 Route::post('/phim/phim-dang-chieu', [APIPhimController::class, 'phimDangChieu']);
 Route::post('/phim/phim-sap-chieu', [APIPhimController::class, 'phimSapChieu']);
 Route::get('/slide-hien-thi', [APISlideController::class, 'slideHienThi']);
 Route::post('/getID/film-detail', [APIHomepageController::class, 'getIdFilmDetail'])->name('getIdFilmDetail');
+Route::post('/danh-sach-lich-chieu-theo-film', [APILichChieuController::class, 'lichChieuTheoFilm'])->name('lichChieuTheoFilm');
 
-Route::group(['prefix'  =>  '/client'], function() {
-    Route::post('/danh-sach-lich-chieu-theo-film', [APILichChieuController::class, 'lichChieuTheoFilm'])->name('lichChieuTheoFilm');
+Route::group(['prefix'  =>  '/client', 'middleware' => 'APIClient'], function() {
+    Route::post('/lich-chieu/info', [APILichChieuController::class, 'infoLichClient'])->name('infoLichClient');
     Route::post('/dat-ve-xem-phim', [APIVeXemPhimController::class, 'datVeXemPhim'])->name('datVeXemPhim');
 });
 
-Route::post('/lich-chieu/info', [APILichChieuController::class, 'infoLichClient'])->name('infoLichClient');
-
-Route::group(['prefix'  =>  '/admin'], function() {
+Route::group(['prefix'  =>  '/admin', 'middleware' => 'APIAdmin'], function() {
     Route::post('/create', [APIAdminComtroller::class, 'store'])->name('adminStore');
     Route::post('/data', [APIAdminComtroller::class, 'data'])->name('adminData');
     Route::post('/del', [APIAdminComtroller::class, 'destroy'])->name('adminDel');

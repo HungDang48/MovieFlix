@@ -23,7 +23,7 @@ class DanhSachTaiKhoanSeeder extends Seeder
                 [
                     'ho_va_ten'         =>"Admin",
                     'email'             =>"admin@master.com",
-                    'password'          =>"123456",
+                    'password'          =>bcrypt(123456),
                     'so_dien_thoai'     =>"0333314445",
                     'ngay_sinh'         =>"2001-05-04",
                     'dia_chi'           =>"Đà Nẵng",
@@ -34,7 +34,7 @@ class DanhSachTaiKhoanSeeder extends Seeder
                 [
                     'ho_va_ten'         =>"Nguyễn Quốc Long",
                     'email'             =>"quoclongdng@gmail.com",
-                    'password'          =>"123456",
+                    'password'          =>bcrypt(123456),
                     'so_dien_thoai'     =>"0412331132",
                     'ngay_sinh'         =>"2000-11-22",
                     'dia_chi'           =>"Đà Nẵng",
@@ -45,7 +45,7 @@ class DanhSachTaiKhoanSeeder extends Seeder
                 [
                     'ho_va_ten'         =>"Lê Thanh Trường",
                     'email'             =>"thanhtruong@gmail.com",
-                    'password'          =>"123456",
+                    'password'          =>bcrypt(123456),
                     'so_dien_thoai'     =>"0413421322",
                     'ngay_sinh'         =>"2001-10-12",
                     'dia_chi'           =>"Đà Nẵng",
@@ -56,7 +56,7 @@ class DanhSachTaiKhoanSeeder extends Seeder
                 [
                     'ho_va_ten'         =>"Võ Đình Quốc Huy",
                     'email'             =>"vodinhquochuy@gmail.com",
-                    'password'          =>"123456",
+                    'password'          =>bcrypt(123456),
                     'so_dien_thoai'     =>"0321313122",
                     'ngay_sinh'         =>"2001-03-12",
                     'dia_chi'           =>"Đà Nẵng",
@@ -67,7 +67,7 @@ class DanhSachTaiKhoanSeeder extends Seeder
                 [
                     'ho_va_ten'         =>"Phùng Văn Mạnh",
                     'email'             =>"phungvanmanh@gmail.com",
-                    'password'          =>"123456",
+                    'password'          =>bcrypt(123456),
                     'so_dien_thoai'     =>"0931333312",
                     'ngay_sinh'         =>"2001-03-01",
                     'dia_chi'           =>"Đà Nẵng",

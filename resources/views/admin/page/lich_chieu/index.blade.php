@@ -289,6 +289,9 @@
                                 this.list = res.data.data;
                                 this.list_phim = res.data.ds_phim;
                                 this.list_phong = res.data.ds_phong;
+                                if(res.data.status == 0) {
+                                    toastr.error(res.data.message);
+                                }
                             })
                             .catch((res) => {
                                 $.each(res.response.data.errors, function(k, v) {

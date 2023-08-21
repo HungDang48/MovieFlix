@@ -215,6 +215,9 @@
                         .post('{{ Route("dichVuData") }}')
                         .then((res) => {
                             this.list_dich_vu   = res.data.data;
+                            if(res.data.status == 0) {
+                                toastr.error(res.data.message);
+                            }
                         });
                 },
                 format(number) {

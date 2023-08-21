@@ -150,6 +150,9 @@
                             .post('{{ Route("donViData") }}')
                             .then((res) => {
                                 this.list_don_vi   = res.data.data;
+                                if(res.data.status == 0) {
+                                    toastr.error(res.data.message);
+                                }
                             });
                     },
                     xoaDonVi() {
