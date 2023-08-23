@@ -9,6 +9,7 @@ use App\Http\Controllers\API\APIHomepageController;
 use App\Http\Controllers\API\APILichChieuController;
 use App\Http\Controllers\API\APIPhimController;
 use App\Http\Controllers\API\APIPhongChieuController;
+use App\Http\Controllers\API\APIQuyenController;
 use App\Http\Controllers\API\APIVeXemPhimController;
 use App\Http\Controllers\APISlideController;
 use App\Http\Controllers\PhimController;
@@ -100,5 +101,13 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'APIAdmin'], function() {
         Route::post('/data', [APILichChieuController::class, 'data'])->name('lichChieuData');
         Route::post('/status', [APILichChieuController::class, 'status'])->name('lichChieuStatus');
         Route::post('/info', [APILichChieuController::class, 'info'])->name('lichChieuInfo');
+    });
+    Route::group(['prefix'  =>  '/quyen'], function() {
+        Route::post('/data-quyen', [APIQuyenController::class, 'dataQuyen'])->name('dataQuyen');
+        Route::post('/data-chuc-nang', [APIQuyenController::class, 'dataChucNang'])->name('dataChucNang');
+        Route::post('/create', [APIQuyenController::class, 'store'])->name('quyenStore');
+        Route::post('/update', [APIQuyenController::class, 'update'])->name('quyenUpdate');
+        Route::post('/delete', [APIQuyenController::class, 'destroy'])->name('quyenDelete');
+        Route::post('/status', [APIQuyenController::class, 'status'])->name('quyenStatus');
     });
 });
