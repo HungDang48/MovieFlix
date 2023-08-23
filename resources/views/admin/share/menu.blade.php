@@ -63,6 +63,11 @@
                 </div>
                 <div class="menu-title">Lịch Chiếu</div>
             </a>
+            <a class="nav-link" href="/admin/quyen">
+                <div class="parent-icon"><i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="menu-title">Phân Quyền</div>
+            </a>
         </ul>
     </nav>
 
