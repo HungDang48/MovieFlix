@@ -13,6 +13,7 @@ use App\Http\Controllers\API\APIQuyenController;
 use App\Http\Controllers\API\APIVeXemPhimController;
 use App\Http\Controllers\APISlideController;
 use App\Http\Controllers\PhimController;
+use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

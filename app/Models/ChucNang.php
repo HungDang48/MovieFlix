@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ChucNang extends Model
 {
     use HasFactory;
+
     protected $table = 'chuc_nangs';
+
     protected $fillable = [
         'ten_chuc_nang',
-		'ten_group',
+        'ten_group'
     ];
 }

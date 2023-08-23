@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ChucNang;
 use Illuminate\Database\Seeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -9,6 +10,20 @@ use Illuminate\Support\Facades\Session;
 
 class TestController extends Controller
 {
+    public function demo()
+    {
+        return view('admin.page.phan_quyen.index');
+    }
+
+    public function dataDemo(Request $request)
+    {
+        $data   = ChucNang::get();
+
+        return response()->json([
+            'data'    => $data,
+        ]);
+    }
+
     public function index()
     {
         return view('admin.page.lich_chieu.index');
