@@ -12,6 +12,7 @@ use App\Http\Controllers\API\APIPhongChieuController;
 use App\Http\Controllers\API\APIVeXemPhimController;
 use App\Http\Controllers\APISlideController;
 use App\Http\Controllers\PhimController;
+use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -100,5 +101,9 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'APIAdmin'], function() {
         Route::post('/data', [APILichChieuController::class, 'data'])->name('lichChieuData');
         Route::post('/status', [APILichChieuController::class, 'status'])->name('lichChieuStatus');
         Route::post('/info', [APILichChieuController::class, 'info'])->name('lichChieuInfo');
+    });
+
+    Route::group(['prefix'  =>  '/phan-quyen'], function() {
+        Route::post('/', [TestController::class, 'dataDemo'])->name('dataDemo');
     });
 });

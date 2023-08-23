@@ -72,5 +72,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'APIClient' => \App\Http\Middleware\APIClientMiddle::class,
         'APIAdmin' => \App\Http\Middleware\APIAminMiddle::class,
+        'WebAdmin' => \App\Http\Middleware\WebAdminMiddle::class,
+        'WebClient' => \App\Http\Middleware\WebClientMiddle::class,
     ];
 }

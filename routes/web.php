@@ -25,7 +25,7 @@ Route::get('/login', [CustomerController::class, 'viewLogin']);
 Route::get('/admin/login' , [AdminController::class , 'viewLogin']);
 Route::get('/film-detail/{id}', [TrangChuController::class, 'detailPhim']);
 
-Route::group(['prefix'  =>  '/admin'], function() {
+Route::group(['prefix'  =>  '/admin', 'middleware' => 'WebAdmin'], function() {
     Route::get('/', [AdminController::class, 'index']);
     // Quản Lý Phim
     Route::group(['prefix'  =>  '/phim'], function() {
@@ -51,5 +51,9 @@ Route::group(['prefix'  =>  '/admin'], function() {
     });
     Route::group(['prefix'  =>  '/lich-chieu'], function() {
         Route::get('/', [LichChieuController::class, 'index']);
+    });
+
+    Route::group(['prefix'  =>  '/phan-quyen'], function() {
+        Route::get('/', [TestController::class, 'demo']);
     });
 });
