@@ -9,9 +9,11 @@ use App\Http\Controllers\GheChieuController;
 use App\Http\Controllers\LichChieuController;
 use App\Http\Controllers\PhimController;
 use App\Http\Controllers\PhongChieuController;
+use App\Http\Controllers\QuyenController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TrangChuController;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Event\Code\TestCollection;
 
 Route::get('/create', [TestController::class, 'create']);
 Route::get('/read', [TestController::class, 'read']);
@@ -52,8 +54,7 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'WebAdmin'], function() {
     Route::group(['prefix'  =>  '/lich-chieu'], function() {
         Route::get('/', [LichChieuController::class, 'index']);
     });
-
-    Route::group(['prefix'  =>  '/phan-quyen'], function() {
-        Route::get('/', [TestController::class, 'demo']);
+    Route::group(['prefix'  =>  '/quyen'], function() {
+        Route::get('/', [QuyenController::class, 'indexQuyen']);
     });
 });
