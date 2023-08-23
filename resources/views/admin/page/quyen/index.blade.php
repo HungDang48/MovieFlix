@@ -142,9 +142,7 @@
     <div class="col-md-5">
         <div class="card">
             <div class="card-header">
-                <div class="row">
-                    Phân Quyền
-                </div>
+                Phân Quyền
             </div>
             <div class="card-body">
                 <div class="row">
