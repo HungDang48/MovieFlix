@@ -129,15 +129,7 @@
                                             <td >@{{value.ho_va_ten}}</td>
                                             <td >@{{value.email}}</td>
                                             <td >
-                                                <template v-if="value.id_quyen == 1">
-                                                    Admin
-                                                </template>
-                                                <template v-if="value.id_quyen == 2">
-                                                    Kế Toán
-                                                </template>
-                                                <template v-if="value.id_quyen == 3">
-                                                    Nhân Viên
-                                                </template>
+                                                @{{ value.ten_quyen }}
                                             </td>
                                             <td >@{{value.que_quan}}</td>
                                             <td class="text-center">@{{value.so_dien_thoai}}</td>

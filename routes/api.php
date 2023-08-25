@@ -103,6 +103,7 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'APIAdmin'], function() {
         Route::post('/status', [APILichChieuController::class, 'status'])->name('lichChieuStatus');
         Route::post('/info', [APILichChieuController::class, 'info'])->name('lichChieuInfo');
     });
+
     Route::group(['prefix'  =>  '/quyen'], function() {
         Route::post('/data-quyen', [APIQuyenController::class, 'dataQuyen'])->name('dataQuyen');
         Route::post('/data-chuc-nang', [APIQuyenController::class, 'dataChucNang'])->name('dataChucNang');

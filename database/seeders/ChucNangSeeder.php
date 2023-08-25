@@ -16,32 +16,44 @@ class ChucNangSeeder extends Seeder
 
         DB::table('chuc_nangs')->insert([
             [
-                'ten_chuc_nang'     =>  'Chức năng 1',
-                'ten_group'         =>  'A',
+                'id'                =>  100,
+                'ten_chuc_nang'     =>  'Tạo Mới Phòng Chiếu',
+                'ten_group'         =>  'Phòng Chiếu',
             ],
             [
-                'ten_chuc_nang'     =>  'Chức năng 2',
-                'ten_group'         =>  'A',
+                'id'                =>  101,
+                'ten_chuc_nang'     =>  'Xem Thông Tin Phòng Chiếu',
+                'ten_group'         =>  'Phòng Chiếu',
             ],
             [
-                'ten_chuc_nang'     =>  'Chức năng 3',
-                'ten_group'         =>  'A',
+                'id'                =>  102,
+                'ten_chuc_nang'     =>  'Đổi Trạng Thái Phòng Chiếu',
+                'ten_group'         =>  'Phòng Chiếu',
             ],
             [
-                'ten_chuc_nang'     =>  'Chức năng 4',
-                'ten_group'         =>  'A',
+                'id'                =>  103,
+                'ten_chuc_nang'     =>  'Xem Chi Tiết Phòng Chiếu',
+                'ten_group'         =>  'Phòng Chiếu',
             ],
             [
-                'ten_chuc_nang'     =>  'Chức năng 5',
-                'ten_group'         =>  'A',
+                'id'                =>  104,
+                'ten_chuc_nang'     =>  'Xóa Phòng Chiếu',
+                'ten_group'         =>  'Phòng Chiếu',
             ],
             [
-                'ten_chuc_nang'     =>  'Chức năng 6',
-                'ten_group'         =>  'A',
+                'id'                =>  105,
+                'ten_chuc_nang'     =>  'Cập Nhật Phòng Chiếu',
+                'ten_group'         =>  'Phòng Chiếu',
             ],
             [
-                'ten_chuc_nang'     =>  'Chức năng 7',
-                'ten_group'         =>  'A',
+                'id'                =>  106,
+                'ten_chuc_nang'     =>  'Tạo Mới Tài Khoản Khách Hàng',
+                'ten_group'         =>  'Tài Khoản Khách',
+            ],
+            [
+                'id'                =>  107,
+                'ten_chuc_nang'     =>  'Lấy Thông Tin Khách Hàng',
+                'ten_group'         =>  'Tài Khoản Khách',
             ],
         ]);
     }

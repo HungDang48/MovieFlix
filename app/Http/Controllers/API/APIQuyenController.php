@@ -143,7 +143,7 @@ class APIQuyenController extends Controller
         try {
             QuyenChucNang::where('id_quyen', $request->quyen['id'])->delete();
             foreach($request->chuc_nang as $key => $value) {
-                if(isset($value['check'])) {
+                if(isset($value['check']) && $value['check'] == true) {
                     QuyenChucNang::create([
                         'id_quyen'          =>  $request->quyen['id'],
                         'id_chuc_nang'      =>  $value['id'],

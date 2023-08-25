@@ -77,7 +77,9 @@ class APIAdminComtroller extends Controller
 
     public function data()
     {
-        $data   = Admin::get();
+        $data   = Admin::join('phan_quyens', 'admins.id_quyen', 'phan_quyens.id')
+                       ->select('admins.*', 'phan_quyens.ten_quyen')
+                       ->get();
 
         return response()->json([
             'data'    => $data,
