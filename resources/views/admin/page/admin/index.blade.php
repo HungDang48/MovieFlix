@@ -42,9 +42,10 @@
                                 <div class="col">
                                     <label class="mb-2">Quyền</label>
                                     <select class="form-control mb-2" v-model="them_moi.id_quyen">
-                                        <option value="1">Admin</option>
-                                        <option value="2">Kế Toán</option>
-                                        <option value="3">Nhân Viên</option>
+                                        <option value="0">Admin</option>
+                                        <template v-for="(v, k) in list_quyen">
+                                            <option v-bind:value="v.id">@{{ v.ten_quyen }}</option>
+                                        </template>
                                     </select>
                                 </div>
                             </div>
@@ -298,11 +299,25 @@
                     list_admin  : [],
                     tt_capNhat  : {},
                     tt_xoa      : {},
+                    list_quyen  : [],
                 },
                 created()   {
                     this.loadData();
+                    this.loadQuyen();
                 },
                 methods :   {
+                    loadQuyen() {
+                        axios
+                            .post('{{ Route("dataQuyen") }}')
+                            .then((res) => {
+                                this.list_quyen     = res.data.data;
+                            })
+                            .catch((res) => {
+                                $.each(res.response.data.errors, function(k, v) {
+                                    toastr.error(v[0], 'Error');
+                                });
+                            });
+                    },
                     themTaiKhoan() {
                         axios
                             .post("{{Route('adminStore')}}", this.them_moi)

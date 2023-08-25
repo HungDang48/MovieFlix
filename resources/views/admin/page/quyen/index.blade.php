@@ -72,7 +72,7 @@
                                         <button v-on:click="statusQuyen(v)" v-else style="width:100px" class="btn btn-danger">Tạm Tắt</button>
                                     </td>
                                     <td class="text-center align-middle">
-                                        <button class="btn btn-info">Cấp Quyền</button>
+                                        <button v-on:click="chonQuyen(v)" class="btn btn-info">Cấp Quyền</button>
                                         <button v-on:click="update_quyen = Object.assign({}, v)" class="btn btn-primary ms-2" data-bs-toggle="modal"
                                             data-bs-target="#editModal"><i class="fa-solid fa-pen-to-square"
                                                 style="margin-left: 4px"></i></button>
@@ -145,11 +145,11 @@
                 Phân Quyền
             </div>
             <div class="card-body">
-                <div class="row">
+                <div class="row" v-if="quyen_dang_chon.id > 0">
                     <template v-for="(v, k ) in list_chuc_nang">
                         <div class="col-md-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
+                                <input v-model="v.check" class="form-check-input" type="checkbox">
                                 <label class="form-check-label">@{{v.ten_chuc_nang}}</label>
                             </div>
                         </div>
@@ -158,7 +158,7 @@
             </div>
             <div class="card-footer">
                 <div class="text-center">
-                    <button class="btn btn-primary" style="width: 95%">Cập Nhập Phân Quyền</button>
+                    <button v-on:click="capNhatQuyen()" class="btn btn-primary" style="width: 95%">Cập Nhập Phân Quyền</button>
                 </div>
             </div>
         </div>
@@ -175,29 +175,50 @@
             them_moi        : {'tinh_trang' : 1},
             delete_quyen    : {},
             update_quyen    : {},
+            quyen_dang_chon : {},
         },
         created()   {
             this.getListQuyen();
-            this.getChucNang();
         },
         methods :   {
+            chonQuyen(v) {
+                this.quyen_dang_chon = Object.assign({}, v);
+                axios
+                    .post('{{ Route("dataChucNang") }}', this.quyen_dang_chon)
+                    .then((res) => {
+                        this.list_chuc_nang   = res.data.data;
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function(k, v) {
+                            toastr.error(v[0], 'Error');
+                        });
+                    });
+            },
+            capNhatQuyen() {
+                var payload = {
+                    'quyen'     :   this.quyen_dang_chon,
+                    'chuc_nang' :   this.list_chuc_nang,
+                };
+                axios
+                    .post('{{ Route("phanQuyen") }}', payload)
+                    .then((res) => {
+                        if(res.data.status) {
+                            toastr.success(res.data.message, 'Success');
+                        } else {
+                            toastr.error(res.data.message, 'Error');
+                        }
+                    })
+                    .catch((res) => {
+                        $.each(res.response.data.errors, function(k, v) {
+                            toastr.error(v[0], 'Error');
+                        });
+                    });
+            },
             getListQuyen() {
                 axios
                     .post('{{Route("dataQuyen")}}')
                     .then((res) => {
                         this.list_quyen = res.data.data;
-                    })
-                    .catch((res) => {
-                        $.each(res.response.data.errors, function(k, v) {
-                            toastr.error(v[0]);
-                        });
-                    });
-            },
-            getChucNang() {
-                axios
-                    .post('{{Route("dataChucNang")}}')
-                    .then((res) => {
-                        this.list_chuc_nang = res.data.data;
                     })
                     .catch((res) => {
                         $.each(res.response.data.errors, function(k, v) {

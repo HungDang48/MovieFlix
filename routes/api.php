@@ -110,5 +110,7 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'APIAdmin'], function() {
         Route::post('/update', [APIQuyenController::class, 'update'])->name('quyenUpdate');
         Route::post('/delete', [APIQuyenController::class, 'destroy'])->name('quyenDelete');
         Route::post('/status', [APIQuyenController::class, 'status'])->name('quyenStatus');
+
+        Route::post('/phan-quyen', [APIQuyenController::class, 'phanQuyen'])->name('phanQuyen');
     });
 });

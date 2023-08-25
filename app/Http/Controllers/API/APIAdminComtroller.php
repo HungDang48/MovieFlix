@@ -46,7 +46,6 @@ class APIAdminComtroller extends Controller
             Log::error($e);
             DB::rollBack();
         }
-
     }
 
     public function update(Request $request)
