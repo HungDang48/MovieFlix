@@ -10,6 +10,7 @@ use App\Http\Controllers\API\APILichChieuController;
 use App\Http\Controllers\API\APIPhimController;
 use App\Http\Controllers\API\APIPhongChieuController;
 use App\Http\Controllers\API\APIQuyenController;
+use App\Http\Controllers\API\APIThongKeController;
 use App\Http\Controllers\API\APIVeXemPhimController;
 use App\Http\Controllers\APISlideController;
 use App\Http\Controllers\PhimController;
@@ -113,5 +114,9 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'APIAdmin'], function() {
         Route::post('/status', [APIQuyenController::class, 'status'])->name('quyenStatus');
 
         Route::post('/phan-quyen', [APIQuyenController::class, 'phanQuyen'])->name('phanQuyen');
+    });
+
+    Route::group(['prefix'  =>  '/thong-ke'], function() {
+        Route::post('/bt-1', [APIThongKeController::class, 'bt1'])->name('bt1');
     });
 });

@@ -11,6 +11,7 @@ use App\Http\Controllers\PhimController;
 use App\Http\Controllers\PhongChieuController;
 use App\Http\Controllers\QuyenController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ThongKeController;
 use App\Http\Controllers\TrangChuController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Event\Code\TestCollection;
@@ -56,5 +57,8 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'WebAdmin'], function() {
     });
     Route::group(['prefix'  =>  '/quyen'], function() {
         Route::get('/', [QuyenController::class, 'indexQuyen']);
+    });
+    Route::group(['prefix'  =>  '/thong-ke'], function() {
+        Route::get('/bt-1', [ThongKeController::class, 'bt1']);
     });
 });
