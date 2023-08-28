@@ -30,7 +30,8 @@ class APIThongKeController extends Controller
 
         return response()->json([
             'status'    => 1,
-            'data'      => $arr_2,
+            'data'      => $arr_2,  // chứa số lượng
+            'labels'    => $arr_1,  // chứa tên phim
         ]);
     }
 }
