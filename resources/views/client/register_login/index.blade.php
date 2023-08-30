@@ -189,8 +189,14 @@
                         .then((res) => {
                             if(res.data.status) {
                                 toastr.success(res.data.message, 'Success');
+                                setTimeout(() => {
+                                    window.location.href = "/";
+                                }, 700);
                             } else {
                                 toastr.error(res.data.message, 'Error');
+                                setTimeout(() => {
+                                    window.location.href = "/login";
+                                }, 700);
                             }
                         })
                         .catch((res) => {

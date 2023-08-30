@@ -5,8 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Models\Phim;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\QuyenChucNang;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -14,6 +16,19 @@ class APIPhimController extends Controller
 {
     public function store(Request $request)
     {
+        $id_chuc_nang   =   6;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
             $data   = $request->all();
@@ -34,6 +49,19 @@ class APIPhimController extends Controller
 
     public function update(Request $request)
     {
+        $id_chuc_nang   =   11;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
             $phim   = Phim::find($request->id);
@@ -62,6 +90,19 @@ class APIPhimController extends Controller
 
     public function data()
     {
+        $id_chuc_nang   =   7;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         $data   = Phim::get();
 
         return response()->json([
@@ -71,6 +112,19 @@ class APIPhimController extends Controller
 
     public function status(Request $request)
     {
+        $id_chuc_nang   =   8;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
             $phim   = Phim::find($request->id);
@@ -102,6 +156,19 @@ class APIPhimController extends Controller
 
     public function info(Request $request)
     {
+        $id_chuc_nang   =   9;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
 
@@ -127,6 +194,19 @@ class APIPhimController extends Controller
 
     public function destroy(Request $request)
     {
+        $id_chuc_nang   =   10;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
             $phim   = Phim::find($request->id);

@@ -75,8 +75,117 @@ class DanhSachTaiKhoanSeeder extends Seeder
                     'tinh_trang'        =>random_int(0, 1),
 
                 ],
-            ]);
+                [
+                    'ho_va_ten'         =>"Nguyễn Hoài Bảo",
+                    'email'             =>"nguyenhoaibao02012004@gmail.com",
+                    'password'          =>bcrypt(123456),
+                    'so_dien_thoai'     =>"0352622128",
+                    'ngay_sinh'         =>"2001-03-02",
+                    'dia_chi'           =>"Đà Nẵng",
+                    'is_block'          =>random_int(0, 1),
+                    'tinh_trang'        =>random_int(0, 1),
 
+                ],
+                [
+                    'ho_va_ten'         =>"Thái Đăng Duy",
+                    'email'             =>"duythai090903@gmail.com",
+                    'password'          =>bcrypt(123456),
+                    'so_dien_thoai'     =>"0906544572",
+                    'ngay_sinh'         =>"2001-03-03",
+                    'dia_chi'           =>"Đà Nẵng",
+                    'is_block'          =>random_int(0, 1),
+                    'tinh_trang'        =>random_int(0, 1),
+
+                ],
+                [
+                    'ho_va_ten'         =>"Lê Mạnh Hiền",
+                    'email'             =>"hienlemanh2002@gmail.com",
+                    'password'          =>bcrypt(123456),
+                    'so_dien_thoai'     =>"0377191497",
+                    'ngay_sinh'         =>"2001-03-04",
+                    'dia_chi'           =>"Đà Nẵng",
+                    'is_block'          =>random_int(0, 1),
+                    'tinh_trang'        =>random_int(0, 1),
+
+                ],
+                [
+                    'ho_va_ten'         =>"Hà Minh Hiếu",
+                    'email'             =>"hmhieu42@gmail.com",
+                    'password'          =>bcrypt(123456),
+                    'so_dien_thoai'     =>"0974095458",
+                    'ngay_sinh'         =>"2001-03-05",
+                    'dia_chi'           =>"Đà Nẵng",
+                    'is_block'          =>random_int(0, 1),
+                    'tinh_trang'        =>random_int(0, 1),
+
+                ],
+                [
+                    'ho_va_ten'         =>"Hà Đức Hòa",
+                    'email'             =>"duchoa16092004@gmail.com",
+                    'password'          =>bcrypt(123456),
+                    'so_dien_thoai'     =>"1231231231",
+                    'ngay_sinh'         =>"2001-03-06",
+                    'dia_chi'           =>"Đà Nẵng",
+                    'is_block'          =>random_int(0, 1),
+                    'tinh_trang'        =>random_int(0, 1),
+
+                ],
+                [
+                    'ho_va_ten'         =>"Đào Thu Thiên",
+                    'email'             =>"daothuthien06021996@gmail.com",
+                    'password'          =>bcrypt(123456),
+                    'so_dien_thoai'     =>"1231231231",
+                    'ngay_sinh'         =>"2001-03-07",
+                    'dia_chi'           =>"Đà Nẵng",
+                    'is_block'          =>random_int(0, 1),
+                    'tinh_trang'        =>random_int(0, 1),
+
+                ],
+                [
+                    'ho_va_ten'         =>"Lê Thị Thu Trinh",
+                    'email'             =>"trinhcute287@gmail.com",
+                    'password'          =>bcrypt(123456),
+                    'so_dien_thoai'     =>"1231231231",
+                    'ngay_sinh'         =>"2001-03-08",
+                    'dia_chi'           =>"Đà Nẵng",
+                    'is_block'          =>random_int(0, 1),
+                    'tinh_trang'        =>random_int(0, 1),
+
+                ],
+                [
+                    'ho_va_ten'         =>"Phạm Văn Tư",
+                    'email'             =>"phamtu.090303@gmail.com",
+                    'password'          =>bcrypt(123456),
+                    'so_dien_thoai'     =>"0327238573",
+                    'ngay_sinh'         =>"2001-03-09",
+                    'dia_chi'           =>"Đà Nẵng",
+                    'is_block'          =>random_int(0, 1),
+                    'tinh_trang'        =>random_int(0, 1),
+
+                ],
+                [
+                    'ho_va_ten'         =>"Tiêu Chấn Phi Hưng",
+                    'email'             =>"tramtieu2890@gmail.com",
+                    'password'          =>bcrypt(123456),
+                    'so_dien_thoai'     =>"0903557228",
+                    'ngay_sinh'         =>"2001-03-10",
+                    'dia_chi'           =>"Đà Nẵng",
+                    'is_block'          =>random_int(0, 1),
+                    'tinh_trang'        =>random_int(0, 1),
+
+                ],
+                [
+                    'ho_va_ten'         =>"Đặng Văn Phố",
+                    'email'             =>"dangvanpho138@gmail.com",
+                    'password'          =>bcrypt(123456),
+                    'so_dien_thoai'     =>"0332174717",
+                    'ngay_sinh'         =>"2001-03-11",
+                    'dia_chi'           =>"Đà Nẵng",
+                    'is_block'          =>random_int(0, 1),
+                    'tinh_trang'        =>random_int(0, 1),
+
+                ],
+            ]);
         }
     }
 }

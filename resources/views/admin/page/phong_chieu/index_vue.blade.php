@@ -222,6 +222,7 @@
                         .post('{{ Route("gheChieuStore") }}', this.create)
                         .then((res) => {
                             if(res.data.status) {
+                                this.gia_mac_dinh = 0;
                                 toastr.success(res.data.message, 'Success');
                             } else {
                                 toastr.error(res.data.message, 'Error');

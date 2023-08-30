@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\GheChieu;
 use App\Models\PhongChieu;
+use App\Models\QuyenChucNang;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -14,6 +16,19 @@ class APIGheChieuController extends Controller
 {
     public function store(Request $request)
     {
+        $id_chuc_nang   =   25;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
 
@@ -50,6 +65,19 @@ class APIGheChieuController extends Controller
 
     public function infoPhongGhe(Request $request)
     {
+        $id_chuc_nang   =   26;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
 
@@ -69,6 +97,19 @@ class APIGheChieuController extends Controller
 
     public function status(Request $request)
     {
+        $id_chuc_nang   =   27;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
 
         try {
@@ -98,6 +139,19 @@ class APIGheChieuController extends Controller
 
     public function update(Request $request)
     {
+        $id_chuc_nang   =   28;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
 

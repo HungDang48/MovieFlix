@@ -129,7 +129,12 @@
                                             <td >@{{value.ho_va_ten}}</td>
                                             <td >@{{value.email}}</td>
                                             <td >
-                                                @{{ value.ten_quyen }}
+                                                <template v-if="value.id_quyen == 0">
+                                                    Admin
+                                                </template>
+                                                <template v-else>
+                                                    @{{ value.ten_quyen }}
+                                                </template>
                                             </td>
                                             <td >@{{value.que_quan}}</td>
                                             <td class="text-center">@{{value.so_dien_thoai}}</td>
@@ -148,7 +153,8 @@
                                                 <button v-on:click="doiTrangThaiBlock(value)" v-else class="block btn btn-primary" style="width: 150px">Đã Block</button>
                                             </td>
                                             <td class="text-center">
-                                                <button v-on:click="tt_capNhat = Object.assign({}, value)" data-bs-toggle="modal" data-bs-target="#editAccModal" type="button"class="edit btn btn-info">Cập Nhật</button>
+                                                <button v-on:click="tt_capNhat = Object.assign({}, value)" data-bs-toggle="modal" data-bs-target="#matKhauModal" type="button"class="edit btn btn-success">Cập Nhật Mật Khẩu</button>
+                                                <button v-on:click="tt_capNhat = Object.assign({}, value)" data-bs-toggle="modal" data-bs-target="#editAccModal" type="button"class="edit btn btn-info" style="margin-left: 10px">Cập Nhật</button>
                                                 <button v-on:click="tt_xoa = value" data-bs-toggle="modal" data-bs-target="#delAccModal" type="button"class="del btn btn-danger" style="margin-left: 10px">Xóa Bỏ</button>
                                             </td>
                                         </tr>
@@ -214,17 +220,13 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col">
-                                                <label class="mb-2">Mật Khẩu</label>
-                                                <input v-model="tt_capNhat.password" type="text" class="form-control mb-2"
-                                                    placeholder="Nhập vào họ và tên">
-                                            </div>
-                                            <div class="col">
+                                            <div class="col-12">
                                                 <label class="mb-2">Quyền</label>
                                                 <select class="form-control mb-2" v-model="tt_capNhat.id_quyen">
-                                                    <option value="1">Admin</option>
-                                                    <option value="2">Kế Toán</option>
-                                                    <option value="3">Nhân Viên</option>
+                                                    <option value="0">Admin</option>
+                                                    <template v-for="(v, k) in list_quyen">
+                                                        <option v-bind:value="v.id">@{{ v.ten_quyen }}</option>
+                                                    </template>
                                                 </select>
                                             </div>
                                         </div>
@@ -274,6 +276,31 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="matKhauModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">CẬP NHẬT MẬT KHẨU</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label class="mb-2">Mật Khẩu</label>
+                                                <input v-model="password_new" type="text" class="form-control mb-2"
+                                                    placeholder="Nhập vào mật khẩu">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Đóng</button>
+                                        <button v-on:click="capNhatAdmin()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Cập Nhật</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -287,11 +314,12 @@
             new Vue({
                 el      :   '#app',
                 data    :   {
-                    them_moi    : {'id_quyen' : 1, 'gioi_tinh' : 1},
+                    them_moi    : {'id_quyen' : 0, 'gioi_tinh' : 1},
                     list_admin  : [],
                     tt_capNhat  : {},
                     tt_xoa      : {},
                     list_quyen  : [],
+                    password_new: "",
                 },
                 created()   {
                     this.loadData();
@@ -357,13 +385,15 @@
                             });
                     },
                     capNhatAdmin() {
+                        this.tt_capNhat.password = this.password_new;
                         axios
                             .post("{{Route('adminUpdate')}}", this.tt_capNhat)
                             .then((res) => {
                                 if(res.data.status) {
                                     toastr.success(res.data.message);
-                                    $('#editAccModal').modal('hide');
                                     this.loadData();
+                                    $('#editAccModal').modal('hide');
+                                    this.password_new = "";
                                 } else {
                                     toastr.error(res.data.message);
                                 }

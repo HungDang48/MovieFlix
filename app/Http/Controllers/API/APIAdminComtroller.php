@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\QuyenChucNang;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +17,21 @@ class APIAdminComtroller extends Controller
     {
         $check  = Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password]);
         if($check == true) {
-            return response()->json([
-                'status'    => 1,
-                'message'   => 'Đã đăng nhập thành công!',
-            ]);
+            $admin = Admin::where('email', $request->email)
+                          ->where('is_block', 0)
+                          ->first();
+            if($admin) {
+                return response()->json([
+                    'status'    => 1,
+                    'message'   => 'Đã đăng nhập thành công!',
+                ]);
+            } else {
+                return response()->json([
+                    'status'    => 0,
+                    'message'   => 'Tài khoản đã bị khóa!',
+                ]);
+            }
+
         } else {
             return response()->json([
                 'status'    => 0,
@@ -30,6 +42,19 @@ class APIAdminComtroller extends Controller
 
 	public function store(Request $request)
     {
+        $id_chuc_nang   =   1;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
             $data   = $request->all();
@@ -50,6 +75,19 @@ class APIAdminComtroller extends Controller
 
     public function update(Request $request)
     {
+        $id_chuc_nang   =   4;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
             $admin   = Admin::find($request->id);
@@ -77,7 +115,20 @@ class APIAdminComtroller extends Controller
 
     public function data()
     {
-        $data   = Admin::join('phan_quyens', 'admins.id_quyen', 'phan_quyens.id')
+        $id_chuc_nang   =   2;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
+        $data   = Admin::leftjoin('phan_quyens', 'admins.id_quyen', 'phan_quyens.id')
                        ->select('admins.*', 'phan_quyens.ten_quyen')
                        ->get();
 
@@ -88,6 +139,19 @@ class APIAdminComtroller extends Controller
 
     public function destroy(Request $request)
     {
+        $id_chuc_nang   =   5;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
             $admin   = Admin::find($request->id);
@@ -116,6 +180,19 @@ class APIAdminComtroller extends Controller
 
     public function block(Request $request)
     {
+        $id_chuc_nang   =   2;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
             $admin   = Admin::find($request->id);
