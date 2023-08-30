@@ -63,11 +63,21 @@
                 </div>
                 <div class="menu-title">Lịch Chiếu</div>
             </a>
-            <a class="nav-link" href="/admin/quyen">
-                <div class="parent-icon"><i class="fa-solid fa-user-shield"></i>
-                </div>
-                <div class="menu-title">Phân Quyền</div>
-            </a>
+            @php
+                $admin = Auth::guard('admin')->user();
+                $id_chuc_nang = 44;
+                $user_login = Auth::guard('admin')->user();
+
+                $check = \App\Models\QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                                ->where('id_chuc_nang', $id_chuc_nang)
+                                                ->first();
+            @endphp
+            @if ($check)
+                <a class="nav-link" href="/admin/quyen">
+                    <div class="parent-icon"><i class="fa-solid fa-user-shield"></i></div>
+                    <div class="menu-title">Phân Quyền</div>
+                </a>
+            @endif
         </ul>
     </nav>
 

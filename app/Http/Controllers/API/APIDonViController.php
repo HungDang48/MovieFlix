@@ -4,8 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\DonVi;
+use App\Models\QuyenChucNang;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -13,6 +15,19 @@ class APIDonViController extends Controller
 {
     public function store(Request $request)
     {
+        $id_chuc_nang   =   34;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
             $data   = $request->all();
@@ -33,6 +48,19 @@ class APIDonViController extends Controller
 
     public function update(Request $request)
     {
+        $id_chuc_nang   =   37;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
 
@@ -60,6 +88,19 @@ class APIDonViController extends Controller
 
     public function data()
     {
+        $id_chuc_nang   =   35;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         $data   = DonVi::get();
 
         return response()->json([
@@ -69,6 +110,19 @@ class APIDonViController extends Controller
 
     public function destroy(Request $request)
     {
+        $id_chuc_nang   =   36;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
             $Don_vi     =   DonVi::find($request->id);

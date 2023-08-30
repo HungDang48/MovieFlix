@@ -115,7 +115,8 @@
                                                 <button v-on:click="doiTrangThai(value)" v-else class="status btn btn-primary">Đang Hoạt Động</button>
                                             </td>
                                             <td class="text-center">
-                                                <button v-on:click="tt_cap_nhat = Object.assign({}, value)" data-bs-toggle="modal" data-bs-target="#editModal" type="button"class="edit btn btn-info">Cập Nhật</button>
+                                                <button v-on:click="tt_cap_nhat = Object.assign({}, value)" data-bs-toggle="modal" data-bs-target="#matKhauModal" type="button"class="edit btn btn-success">Cập Nhật Mật Khẩu</button>
+                                                <button v-on:click="tt_cap_nhat = Object.assign({}, value)" data-bs-toggle="modal" data-bs-target="#editModal" type="button"class="edit btn btn-info" style="margin-left: 10px">Cập Nhật</button>
                                                 <button v-on:click="tt_xoa = value" data-bs-toggle="modal" data-bs-target="#deleteModal" type="button"class="del btn btn-danger" style="margin-left: 10px">Xóa Bỏ</button>
                                             </td>
                                         </tr>
@@ -225,6 +226,31 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="matKhauModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">CẬP NHẬT MẬT KHẨU</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label class="mb-2">Mật Khẩu</label>
+                                                <input v-model="password_new" type="text" class="form-control mb-2"
+                                                    placeholder="Nhập vào mật khẩu">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Đóng</button>
+                                        <button v-on:click="capNhatAdmin()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Cập Nhật</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -242,6 +268,7 @@
                 list_tai_khoan  :       [],
                 tt_xoa          :       {},
                 tt_cap_nhat     :       {},
+                password_new    :       "",
             },
             created()       {
                 this.loadData();
@@ -285,6 +312,7 @@
                         });
                 },
                 capNhatTaiKhoan() {
+                    this.tt_capNhat.password = this.password_new;
                     axios
                         .post('{{ Route("taiKhoanUpdate") }}', this.tt_cap_nhat)
                         .then((res) => {
@@ -292,6 +320,7 @@
                                 toastr.success(res.data.message, 'Success');
                                 this.loadData();
                                 $('#editModal').modal('hide');
+                                this.password_new = "";
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }

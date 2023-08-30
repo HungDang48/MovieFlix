@@ -68,6 +68,9 @@
                                 }, 500);
                             } else {
                                 toastr.error(res.data.message, 'Error');
+                                setTimeout(() => {
+                                    window.location.href = "/admin/login";
+                                }, 500);
                             }
                         })
                         .catch((res) => {

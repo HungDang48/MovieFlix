@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\DanhSachTaiKhoan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\QuyenChucNang;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,19 @@ class APIDanhSachTaiKhoanController extends Controller
 {
     public function store(Request $request)
     {
+        $id_chuc_nang   =   18;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
 
@@ -36,6 +50,19 @@ class APIDanhSachTaiKhoanController extends Controller
 
     public function update(Request $request)
     {
+        $id_chuc_nang   =   24;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
 
@@ -64,6 +91,19 @@ class APIDanhSachTaiKhoanController extends Controller
 
     public function data()
     {
+        $id_chuc_nang   =   19;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         $data   = DanhSachTaiKhoan::get();
 
         return response()->json([
@@ -73,6 +113,19 @@ class APIDanhSachTaiKhoanController extends Controller
 
     public function status(Request $request)
     {
+        $id_chuc_nang   =   20;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
 
@@ -105,6 +158,19 @@ class APIDanhSachTaiKhoanController extends Controller
 
     public function block(Request $request)
     {
+        $id_chuc_nang   =   21;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
 
@@ -137,6 +203,19 @@ class APIDanhSachTaiKhoanController extends Controller
 
     public function info(Request $request)
     {
+        $id_chuc_nang   =   22;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
 
@@ -162,6 +241,19 @@ class APIDanhSachTaiKhoanController extends Controller
 
     public function destroy(Request $request)
     {
+        $id_chuc_nang   =   23;
+        $user_login     =   Auth::guard('admin')->user();
+
+        $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
+                                         ->where('id_chuc_nang', $id_chuc_nang)
+                                         ->first();
+        if(!$check) {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Bạn không có quyền cho chức năng này!',
+            ]);
+        }
+
         DB::beginTransaction();
         try {
 

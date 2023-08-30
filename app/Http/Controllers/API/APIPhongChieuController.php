@@ -15,7 +15,7 @@ class APIPhongChieuController extends Controller
 {
     public function store(Request $request)
     {
-        $id_chuc_nang   =   100;
+        $id_chuc_nang   =   12;
         $user_login     =   Auth::guard('admin')->user();
 
         $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
@@ -48,7 +48,7 @@ class APIPhongChieuController extends Controller
 
     public function data()
     {
-        $id_chuc_nang   =   101;
+        $id_chuc_nang   =   13;
         $user_login     =   Auth::guard('admin')->user();
 
         $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
@@ -70,7 +70,7 @@ class APIPhongChieuController extends Controller
 
     public function status(Request $request)
     {
-        $id_chuc_nang   =   102;
+        $id_chuc_nang   =   14;
         $user_login     =   Auth::guard('admin')->user();
 
         $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
@@ -114,7 +114,7 @@ class APIPhongChieuController extends Controller
 
     public function info(Request $request)
     {
-        $id_chuc_nang   =   103;
+        $id_chuc_nang   =   15;
         $user_login     =   Auth::guard('admin')->user();
 
         $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
@@ -151,7 +151,7 @@ class APIPhongChieuController extends Controller
 
     public function destroy(Request $request)
     {
-        $id_chuc_nang   =   104;
+        $id_chuc_nang   =   16;
         $user_login     =   Auth::guard('admin')->user();
 
         $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
@@ -189,7 +189,7 @@ class APIPhongChieuController extends Controller
     }
     public function update(Request $request)
     {
-        $id_chuc_nang   =   105;
+        $id_chuc_nang   =   17;
         $user_login     =   Auth::guard('admin')->user();
 
         $check          =   QuyenChucNang::where('id_quyen', $user_login->id_quyen)
