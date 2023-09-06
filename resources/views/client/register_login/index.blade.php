@@ -85,8 +85,8 @@
                                             <a class="account__social--link twitter" target="_blank"
                                                 href="https://twitter.com">Twitter</a>
                                         </div>
-                                        <p class="account__login--signup__text">Don,t Have an Account? <button
-                                                type="submit">Sign up now</button></p>
+                                        <p class="account__login--signup__text"><button
+                                                type="button"><a href="/forgot-password">Quên Mật Khẩu</a></button></p>
                                     </div>
                                 </div>
                             </div>

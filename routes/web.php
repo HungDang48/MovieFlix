@@ -27,6 +27,12 @@ Route::get('/register', [CustomerController::class, 'viewRegister']);
 Route::get('/login', [CustomerController::class, 'viewLogin']);
 Route::get('/admin/login' , [AdminController::class , 'viewLogin']);
 Route::get('/film-detail/{id}', [TrangChuController::class, 'detailPhim']);
+Route::get('/forgot-password', [CustomerController::class, 'viewForgotPassword']);
+Route::get('/change-password', [CustomerController::class, 'viewChangePassword']);
+
+
+Route::get('/list-bill', [CustomerController::class, 'viewListBill']);
+
 
 Route::group(['prefix'  =>  '/admin', 'middleware' => 'WebAdmin'], function() {
     Route::get('/', [AdminController::class, 'index']);
