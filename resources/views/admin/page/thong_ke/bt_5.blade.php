@@ -79,7 +79,7 @@
         };
 
         axios
-            .post('{{Route("bt2")}}', payload)
+            .post('{{Route("bt5")}}', payload)
             .then((res) => {
                 char_1.data.labels = res.data.labels;
                 char_1.data.datasets[0].data = res.data.data;

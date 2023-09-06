@@ -60,5 +60,9 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'WebAdmin'], function() {
     });
     Route::group(['prefix'  =>  '/thong-ke'], function() {
         Route::get('/bt-1', [ThongKeController::class, 'bt1']);
+        Route::get('/bt-2', [ThongKeController::class, 'bt2']);
+        Route::get('/bt-3', [ThongKeController::class, 'bt3']);
+        Route::get('/bt-4', [ThongKeController::class, 'bt4']);
+        Route::get('/bt-5', [ThongKeController::class, 'bt5']);
     });
 });
