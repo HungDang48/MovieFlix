@@ -78,6 +78,46 @@
                     <div class="menu-title">Phân Quyền</div>
                 </a>
             @endif
+            <li class="nav-item dropdown">
+                <a href="javascript:;" class="nav-link dropdown-toggle dropdown-toggle-nocaret"
+                    data-bs-toggle="dropdown">
+                    <div class="parent-icon"><i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="menu-title">Thống Kê</div>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="/admin/thong-ke/bt-1">
+                            <i class="bx bx-right-arrow-alt"></i>
+                            Phim nào có lượt mua nhiều nhất
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/admin/thong-ke/bt-2">
+                            <i class="bx bx-right-arrow-alt"></i>
+                            Doanh thu từ ngày đến ngày
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/admin/thong-ke/bt-2">
+                            <i class="bx bx-right-arrow-alt"></i>
+                            5 khách hàng mua vé nhiều
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/admin/thong-ke/bt-2">
+                            <i class="bx bx-right-arrow-alt"></i>
+                            Các suất chiếu của phim
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/admin/thong-ke/bt-2">
+                            <i class="bx bx-right-arrow-alt"></i>
+                            Công suất hoạt động của các phòng chiếu
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </nav>
 

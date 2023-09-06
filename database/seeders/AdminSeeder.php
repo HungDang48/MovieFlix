@@ -26,7 +26,7 @@ class AdminSeeder extends Seeder
                 'so_dien_thoai'     =>  "0333314445",
                 'gioi_tinh'         =>  random_int(0, 1),
                 'cccd'              =>  060701023012,
-                'is_block'          =>  random_int(0, 1),
+                'is_block'          =>  0,
             ],
             [
                 'username'          =>  'lethanhtruong',

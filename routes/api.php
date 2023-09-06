@@ -118,5 +118,9 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'APIAdmin'], function() {
 
     Route::group(['prefix'  =>  '/thong-ke'], function() {
         Route::post('/bt-1', [APIThongKeController::class, 'bt1'])->name('bt1');
+        Route::post('/bt-2', [APIThongKeController::class, 'bt2'])->name('bt2');
+        Route::post('/bt-3', [APIThongKeController::class, 'bt3'])->name('bt3');
+        Route::post('/bt-4', [APIThongKeController::class, 'bt4'])->name('bt4');
+        Route::post('/bt-5', [APIThongKeController::class, 'bt5'])->name('bt5');
     });
 });
