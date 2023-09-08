@@ -14,9 +14,9 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&display=swap"
         rel="stylesheet">
     <!-- Plugin css -->
-    <link rel="stylesheet" href="asstes_client_login_regis/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/asstes_client_login_regis/css/vendor/bootstrap.min.css">
     <!-- Custom Style CSS -->
-    <link rel="stylesheet" href="asstes_client_login_regis/css/style.css">
+    <link rel="stylesheet" href="/asstes_client_login_regis/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
         integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -77,16 +77,17 @@
                                     </p>
                                 </div>
                                 <div class="account__login--inner">
+                                    <input id="id" class="account__login--input" type="text" value="{{ $id }}">
                                     <label>
-                                        <input class="account__login--input" placeholder="Nhập vào mật khẩu"
+                                        <input v-model="thong_tin.password" class="account__login--input" placeholder="Nhập vào mật khẩu"
                                             type="password">
                                     </label>
                                     <label>
-                                        <input class="account__login--input" placeholder="Nhập lại mật khẩu"
+                                        <input v-model="thong_tin.re_password" class="account__login--input" placeholder="Nhập lại mật khẩu"
                                             type="password">
                                     </label>
                                     <div class="d-grid gap-2 col-6 mx-auto">
-                                        <button class="account__login--btn primary__btn" type="button">Đổi Mật Khẩu</button>
+                                        <button v-on:click="doiMatKhau()" class="account__login--btn primary__btn" type="button">Đổi Mật Khẩu</button>
                                     </div>
                                     <div class="account__login--divide">
                                         <span class="account__login--divide__text">OR</span>
@@ -119,24 +120,40 @@
         </svg></button>
 
     <!-- All Script JS Plugins here  -->
-    <script src="asstes_client_login_regis/js/vendor/popper.js" defer="defer"></script>
-    <script src="asstes_client_login_regis/js/vendor/bootstrap.min.js" defer="defer"></script>
-    <script src="asstes_client_login_regis/js/plugins/swiper-bundle.min.js"></script>
-    <script src="asstes_client_login_regis/js/plugins/glightbox.min.js"></script>
+    <script src="/asstes_client_login_regis/js/vendor/popper.js" defer="defer"></script>
+    <script src="/asstes_client_login_regis/js/vendor/bootstrap.min.js" defer="defer"></script>
+    <script src="/asstes_client_login_regis/js/plugins/swiper-bundle.min.js"></script>
+    <script src="/asstes_client_login_regis/js/plugins/glightbox.min.js"></script>
 
     <!-- Customscript js -->
-    <script src="asstes_client_login_regis/js/script.js"></script>
+    <script src="/asstes_client_login_regis/js/script.js"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-
+                thong_tin   :   {},
             },
             created() {
 
             },
             methods: {
-
+                doiMatKhau() {
+                    this.thong_tin.id    =   $("#id").val();
+                    axios
+                        .post('{{ Route("doiMatKhau") }}', this.thong_tin)
+                        .then((res) => {
+                            if(res.data.status) {
+                                toastr.success(res.data.message, 'Success');
+                            } else {
+                                toastr.error(res.data.message, 'Error');
+                            }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0], 'Error');
+                            });
+                        });
+                },
             },
         });
     </script>

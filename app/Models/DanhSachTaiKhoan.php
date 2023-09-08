@@ -20,5 +20,7 @@ class DanhSachTaiKhoan extends Authenticatable
         'ho_va_ten',
         'is_block',
         'tinh_trang',
+        'thay_the_id',
+        'ma_doi_mat_khau',
     ];
 }

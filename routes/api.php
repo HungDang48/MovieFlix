@@ -26,6 +26,9 @@ Route::post('/phim/phim-sap-chieu', [APIPhimController::class, 'phimSapChieu']);
 Route::get('/slide-hien-thi', [APISlideController::class, 'slideHienThi']);
 Route::post('/getID/film-detail', [APIHomepageController::class, 'getIdFilmDetail'])->name('getIdFilmDetail');
 Route::post('/danh-sach-lich-chieu-theo-film', [APILichChieuController::class, 'lichChieuTheoFilm'])->name('lichChieuTheoFilm');
+Route::post('/doi-mat-khau', [APIDanhSachTaiKhoanController::class, 'doiMatKhau'])->name('doiMatKhau');
+Route::post('/reset-password', [APIDanhSachTaiKhoanController::class, 'resetPassword'])->name('resetPassword');
+
 
 Route::group(['prefix'  =>  '/client', 'middleware' => 'APIClient'], function() {
     Route::post('/lich-chieu/info', [APILichChieuController::class, 'infoLichClient'])->name('infoLichClient');

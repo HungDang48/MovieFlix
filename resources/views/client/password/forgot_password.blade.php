@@ -65,11 +65,11 @@
                                 </div>
                                 <div class="account__login--inner">
                                     <label>
-                                        <input class="account__login--input" placeholder="Nhập vào email"
+                                        <input v-model="thong_tin.email" class="account__login--input" placeholder="Nhập vào email"
                                             type="email">
                                     </label>
                                     <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button class="account__login--btn primary__btn" type="button">Gửi</button>
+                                    <button v-on:click="resetPassword()" class="account__login--btn primary__btn" type="button">Gửi</button>
                                     </div>
                                     <div class="account__login--divide">
                                         <span class="account__login--divide__text">OR</span>
@@ -115,13 +115,25 @@
         new Vue({
             el      :   '#app',
             data    :   {
-
-            },
-            created()   {
-
+                thong_tin   :   {},
             },
             methods :   {
-
+                resetPassword() {
+                    axios
+                        .post('{{ Route("resetPassword") }}', this.thong_tin)
+                        .then((res) => {
+                            if(res.data.status) {
+                                toastr.success(res.data.message, 'Success');
+                            } else {
+                                toastr.error(res.data.message, 'Error');
+                            }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0], 'Error');
+                            });
+                        });
+                },
             },
         });
     </script>

@@ -10,10 +10,54 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class APIDanhSachTaiKhoanController extends Controller
 {
+    public function resetPassword(Request $request)
+    {
+        $taiKhoan   = DanhSachTaiKhoan::where('email', $request->email)->first();
+
+        if($taiKhoan) {
+            $taiKhoan->ma_doi_mat_khau  =   Str::uuid();
+            $taiKhoan->save();
+
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Vui lòng kiểm tra email của bạn!',
+            ]);
+        } else {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Email không tồn tại!',
+            ]);
+        }
+    }
+
+    public function doiMatKhau(Request $request)
+    {
+        $taiKhoan   = DanhSachTaiKhoan::where('ma_doi_mat_khau', $request->id)->first();
+
+        if($taiKhoan) {
+            $taiKhoan->password         =   bcrypt($request->password);
+            $taiKhoan->ma_doi_mat_khau  =   null;
+            $taiKhoan->save();
+
+            return response()->json([
+                'status'    => 1,
+                'message'   => 'Đã đổi mật khẩu thành công!',
+            ]);
+
+        } else {
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Liên kết không tồn tại!',
+            ]);
+        }
+    }
+
     public function store(Request $request)
     {
         $id_chuc_nang   =   18;
@@ -281,11 +325,11 @@ class APIDanhSachTaiKhoanController extends Controller
 
     public function register(Request $request)
     {
-        $data               = $request->all();
-        $data['is_block']   =   0;
-        $data['tinh_trang'] =   0;
-        $data['password']   = bcrypt($request->password);  // Gốc 123456 -> Lưu: e10adc3949ba59abbe56e057f20f883e
-
+        $data                   = $request->all();
+        $data['is_block']       =   0;
+        $data['tinh_trang']     =   0;
+        $data['password']       = bcrypt($request->password);  // Gốc 123456 -> Lưu: e10adc3949ba59abbe56e057f20f883e
+        $data['thay_the_id']    = Str::uuid();
         DanhSachTaiKhoan::create($data);
 
         return response()->json([
@@ -298,11 +342,23 @@ class APIDanhSachTaiKhoanController extends Controller
     {
         $check  = Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password]);
         if($check == true) {
-            // Đã đúng email và mật khẩu + đã cấp session   => Biến session tên gì và dùng như thế nào?
-            return response()->json([
-                'status'    => 1,
-                'message'   => 'Đã đăng nhập thành công!',
-            ]);
+            // Sau khi đã qua attempt thì $check == true    => Laravel đã cấp session
+            // Lấy thông tin của người dùng nào đã đăng nhập    => Auth->user();
+            $user   =   Auth::guard('client')->user();
+            // Kiểm tra người dùng này đã kích hoạt mail hay chưa?  Field   -> tinh_trang
+            if($user->tinh_trang == false) {
+                // Laravel thu hồi session lại
+                Auth::guard('client')->logout();
+                return response()->json([
+                    'status'    => 0,
+                    'message'   => 'Tài khoản chưa xác minh mail!',
+                ]);
+            } else {
+                return response()->json([
+                    'status'    => 1,
+                    'message'   => 'Đã đăng nhập thành công!',
+                ]);
+            }
         } else {
             return response()->json([
                 'status'    => 0,

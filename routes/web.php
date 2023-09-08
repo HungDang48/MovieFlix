@@ -22,6 +22,9 @@ Route::get('/read', [TestController::class, 'read']);
 // Route::get('/on-bai', [AdminController::class, 'onbai']);
 
 Route::get('/', [TrangChuController::class, 'index']);
+Route::get('/kich-hoat-tai-khoan/{id}', [DanhSachTaiKhoanController::class, 'kichHoat']);
+Route::get('/reset-password', [DanhSachTaiKhoanController::class, 'resetPassword']);
+Route::get('/doi-mat-khau/{id}', [DanhSachTaiKhoanController::class, 'doiMatKhau']);
 
 Route::get('/register', [CustomerController::class, 'viewRegister']);
 Route::get('/login', [CustomerController::class, 'viewLogin']);
