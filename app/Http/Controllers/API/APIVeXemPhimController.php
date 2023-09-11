@@ -48,12 +48,16 @@ class APIVeXemPhimController extends Controller
                 $donHang->tong_tien = $tong_tien;
                 $donHang->save();
 
-                // $ds_ve_xem_phim         =  VeXemPhim::where('ma_don_hang', $donHang->ma_don_hang)->get();
+                $ds_ve_xem_phim         =  VeXemPhim::where('id_don_hang', $donHang->ma_don_hang)
+                                                    ->join('lich_chieus', 've_xem_phims.id_lich_chieu', 'lich_chieus.id')
+                                                    ->join('phims', 'lich_chieus.id_phim', 'phims.id')
+                                                    ->select('phims.ten_phim', 've_xem_phims.*')
+                                                    ->get();
 
                 $xxx['ho_va_ten']       =  $nguoi_login->ho_va_ten;
-                // $xxx['don_dat_hang']	=  $ds_ve_xem_phim;
+                $xxx['ds_ve']	        =  $ds_ve_xem_phim;
                 $xxx['tong_tien']       =  $tong_tien;
-                $xxx['noi_dung_ck']		=  'TTVXP_' . $donHang->ma_don_hang;
+                $xxx['noi_dung_ck']		=  'TTVXP' . $donHang->ma_don_hang;
 
                 Mail::to($nguoi_login->email)->send(new sendMail('Thông Tin Đặt Vé Xem Phim', 'mail.dat_ve', $xxx));
 

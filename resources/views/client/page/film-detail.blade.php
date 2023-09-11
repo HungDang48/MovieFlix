@@ -141,7 +141,8 @@
                             });
                     },
                     getTT(payload) {
-                        axios
+                        setInterval(() => {
+                            axios
                             .post('{{ Route("infoLichClient") }}', payload)
                             .then((res) => {
                                 this.c_phong_chieu  = res.data.phong_chieu;
@@ -155,6 +156,8 @@
                                     toastr.error(v[0], 'Error');
                                 });
                             });
+                        }, 10000);
+
                     },
                     datVe() {
                         var payload = {

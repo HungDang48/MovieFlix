@@ -12,16 +12,14 @@ use App\Http\Controllers\PhimController;
 use App\Http\Controllers\PhongChieuController;
 use App\Http\Controllers\QuyenController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ThanhToanController;
 use App\Http\Controllers\ThongKeController;
 use App\Http\Controllers\TrangChuController;
 use App\Models\DonHang;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Event\Code\TestCollection;
 
-Route::get('/mail-1', [TestController::class, 'mail_1']);
-Route::get('/mail-2', [TestController::class, 'mail_2']);
-Route::get('/mail-3', [TestController::class, 'mail_3']);
-
+Route::get('/auto-thanh-toan', [ThanhToanController::class, 'index']);
 
 Route::get('/create', [TestController::class, 'create']);
 Route::get('/read', [TestController::class, 'read']);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\DanhSachTaiKhoan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DangKyTaiKhoanRequest;
 use App\Mail\sendMail;
 use App\Models\QuyenChucNang;
 use Exception;
@@ -330,7 +331,7 @@ class APIDanhSachTaiKhoanController extends Controller
 
     }
 
-    public function register(Request $request)
+    public function register(DangKyTaiKhoanRequest $request)
     {
         $data                   = $request->all();
         $data['is_block']       =   0;
