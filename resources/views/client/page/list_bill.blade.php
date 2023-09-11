@@ -1,7 +1,7 @@
 @extends('client.share.master')
 @section('noi_dung')
 <section class="contact-area contact-bg" data-background="/assets_client/img/bg/contact_bg.jpg" style="background-image: url(&quot;img/bg/contact_bg.jpg&quot;);">
-    <div class="container">
+    <div class="container" id="app">
         <div class="row">
             <div class="col-xl-12 col-lg-7">
                 <div class="contact-form-wrap">
@@ -21,18 +21,21 @@
                                 </tr>
                             </thead>
                             <tbody class="text-white">
-                                <tr>
-                                    <th class="align-middle text-nowrap text-center">1</th>
-                                    <td class="align-middle text-nowrap text-center">123123</td>
-                                    <td class="align-middle text-nowrap text-center">15/11/2001</td>
-                                    <td class="align-middle text-nowrap text-center">200.000 đ</td>
-                                    <td class="align-middle text-nowrap text-center">
-                                        <button class="btn">Đã thanh toán</button>
-                                    </td>
-                                    <td class="align-middle text-nowrap text-center">
-                                        <button class="btn" data-toggle="modal" data-target="#chitietModal">Chi Tiết</button>
-                                    </td>
-                                </tr>
+                                <template v-for="(v, k) in list_bill">
+                                    <tr>
+                                        <th class="align-middle text-nowrap text-center">@{{ k + 1 }}</th>
+                                        <td class="align-middle text-nowrap text-center">@{{ v.ma_don_hang }}</td>
+                                        <td class="align-middle text-nowrap text-center">@{{ date_format(v.created_at) }}</td>
+                                        <td class="align-middle text-nowrap text-center">@{{ v.tong_tien }}</td>
+                                        <td class="align-middle text-nowrap text-center">
+                                            <button v-if="v.is_thanh_toan == 1" class="btn">Đã thanh toán</button>
+                                            <button v-else class="btn">Chưa thanh toán</button>
+                                        </td>
+                                        <td class="align-middle text-nowrap text-center">
+                                            <button class="btn" data-toggle="modal" data-target="#chitietModal" v-on:click="loadChiTiet(v.ma_don_hang)">Chi Tiết</button>
+                                        </td>
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                     </div>
@@ -57,24 +60,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="text-white">
-                                                <tr>
-                                                    <th class="align-middle text-nowrap text-center">1</th>
-                                                    <td class="align-middle text-nowrap text-center">Quý Công Tử</td>
-                                                    <td class="align-middle text-nowrap text-center">A1</td>
-                                                    <td class="align-middle text-nowrap text-center">200.000 đ</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="align-middle text-nowrap text-center">1</th>
-                                                    <td class="align-middle text-nowrap text-center">Quý Công Tử</td>
-                                                    <td class="align-middle text-nowrap text-center">A1</td>
-                                                    <td class="align-middle text-nowrap text-center">200.000 đ</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="align-middle text-nowrap text-center">1</th>
-                                                    <td class="align-middle text-nowrap text-center">Quý Công Tử</td>
-                                                    <td class="align-middle text-nowrap text-center">A1</td>
-                                                    <td class="align-middle text-nowrap text-center">200.000 đ</td>
-                                                </tr>
+                                                <template v-for="(v, k) in list_detail">
+                                                    <tr>
+                                                        <th class="align-middle text-nowrap text-center">@{{ k + 1 }}</th>
+                                                        <td class="align-middle text-nowrap text-center">@{{ v.ten_phim }}</td>
+                                                        <td class="align-middle text-nowrap text-center">@{{ v.so_ghe }}</td>
+                                                        <td class="align-middle text-nowrap text-center">@{{ number_format(v.gia_ve) }}</td>
+                                                    </tr>
+                                                </template>
                                             </tbody>
                                         </table>
                                 </section>
@@ -92,5 +85,56 @@
 </section>
 @endsection
 @section('js')
+<script>
+    new Vue({
+            el: '#app',
+            data: {
+                list_bill   : [],
+                list_detail : []
+            },
+            created() {
+                this.loadData();
+            },
+            methods: {
+                loadData(){
+                    axios
+                        .post('{{ Route("dataBill") }}')
+                        .then((res) => {
+                            this.list_bill = res.data.data;
+                            console.log(this.list_bill);
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0], 'Error');
+                            });
+                        });
+                },
 
+                loadChiTiet(ma_don_hang){
+                    var payload = {
+                        'ma_don_hang' : ma_don_hang,
+                    };
+                    axios
+                        .post('{{ Route("dataBillDetail") }}', payload)
+                        .then((res) => {
+                            this.list_detail = res.data.data;
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0], 'Error');
+                            });
+                        });
+                },
+
+                date_format(now) {
+                    return moment(now).format('DD/MM/yyyy HH:mm');
+                },
+
+                number_format(number) {
+                    return new Intl.NumberFormat('vi', { style: 'currency', currency: 'VND' }).format(number)
+                }
+
+            },
+        })
+</script>
 @endsection

@@ -34,6 +34,8 @@ Route::post('/reset-password', [APIDanhSachTaiKhoanController::class, 'resetPass
 Route::group(['prefix'  =>  '/client', 'middleware' => 'APIClient'], function() {
     Route::post('/lich-chieu/info', [APILichChieuController::class, 'infoLichClient'])->name('infoLichClient');
     Route::post('/dat-ve-xem-phim', [APIVeXemPhimController::class, 'datVeXemPhim'])->name('datVeXemPhim');
+    Route::post('/get-list-bill', [APIVeXemPhimController::class, 'getListBill'])->name('dataBill');
+    Route::post('/get-list-bill-detail', [APIVeXemPhimController::class, 'getListBillDetail'])->name('dataBillDetail');
 });
 
 Route::group(['prefix'  =>  '/admin', 'middleware' => 'APIAdmin'], function() {

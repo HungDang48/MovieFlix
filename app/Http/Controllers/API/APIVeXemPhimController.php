@@ -64,4 +64,34 @@ class APIVeXemPhimController extends Controller
             ]);
         }
     }
+
+    public function getListBill()
+    {
+        $user = Auth::guard('client')->user();
+        $listBill = DonHang::join('danh_sach_tai_khoans', 'danh_sach_tai_khoans.id', 'don_hangs.id_khach_hang')
+                            ->where('don_hangs.id_khach_hang', $user->id)
+                            ->select('don_hangs.*','danh_sach_tai_khoans.ho_va_ten')
+                            ->get();
+
+        return response()->json([
+            'status'    => 1,
+            'data'      => $listBill,
+        ]);
+    }
+
+    public function getListBillDetail(Request $request)
+    {
+        $ma_don_hang = $request->ma_don_hang;
+
+        $data = VeXemPhim::join('don_hangs', 've_xem_phims.id_don_hang', 'don_hangs.ma_don_hang')
+                         ->join('lich_chieus', 've_xem_phims.id_lich_chieu', 'lich_chieus.id')
+                         ->join('phims', 'lich_chieus.id_phim', 'phims.id')
+                         ->where('ve_xem_phims.id_don_hang', $ma_don_hang)
+                         ->select('ve_xem_phims.*', 'phims.ten_phim')
+                         ->get();
+        return response()->json([
+            'status'    => 1,
+            'data'      => $data,
+        ]);
+    }
 }
