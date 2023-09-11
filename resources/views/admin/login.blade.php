@@ -64,7 +64,7 @@
                             if(res.data.status) {
                                 toastr.success(res.data.message, 'Success');
                                 setTimeout(() => {
-                                    window.location.href = "/admin/lich-chieu";
+                                    window.location.href = "/admin/lich-chieu/sap-chieu";
                                 }, 500);
                             } else {
                                 toastr.error(res.data.message, 'Error');

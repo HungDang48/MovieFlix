@@ -6,14 +6,14 @@
                 <div class="card-header">
                     <div class="row mt-1">
                         <div class="col-10">
-                            <h4>Danh Sách Các Phim</h4>
+                            <h4>Danh Sách Các Phim Đã Chiếu</h4>
                         </div>
-                        <div class="col-2 text-end">
+                        {{-- <div class="col-2 text-end">
                             <button type="button" data-bs-toggle="modal" data-bs-target="#themMoiModal"
                                 class="btn btn-primary">Thêm Mới</button>
-                        </div>
+                        </div> --}}
                     </div>
-                    <div class="modal fade" id="themMoiModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    {{-- <div class="modal fade" id="themMoiModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -64,7 +64,6 @@
                                         <div class="col-6">
                                             <label class="form-label">Tình Trạng</label>
                                             <select v-model="add.trang_thai" class="form-control">
-                                                {{-- <option value="1">Hiển Thị</option> --}}
                                                 <option value="0">Tạm Tắt</option>
                                             </select>
                                         </div>
@@ -76,7 +75,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -284,7 +283,7 @@
                     },
                     loadData() {
                         axios
-                            .post('{{ Route('lichChieuDataSapChieu') }}')
+                            .post('{{ Route('lichChieuDataDaChieu') }}')
                             .then((res) => {
                                 this.list = res.data.data;
                                 this.list_phim = res.data.ds_phim;

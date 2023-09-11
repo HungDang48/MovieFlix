@@ -104,6 +104,8 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'APIAdmin'], function() {
         Route::post('/update', [APILichChieuController::class, 'update'])->name('lichChieuUpdate');
         Route::post('/delete', [APILichChieuController::class, 'destroy'])->name('lichChieuDelete');
         Route::post('/data', [APILichChieuController::class, 'data'])->name('lichChieuData');
+        Route::post('/data-sap-chieu', [APILichChieuController::class, 'dataSapChieu'])->name('lichChieuDataSapChieu');
+        Route::post('/data-da-chieu', [APILichChieuController::class, 'dataDaChieu'])->name('lichChieuDataDaChieu');
         Route::post('/status', [APILichChieuController::class, 'status'])->name('lichChieuStatus');
         Route::post('/info', [APILichChieuController::class, 'info'])->name('lichChieuInfo');
     });

@@ -62,7 +62,8 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'WebAdmin'], function() {
         Route::get('/', [DonViController::class, 'index']);
     });
     Route::group(['prefix'  =>  '/lich-chieu'], function() {
-        Route::get('/', [LichChieuController::class, 'index']);
+        Route::get('/sap-chieu', [LichChieuController::class, 'index']);
+        Route::get('/da-chieu', [LichChieuController::class, 'indexDaChieu']);
     });
     Route::group(['prefix'  =>  '/quyen'], function() {
         Route::get('/', [QuyenController::class, 'indexQuyen']);

@@ -58,11 +58,20 @@
                 </div>
                 <div class="menu-title">Dịch Vụ</div>
             </a>
-            <a class="nav-link" href="/admin/lich-chieu">
-                <div class="parent-icon"><i class="fa-regular fa-calendar-days"></i>
-                </div>
-                <div class="menu-title">Lịch Chiếu</div>
-            </a>
+            <li class="nav-item dropdown">
+                <a href="javascript:;" class="nav-link dropdown-toggle dropdown-toggle-nocaret"
+                    data-bs-toggle="dropdown">
+                    <div class="parent-icon"><i class="fa-regular fa-calendar-days"></i>
+                    </div>
+                    <div class="menu-title">Lịch Chiếu</div>
+                </a>
+                <ul class="dropdown-menu">
+                    <li> <a class="dropdown-item" href="/admin/lich-chieu/sap-chieu"><i class="bx bx-right-arrow-alt"></i>Lịch Sắp Chiếu</a>
+                    </li>
+                    <li> <a class="dropdown-item" href="/admin/lich-chieu/da-chieu"><i class="bx bx-right-arrow-alt"></i>Lịch Đã Chiếu</a>
+                    </li>
+                </ul>
+            </li>
             @php
                 $admin = Auth::guard('admin')->user();
                 $id_chuc_nang = 44;
