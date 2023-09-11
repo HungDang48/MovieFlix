@@ -11,4 +11,9 @@ class LichChieuController extends Controller
     {
         return view('admin.page.lich_chieu.index');
     }
+
+    public function indexDaChieu()
+    {
+        return view('admin.page.lich_chieu.daChieu');
+    }
 }

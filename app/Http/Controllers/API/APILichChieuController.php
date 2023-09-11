@@ -21,6 +21,48 @@ use Illuminate\Support\Str;
 
 class APILichChieuController extends Controller
 {
+    public function dataDaChieu(Request $request)
+    {
+        $today          = Carbon::today();
+        $data       =   LichChieu::join('phims', 'phims.id', 'lich_chieus.id_phim')
+                                 ->join('phong_chieus', 'lich_chieus.id_phong', 'phong_chieus.id')
+                                 ->whereDate('lich_chieus.gio_bat_dau', '<', $today)
+                                 ->select('lich_chieus.*', 'phims.ten_phim', 'phong_chieus.ten_phong', 'phong_chieus.hang_ngang', 'phong_chieus.hang_doc')
+                                 ->get();
+        $ds_phim    =   Phim::where('hien_thi', 1)
+                            ->where('ket_thuc', '>', $today)
+                            ->get();
+
+        $ds_phong   =   PhongChieu::where('tinh_trang', 1)
+                                ->get();
+        return response()->json([
+            'data'      =>  $data,
+            'ds_phim'   =>  $ds_phim,
+            'ds_phong'  =>  $ds_phong,
+        ]);
+    }
+
+    public function dataSapChieu(Request $request)
+    {
+        $today          = Carbon::today();
+        $data       =   LichChieu::join('phims', 'phims.id', 'lich_chieus.id_phim')
+                                 ->join('phong_chieus', 'lich_chieus.id_phong', 'phong_chieus.id')
+                                 ->whereDate('lich_chieus.gio_bat_dau', '>=', $today)
+                                 ->select('lich_chieus.*', 'phims.ten_phim', 'phong_chieus.ten_phong', 'phong_chieus.hang_ngang', 'phong_chieus.hang_doc')
+                                 ->get();
+        $ds_phim    =   Phim::where('hien_thi', 1)
+                            ->where('ket_thuc', '>', $today)
+                            ->get();
+
+        $ds_phong   =   PhongChieu::where('tinh_trang', 1)
+                                ->get();
+        return response()->json([
+            'data'      =>  $data,
+            'ds_phim'   =>  $ds_phim,
+            'ds_phong'  =>  $ds_phong,
+        ]);
+    }
+
     public function data(Request $request)
     {
         $id_chuc_nang   =   41;

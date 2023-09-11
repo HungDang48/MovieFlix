@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\APIAdminComtroller;
 use App\Http\Controllers\API\APIDichVuController;
 use App\Http\Controllers\API\APIDanhSachTaiKhoanController;
+use App\Http\Controllers\API\APIDonHangController;
 use App\Http\Controllers\API\APIDonViController;
 use App\Http\Controllers\API\APIGheChieuController;
 use App\Http\Controllers\API\APIHomepageController;
@@ -104,6 +105,8 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'APIAdmin'], function() {
         Route::post('/update', [APILichChieuController::class, 'update'])->name('lichChieuUpdate');
         Route::post('/delete', [APILichChieuController::class, 'destroy'])->name('lichChieuDelete');
         Route::post('/data', [APILichChieuController::class, 'data'])->name('lichChieuData');
+        Route::post('/data-sap-chieu', [APILichChieuController::class, 'dataSapChieu'])->name('lichChieuDataSapChieu');
+        Route::post('/data-da-chieu', [APILichChieuController::class, 'dataDaChieu'])->name('lichChieuDataDaChieu');
         Route::post('/status', [APILichChieuController::class, 'status'])->name('lichChieuStatus');
         Route::post('/info', [APILichChieuController::class, 'info'])->name('lichChieuInfo');
     });
@@ -125,5 +128,10 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'APIAdmin'], function() {
         Route::post('/bt-3', [APIThongKeController::class, 'bt3'])->name('bt3');
         Route::post('/bt-4', [APIThongKeController::class, 'bt4'])->name('bt4');
         Route::post('/bt-5', [APIThongKeController::class, 'bt5'])->name('bt5');
+    });
+
+    Route::group(['prefix'  =>  '/don-hang'], function() {
+        Route::post('/data-don-hang', [APIDonHangController::class, 'dataDonHang'])->name('dataDonHang');
+        Route::post('/data-chi-tiet-don-hang', [APIDonHangController::class, 'dataChiTietDonHang'])->name('dataChiTietDonHang');
     });
 });
