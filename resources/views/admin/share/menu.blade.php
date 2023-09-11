@@ -87,6 +87,11 @@
                     <div class="menu-title">Phân Quyền</div>
                 </a>
             @endif
+            <a class="nav-link" href="/admin/don-hang">
+                <div class="parent-icon"><i class="fa-regular fa-newspaper"></i>
+                </div>
+                <div class="menu-title">Đơn Hàng</div>
+            </a>
             <li class="nav-item dropdown">
                 <a href="javascript:;" class="nav-link dropdown-toggle dropdown-toggle-nocaret"
                     data-bs-toggle="dropdown">

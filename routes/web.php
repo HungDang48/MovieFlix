@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DanhSachTaiKhoanController;
 use App\Http\Controllers\DichVuController;
+use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\DonViController;
 use App\Http\Controllers\GheChieuController;
 use App\Http\Controllers\LichChieuController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\QuyenController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ThongKeController;
 use App\Http\Controllers\TrangChuController;
+use App\Models\DonHang;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Event\Code\TestCollection;
 
@@ -67,6 +69,9 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'WebAdmin'], function() {
     });
     Route::group(['prefix'  =>  '/quyen'], function() {
         Route::get('/', [QuyenController::class, 'indexQuyen']);
+    });
+    Route::group(['prefix'  =>  '/don-hang'], function() {
+        Route::get('/', [DonHangController::class, 'index']);
     });
     Route::group(['prefix'  =>  '/thong-ke'], function() {
         Route::get('/bt-1', [ThongKeController::class, 'bt1']);
