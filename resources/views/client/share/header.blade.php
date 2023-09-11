@@ -38,11 +38,11 @@
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
-                                    <li class="active menu-item-has-children"><a href="#">Home</a>
-                                        <ul class="submenu">
-                                            <li><a href="index.html">Home One</a></li>
-                                            <li class="active"><a href="index-2.html">Home Two</a></li>
-                                        </ul>
+                                    <li class="active menu-item-has-children">
+                                        <a href="/">Home</a>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="/list-bill">Lịch Sử Đặt Vé</a>
                                     </li>
                                     <li class="menu-item-has-children"><a href="#">Movie</a>
                                         <ul class="submenu">
@@ -50,7 +50,6 @@
                                             <li><a href="movie-details.html">Movie Details</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="tv-show.html">tv show</a></li>
                                     <li><a href="pricing.html">Pricing</a></li>
                                     <li class="menu-item-has-children"><a href="#">blog</a>
                                         <ul class="submenu">
@@ -82,7 +81,16 @@
                                             </select>
                                         </form>
                                     </li>
-                                    <li class="header-btn"><a href="/login" class="btn">Sign In</a></li>
+                                    <li class="header-btn">
+                                        @php
+                                            $client = Auth::guard('client')->check();
+                                        @endphp
+                                        @if ($client)
+                                            <a href="/logout" class="btn">Log Out</a>
+                                        @else
+                                            <a href="/login" class="btn">Sing In</a>
+                                        @endif
+                                    </li>
                                 </ul>
                             </div>
                         </nav>

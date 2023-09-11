@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
@@ -32,5 +33,11 @@ class CustomerController extends Controller
         return view('client.page.list_bill');
     }
 
+    public function logout()
+    {
+        Auth::guard('client')->logout();
+        toastr()->success('Đã đăng xuất tài khoản thành công!');
+        return redirect('/login');
+    }
 
 }

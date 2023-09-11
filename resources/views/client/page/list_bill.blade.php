@@ -28,8 +28,8 @@
                                         <td class="align-middle text-nowrap text-center">@{{ date_format(v.created_at) }}</td>
                                         <td class="align-middle text-nowrap text-center">@{{ v.tong_tien }}</td>
                                         <td class="align-middle text-nowrap text-center">
-                                            <button v-if="v.is_thanh_toan == 1" class="btn">Đã thanh toán</button>
-                                            <button v-else class="btn">Chưa thanh toán</button>
+                                            <button style="width: 200px" v-if="v.is_thanh_toan == 1" class="btn">Đã thanh toán</button>
+                                            <button style="width: 200px" v-else class="btn">Chưa thanh toán</button>
                                         </td>
                                         <td class="align-middle text-nowrap text-center">
                                             <button class="btn" data-toggle="modal" data-target="#chitietModal" v-on:click="loadChiTiet(v.ma_don_hang)">Chi Tiết</button>
