@@ -16,6 +16,11 @@ use App\Http\Controllers\TrangChuController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Event\Code\TestCollection;
 
+Route::get('/mail-1', [TestController::class, 'mail_1']);
+Route::get('/mail-2', [TestController::class, 'mail_2']);
+Route::get('/mail-3', [TestController::class, 'mail_3']);
+
+
 Route::get('/create', [TestController::class, 'create']);
 Route::get('/read', [TestController::class, 'read']);
 

@@ -10,6 +10,22 @@ use Illuminate\Support\Facades\Session;
 
 class TestController extends Controller
 {
+    public function mail_1()
+    {
+        return view('mail.kich_hoat');
+    }
+
+    public function mail_2()
+    {
+        return view('mail.quen_mat_khau');
+    }
+
+    public function mail_3()
+    {
+        return view('mail.dat_ve');
+    }
+
+
     public function demo()
     {
         return view('admin.page.phan_quyen.index');

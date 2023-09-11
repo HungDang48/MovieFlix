@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Mail\sendMail;
 use App\Models\DonHang;
 use App\Models\DonVi;
 use App\Models\VeXemPhim;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class APIVeXemPhimController extends Controller
@@ -45,6 +47,15 @@ class APIVeXemPhimController extends Controller
 
                 $donHang->tong_tien = $tong_tien;
                 $donHang->save();
+
+                // $ds_ve_xem_phim         =  VeXemPhim::where('ma_don_hang', $donHang->ma_don_hang)->get();
+
+                $xxx['ho_va_ten']       =  $nguoi_login->ho_va_ten;
+                // $xxx['don_dat_hang']	=  $ds_ve_xem_phim;
+                $xxx['tong_tien']       =  $tong_tien;
+                $xxx['noi_dung_ck']		=  'TTVXP_' . $donHang->ma_don_hang;
+
+                Mail::to($nguoi_login->email)->send(new sendMail('Thông Tin Đặt Vé Xem Phim', 'mail.dat_ve', $xxx));
 
                 DB::commit();
 
