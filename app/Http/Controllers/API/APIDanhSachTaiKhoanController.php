@@ -5,11 +5,13 @@ namespace App\Http\Controllers\API;
 use App\Models\DanhSachTaiKhoan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\sendMail;
 use App\Models\QuyenChucNang;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -23,6 +25,11 @@ class APIDanhSachTaiKhoanController extends Controller
         if($taiKhoan) {
             $taiKhoan->ma_doi_mat_khau  =   Str::uuid();
             $taiKhoan->save();
+
+            $data['ho_va_ten']          =   $taiKhoan->ho_va_ten;
+			$data['link']               =   'http://127.0.0.1:8000/doi-mat-khau/' . $taiKhoan->ma_doi_mat_khau;
+
+            Mail::to($taiKhoan->email)->send(new sendMail('Khôi Phục Mật Khẩu', 'mail.quen_mat_khau', $data));
 
             return response()->json([
                 'status'    => 1,
@@ -331,6 +338,11 @@ class APIDanhSachTaiKhoanController extends Controller
         $data['password']       = bcrypt($request->password);  // Gốc 123456 -> Lưu: e10adc3949ba59abbe56e057f20f883e
         $data['thay_the_id']    = Str::uuid();
         DanhSachTaiKhoan::create($data);
+
+        $xxx['ho_va_ten']       =   $request->ho_va_ten;
+        $xxx['link']            =   'http://127.0.0.1:8000/kich-hoat-tai-khoan/' . $data['thay_the_id'];
+
+        Mail::to($request->email)->send(new sendMail('Kích Hoạt Tài Khoản', 'mail.kich_hoat', $xxx));
 
         return response()->json([
             'status'    => 1,
