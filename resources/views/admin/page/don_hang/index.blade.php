@@ -58,7 +58,7 @@
                                                     <th class="text-center">@{{key + 1}}</th>
                                                     <td class="text-center">@{{value.ten_phim}}</td>
                                                     <td class="text-center">@{{value.so_ghe}}</td>
-                                                    <td class="text-center">@{{date_format(value.gia_ve)}}</td>
+                                                    <td class="text-center">@{{number_format(value.gia_ve)}}</td>
                                                 </tr>
                                             </template>
                                         </tbody>
