@@ -31,4 +31,6 @@ class CustomerController extends Controller
     {
         return view('client.page.list_bill');
     }
+
+
 }

@@ -36,7 +36,6 @@ Route::get('/change-password', [CustomerController::class, 'viewChangePassword']
 
 Route::get('/list-bill', [CustomerController::class, 'viewListBill']);
 
-
 Route::group(['prefix'  =>  '/admin', 'middleware' => 'WebAdmin'], function() {
     Route::get('/', [AdminController::class, 'index']);
     // Quản Lý Phim
