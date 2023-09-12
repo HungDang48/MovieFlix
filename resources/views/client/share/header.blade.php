@@ -41,23 +41,17 @@
                                     <li class="active menu-item-has-children">
                                         <a href="/">Home</a>
                                     </li>
+                                    <li class="menu-item-has-children"><a href="#">Phim</a>
+                                        <ul class="submenu">
+                                            <li><a href="/phim-dang-chieu">Phim Đang Khởi Chiếu</a></li>
+                                            <li><a href="/phim-sap-chieu">Phim Sắp Khởi Chiếu</a></li>
+                                        </ul>
+                                    </li>
                                     <li class="menu-item-has-children">
                                         <a href="/list-bill">Lịch Sử Đặt Vé</a>
                                     </li>
-                                    <li class="menu-item-has-children"><a href="#">Movie</a>
-                                        <ul class="submenu">
-                                            <li><a href="movie.html">Movie</a></li>
-                                            <li><a href="movie-details.html">Movie Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="pricing.html">Pricing</a></li>
-                                    <li class="menu-item-has-children"><a href="#">blog</a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">Our Blog</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">contacts</a></li>
+                                    <li><a href="">Bài Viết</a>
+                                    <li><a href="">Liên Hệ</a></li>
                                 </ul>
                             </div>
                             <div class="header-action d-none d-md-block">
@@ -86,9 +80,9 @@
                                             $client = Auth::guard('client')->check();
                                         @endphp
                                         @if ($client)
-                                            <a href="/logout" class="btn">Log Out</a>
+                                            <a href="/logout" class="btn">Đăng xuất</a>
                                         @else
-                                            <a href="/login" class="btn">Sing In</a>
+                                            <a href="/login" class="btn">Đăng Nhập</a>
                                         @endif
                                     </li>
                                 </ul>

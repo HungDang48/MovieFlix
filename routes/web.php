@@ -38,7 +38,8 @@ Route::get('/admin/login' , [AdminController::class , 'viewLogin']);
 Route::get('/film-detail/{id}', [TrangChuController::class, 'detailPhim']);
 Route::get('/forgot-password', [CustomerController::class, 'viewForgotPassword']);
 Route::get('/change-password', [CustomerController::class, 'viewChangePassword']);
-
+Route::get('/phim-dang-chieu', [TrangChuController::class, 'viewPhimDangChieu']);
+Route::get('/phim-sap-chieu', [TrangChuController::class, 'viewPhimSapChieu']);
 
 Route::get('/list-bill', [CustomerController::class, 'viewListBill'])->middleware('WebClient');
 
