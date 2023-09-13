@@ -47,11 +47,7 @@ class TrangChuController extends Controller
         $phim = Phim::where('hien_thi', 1)
                     ->whereDate('bat_dau', '>', $today)
                     ->get();
-        $phimDangChieu  = Phim::where('hien_thi', 1)
-                    ->whereDate('bat_dau', '<=', $today)
-                    ->whereDate('ket_thuc', '>=', $today)
-                    ->get();
-        return view('client.page.phim_sap_chieu' , compact('phim', 'phimDangChieu'));
+        return view('client.page.phim_sap_chieu' , compact('phim'));
     }
 
     public function viewBaiViet()

@@ -30,9 +30,6 @@
 
         <!-- main-area -->
         <main>
-
-            @include('client.share.slide')
-
             <!-- movie-area -->
             <section class="movie-area movie-bg" data-background="/assets_client/img/bg/movie_bg.jpg">
                 <div class="container">
