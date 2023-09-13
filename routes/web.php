@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BaiVietController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DanhSachTaiKhoanController;
 use App\Http\Controllers\DichVuController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\DonViController;
 use App\Http\Controllers\GheChieuController;
 use App\Http\Controllers\LichChieuController;
+use App\Http\Controllers\LienHeController;
 use App\Http\Controllers\PhimController;
 use App\Http\Controllers\PhongChieuController;
 use App\Http\Controllers\QuyenController;
@@ -40,7 +42,8 @@ Route::get('/forgot-password', [CustomerController::class, 'viewForgotPassword']
 Route::get('/change-password', [CustomerController::class, 'viewChangePassword']);
 Route::get('/phim-dang-chieu', [TrangChuController::class, 'viewPhimDangChieu']);
 Route::get('/phim-sap-chieu', [TrangChuController::class, 'viewPhimSapChieu']);
-
+Route::get('/bai-viet', [TrangChuController::class, 'viewBaiViet']);
+Route::get('/lien-he', [TrangChuController::class, 'viewLienHe']);
 Route::get('/list-bill', [CustomerController::class, 'viewListBill'])->middleware('WebClient');
 
 Route::group(['prefix'  =>  '/admin', 'middleware' => 'WebAdmin'], function() {
@@ -84,4 +87,5 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'WebAdmin'], function() {
         Route::get('/bt-4', [ThongKeController::class, 'bt4']);
         Route::get('/bt-5', [ThongKeController::class, 'bt5']);
     });
+
 });

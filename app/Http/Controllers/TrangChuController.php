@@ -53,4 +53,14 @@ class TrangChuController extends Controller
                     ->get();
         return view('client.page.phim_sap_chieu' , compact('phim', 'phimDangChieu'));
     }
+
+    public function viewBaiViet()
+    {
+        return view('client.page.bai_viet');
+    }
+
+    public function viewLienHe()
+    {
+        return view('client.page.lien_he');
+    }
 }

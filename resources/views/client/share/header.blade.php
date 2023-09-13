@@ -50,8 +50,8 @@
                                     <li class="menu-item-has-children">
                                         <a href="/list-bill">Lịch Sử Đặt Vé</a>
                                     </li>
-                                    <li><a href="">Bài Viết</a>
-                                    <li><a href="">Liên Hệ</a></li>
+                                    <li><a href="/bai-viet">Bài Viết</a>
+                                    <li><a href="/lien-he">Liên Hệ</a></li>
                                 </ul>
                             </div>
                             <div class="header-action d-none d-md-block">
