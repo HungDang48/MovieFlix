@@ -16,7 +16,7 @@ class UpdatePhimRequest extends FormRequest
         return [
             'id'                => 'required|exists:phims,id',
             'ten_phim'          => 'required|',
-            'slug_phim'         => 'required|required|unique:phims,slug_ten_phim,'. $this->id,
+            'slug_phim'         => 'required|required|unique:phims,slug_phim,'. $this->id,
             'hinh_anh'          => 'required|',
             'dao_dien'          => 'required|',
             'dien_vien'         => 'required|',

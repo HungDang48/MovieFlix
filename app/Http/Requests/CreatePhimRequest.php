@@ -15,7 +15,7 @@ class CreatePhimRequest extends FormRequest
     {
         return [
             'ten_phim'          => 'required|',
-            'slug_phim'         => 'required|required|unique:phims,slug_ten_phim',
+            'slug_phim'         => 'required|required|unique:phims,slug_phim',
             'hinh_anh'          => 'required|',
             'dao_dien'          => 'required|',
             'dien_vien'         => 'required|',
