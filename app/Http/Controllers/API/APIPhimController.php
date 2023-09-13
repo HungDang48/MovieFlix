@@ -5,6 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Models\Phim;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreatePhimRequest;
+use App\Http\Requests\DeletePhimRequest;
+use App\Http\Requests\UpdatePhimRequest;
 use App\Models\QuyenChucNang;
 use Carbon\Carbon;
 use Exception;
@@ -14,7 +17,7 @@ use Illuminate\Support\Facades\Log;
 
 class APIPhimController extends Controller
 {
-    public function store(Request $request)
+    public function store(CreatePhimRequest $request)
     {
         $id_chuc_nang   =   6;
         $user_login     =   Auth::guard('admin')->user();
@@ -47,7 +50,7 @@ class APIPhimController extends Controller
 
     }
 
-    public function update(Request $request)
+    public function update(UpdatePhimRequest $request)
     {
         $id_chuc_nang   =   11;
         $user_login     =   Auth::guard('admin')->user();
@@ -110,7 +113,7 @@ class APIPhimController extends Controller
         ]);
     }
 
-    public function status(Request $request)
+    public function status(DeletePhimRequest $request)
     {
         $id_chuc_nang   =   8;
         $user_login     =   Auth::guard('admin')->user();
@@ -192,7 +195,7 @@ class APIPhimController extends Controller
 
     }
 
-    public function destroy(Request $request)
+    public function destroy(DeletePhimRequest $request)
     {
         $id_chuc_nang   =   10;
         $user_login     =   Auth::guard('admin')->user();

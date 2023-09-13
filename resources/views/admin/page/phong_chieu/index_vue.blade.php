@@ -204,7 +204,13 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
+
                 },
                 loadData() {
                     axios
@@ -227,6 +233,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 aDel() {
@@ -242,6 +253,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 aUpdate() {
@@ -256,7 +272,12 @@
                             toastr.error(res.data.message, 'Error');
                             $('#editModal').modal('hide');
                         }
-                    });
+                    })
+                    .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
+                        });
                 },
                 status(id) {
                     var payload     =   {
@@ -271,6 +292,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
             },

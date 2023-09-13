@@ -4,6 +4,9 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateGheChieuRequest;
+use App\Http\Requests\DeleteGheChieuRequest;
+use App\Http\Requests\UpdateGheChieuRequest;
 use App\Models\GheChieu;
 use App\Models\PhongChieu;
 use App\Models\QuyenChucNang;
@@ -14,7 +17,7 @@ use Illuminate\Support\Facades\Log;
 
 class APIGheChieuController extends Controller
 {
-    public function store(Request $request)
+    public function store(CreateGheChieuRequest $request)
     {
         $id_chuc_nang   =   25;
         $user_login     =   Auth::guard('admin')->user();
@@ -95,7 +98,7 @@ class APIGheChieuController extends Controller
         }
     }
 
-    public function status(Request $request)
+    public function status(DeleteGheChieuRequest $request)
     {
         $id_chuc_nang   =   27;
         $user_login     =   Auth::guard('admin')->user();
@@ -137,7 +140,7 @@ class APIGheChieuController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(UpdateGheChieuRequest $request)
     {
         $id_chuc_nang   =   28;
         $user_login     =   Auth::guard('admin')->user();

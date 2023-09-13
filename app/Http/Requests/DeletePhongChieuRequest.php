@@ -4,9 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteAdminRequest extends FormRequest
-{
-    public function authorize()
+class DeletePhongChieuRequest extends FormRequest
+{public function authorize(): bool
     {
         return true;
     }
@@ -14,14 +13,14 @@ class DeleteAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|exists:admins,id'
+            'id' => 'required|exists:phong_chieus,id'
         ];
     }
 
     public function messages()
     {
         return [
-            'id.*' => 'Admin này không tồn tại!'
+            'id.*' => 'Phòng chiếu này không tồn tại!'
         ];
     }
 }

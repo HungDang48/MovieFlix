@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateAdminRequest;
+use App\Http\Requests\DeleteAdminRequest;
+use App\Http\Requests\UpdateAdminRequest;
 use App\Models\Admin;
 use App\Models\QuyenChucNang;
 use Exception;
@@ -40,7 +43,7 @@ class APIAdminComtroller extends Controller
         }
     }
 
-	public function store(Request $request)
+	public function store(CreateAdminRequest $request)
     {
         $id_chuc_nang   =   1;
         $user_login     =   Auth::guard('admin')->user();
@@ -73,7 +76,7 @@ class APIAdminComtroller extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(UpdateAdminRequest $request)
     {
         $id_chuc_nang   =   4;
         $user_login     =   Auth::guard('admin')->user();
@@ -137,7 +140,7 @@ class APIAdminComtroller extends Controller
         ]);
     }
 
-    public function destroy(Request $request)
+    public function destroy(DeleteAdminRequest $request)
     {
         $id_chuc_nang   =   5;
         $user_login     =   Auth::guard('admin')->user();

@@ -17,7 +17,6 @@ class UpdateAdminRequest extends FormRequest
             'id'                  => 'required|exists:admins,id',
             'username'            => 'required|min:4|max:50'  ,
             'email'               => 'required|email|unique:admins,email,'. $this->id,
-            'password'            => 'required|min:4|max:30'  ,
             'ho_va_ten'           => 'required|min:4|max:100',
             'id_quyen'            => 'required|'  ,
             'ngay_sinh'           => 'required|date',
