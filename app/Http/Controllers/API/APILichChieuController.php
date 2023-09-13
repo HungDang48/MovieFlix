@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateLichChieuRequest;
+use App\Http\Requests\DeleteLichChieuRequest;
+use App\Http\Requests\UpdateLichChieuRequest;
 use App\Models\GheChieu;
 use App\Models\LichChieu;
 use App\Models\Phim;
@@ -99,7 +102,7 @@ class APILichChieuController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(CreateLichChieuRequest $request)
     {
         $id_chuc_nang   =   38;
         $user_login     =   Auth::guard('admin')->user();
@@ -131,7 +134,7 @@ class APILichChieuController extends Controller
         }
     }
 
-    public function status(Request $request)
+    public function status(DeleteLichChieuRequest $request)
     {
         $id_chuc_nang   =   42;
         $user_login     =   Auth::guard('admin')->user();
@@ -237,7 +240,7 @@ class APILichChieuController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(UpdateLichChieuRequest $request)
     {
         $id_chuc_nang   =   39;
         $user_login     =   Auth::guard('admin')->user();
@@ -276,7 +279,7 @@ class APILichChieuController extends Controller
         }
     }
 
-    public function destroy(Request $request)
+    public function destroy(DeleteLichChieuRequest $request)
     {
         $id_chuc_nang   =   40;
         $user_login     =   Auth::guard('admin')->user();

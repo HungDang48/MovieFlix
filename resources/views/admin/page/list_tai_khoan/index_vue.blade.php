@@ -165,15 +165,10 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
-                                            <div class="col">
+                                            <div class="col-12">
                                                 <label class="mb-2">Email</label>
                                                 <input v-model="tt_cap_nhat.email" type="email" class="form-control mb-2"
                                                     placeholder="Nhập vào Email">
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">Mật Khẩu</label>
-                                                <input v-model="tt_cap_nhat.password" type="text" class="form-control mb-2"
-                                                    placeholder="Nhập vào mật khẩu">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -246,7 +241,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Đóng</button>
-                                        <button v-on:click="capNhatAdmin()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Cập Nhật</button>
+                                        <button v-on:click="capNhatTaiKhoan()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Cập Nhật</button>
                                     </div>
                                 </div>
                             </div>
@@ -286,6 +281,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 loadData() {
@@ -309,6 +309,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 capNhatTaiKhoan() {
@@ -324,6 +329,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 doiTrangThaiBlock(payload) {
@@ -336,6 +346,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 doiTrangThai(payload) {
@@ -348,6 +363,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
             },

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateDonViRequest;
+use App\Http\Requests\DeleteDonViRequest;
+use App\Http\Requests\UpdateDonViRequest;
 use App\Models\DonVi;
 use App\Models\QuyenChucNang;
 use Exception;
@@ -13,7 +16,7 @@ use Illuminate\Support\Facades\Log;
 
 class APIDonViController extends Controller
 {
-    public function store(Request $request)
+    public function store(CreateDonViRequest $request)
     {
         $id_chuc_nang   =   34;
         $user_login     =   Auth::guard('admin')->user();
@@ -46,7 +49,7 @@ class APIDonViController extends Controller
 
     }
 
-    public function update(Request $request)
+    public function update(UpdateDonViRequest $request)
     {
         $id_chuc_nang   =   37;
         $user_login     =   Auth::guard('admin')->user();
@@ -108,7 +111,7 @@ class APIDonViController extends Controller
         ]);
     }
 
-    public function destroy(Request $request)
+    public function destroy(DeleteDonViRequest $request)
     {
         $id_chuc_nang   =   36;
         $user_login     =   Auth::guard('admin')->user();

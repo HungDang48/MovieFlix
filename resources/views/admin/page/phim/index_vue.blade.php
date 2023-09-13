@@ -8,7 +8,7 @@
         <div class="ms-auto">
             <button data-bs-toggle="modal" data-bs-target="#themPhimModal" type="button" class="btn btn-primary">Thêm Mới Phim</button>
             <div class="modal fade" id="themPhimModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-fullscreen">
+                <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Thêm Mới Phim</h5>
@@ -170,7 +170,7 @@
                             </div>
                         </div>
                         <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-fullscreen">
+                            <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Cập Nhật Phim</h5>
@@ -290,6 +290,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 loadData() {
@@ -313,6 +318,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 capNhatPhim() {
@@ -327,6 +337,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 doiTrangThai(payload) {
@@ -339,6 +354,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 editPhim(value) {

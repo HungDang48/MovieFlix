@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateQuyenRequest;
+use App\Http\Requests\DeleteQuyenRequest;
+use App\Http\Requests\UpdateQuyenRequest;
 use App\Models\ChucNang;
 use App\Models\PhanQuyen;
 use App\Models\QuyenChucNang;
@@ -39,7 +42,7 @@ class APIQuyenController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(CreateQuyenRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -57,7 +60,7 @@ class APIQuyenController extends Controller
         }
     }
 
-    public function destroy(Request $request)
+    public function destroy(DeleteQuyenRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -84,7 +87,7 @@ class APIQuyenController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(UpdateQuyenRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -111,7 +114,7 @@ class APIQuyenController extends Controller
         }
     }
 
-    public function status(Request $request)
+    public function status(DeleteQuyenRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -139,6 +142,12 @@ class APIQuyenController extends Controller
 
     public function phanQuyen(Request $request)
     {
+        if($request->quyen == [] || $request->chuc_nang == []){
+            return response()->json([
+                'status'    => 0,
+                'message'   => 'Cần chọn quyền để cấp quyền!',
+            ]);
+        }
         DB::beginTransaction();
         try {
             QuyenChucNang::where('id_quyen', $request->quyen['id'])->delete();

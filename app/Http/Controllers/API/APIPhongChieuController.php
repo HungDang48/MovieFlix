@@ -5,6 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Models\PhongChieu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreatePhongChieuRequest;
+use App\Http\Requests\DeletePhongChieuRequest;
+use App\Http\Requests\UpdatePhongChieuRequest;
 use App\Models\QuyenChucNang;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +16,7 @@ use Illuminate\Support\Facades\Log;
 
 class APIPhongChieuController extends Controller
 {
-    public function store(Request $request)
+    public function store(CreatePhongChieuRequest $request)
     {
         $id_chuc_nang   =   12;
         $user_login     =   Auth::guard('admin')->user();
@@ -68,7 +71,7 @@ class APIPhongChieuController extends Controller
         ]);
     }
 
-    public function status(Request $request)
+    public function status(DeletePhongChieuRequest $request)
     {
         $id_chuc_nang   =   14;
         $user_login     =   Auth::guard('admin')->user();
@@ -149,7 +152,7 @@ class APIPhongChieuController extends Controller
 
     }
 
-    public function destroy(Request $request)
+    public function destroy(DeletePhongChieuRequest $request)
     {
         $id_chuc_nang   =   16;
         $user_login     =   Auth::guard('admin')->user();
@@ -187,7 +190,7 @@ class APIPhongChieuController extends Controller
         }
 
     }
-    public function update(Request $request)
+    public function update(UpdatePhongChieuRequest $request)
     {
         $id_chuc_nang   =   17;
         $user_login     =   Auth::guard('admin')->user();

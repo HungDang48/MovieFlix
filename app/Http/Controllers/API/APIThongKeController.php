@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ThongKeRequest;
 use App\Models\DanhSachTaiKhoan;
 use App\Models\LichChieu;
 use App\Models\Phim;
@@ -38,7 +39,7 @@ class APIThongKeController extends Controller
         ]);
     }
 
-    public function bt2(Request $request)
+    public function bt2(ThongKeRequest $request)
     {
         $xxx   =  VeXemPhim::select(
                                 DB::raw("DATE_FORMAT(created_at, '%d/%m/%Y') as ngay"),
@@ -63,7 +64,7 @@ class APIThongKeController extends Controller
         ]);
     }
 
-    public function bt3(Request $request)
+    public function bt3(ThongKeRequest $request)
     {
         $xxx = DanhSachTaiKhoan::join('don_hangs', 'don_hangs.id_khach_hang', 'danh_sach_tai_khoans.id')
                                 ->join('ve_xem_phims', 've_xem_phims.id_don_hang', 'don_hangs.ma_don_hang')
@@ -90,7 +91,7 @@ class APIThongKeController extends Controller
     }
 
 
-    public function bt4(Request $request)
+    public function bt4(ThongKeRequest $request)
     {
         $xxx   =  Phim::join('lich_chieus', 'phims.id', 'lich_chieus.id_phim')
                       ->select('phims.ten_phim', DB::raw('count(lich_chieus.id) as so_lan'))
@@ -113,7 +114,7 @@ class APIThongKeController extends Controller
         ]);
     }
 
-    public function bt5(Request $request)
+    public function bt5(ThongKeRequest $request)
     {
         $xxx   =  LichChieu::join('phong_chieus', 'phong_chieus.id', 'lich_chieus.id_phong')
                             ->whereDate('lich_chieus.gio_bat_dau','>=', $request->begin)

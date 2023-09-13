@@ -327,6 +327,11 @@
                                 } else {
                                     toastr.error(res.data.message, 'Error');
                                 }
+                            })
+                            .catch((res) => {
+                                $.each(res.response.data.errors, function(k, v) {
+                                    toastr.error(v[0]);
+                                });
                             });
                     },
                     lichChieuUpdate(){
@@ -340,6 +345,11 @@
                                 } else {
                                     toastr.error(res.data.message, 'Error');
                                 }
+                            })
+                            .catch((res) => {
+                                $.each(res.response.data.errors, function(k, v) {
+                                    toastr.error(v[0]);
+                                });
                             });
                     },
                     Del(){
@@ -353,6 +363,11 @@
                                 } else {
                                     toastr.error(res.data.message, 'Error');
                                 }
+                            })
+                            .catch((res) => {
+                                $.each(res.response.data.errors, function(k, v) {
+                                    toastr.error(v[0]);
+                                });
                             });
                     },
                     date_format(now) {

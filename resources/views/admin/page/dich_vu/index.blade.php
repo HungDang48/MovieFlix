@@ -208,6 +208,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 loadData()      {
@@ -234,6 +239,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 capNhatDichVu() {
@@ -247,6 +257,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
                 doiTrangThai(payload) {
@@ -259,6 +274,11 @@
                             } else {
                                 toastr.error(res.data.message, 'Error');
                             }
+                        })
+                        .catch((res) => {
+                            $.each(res.response.data.errors, function(k, v) {
+                                toastr.error(v[0]);
+                            });
                         });
                 },
             },

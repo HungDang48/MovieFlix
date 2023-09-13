@@ -27,11 +27,15 @@ class DangKyTaiKhoanRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.required'	=>  'Email yêu cầu phải nhập',
-            'email.email'	    =>  'Email không đúng định dạng',
-            'email.unique'	    =>  'Email đã tồn tại trong hệ thống',
-            'password.*'        =>  'Password yêu cầu phải từ 6 đến 30 ký tự',
-            're_password.*'     =>  'Hai mật khẩu không trùng kìa ku!',
+            'email.required'	  =>  'Email yêu cầu phải nhập',
+            'email.email'	      =>  'Email không đúng định dạng',
+            'email.unique'	      =>  'Email đã tồn tại trong hệ thống',
+            'password.*'          =>  'Password yêu cầu phải từ 6 đến 30 ký tự',
+            're_password.*'       =>  'Hai mật khẩu không trùng kìa ku!',
+            'so_dien_thoai.*'     =>  'Số điện thoại không được để trống và từ 10 đến 12 số',
+            'ngay_sinh.*'         =>  'Ngày sinh không được để trống và bắt buộc phải là định dạng ngày',
+            'dia_chi.*'           =>  'Địa chỉ không được để trống và lớn hơn 7 kí tự',
+            'ho_va_ten.*'         =>  'Họ và tên không được để trống và lớn hơn 4 kí tự',
         ];
     }
 }
