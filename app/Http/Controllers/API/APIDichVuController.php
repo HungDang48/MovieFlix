@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateDichVuRequest;
+use App\Http\Requests\DeleteDichVuRequest;
+use App\Http\Requests\UpdateAdminRequest;
 use App\Models\DichVu;
 use App\Models\QuyenChucNang;
 use Exception;
@@ -13,7 +16,7 @@ use Illuminate\Support\Facades\Log;
 
 class APIDichVuController extends Controller
 {
-    public function store(Request $request)
+    public function store(CreateDichVuRequest $request)
     {
         $id_chuc_nang   =   29;
         $user_login     =   Auth::guard('admin')->user();
@@ -69,7 +72,7 @@ class APIDichVuController extends Controller
         ]);
     }
 
-    public function destroy(Request $request)
+    public function destroy(DeleteDichVuRequest $request)
     {
         $id_chuc_nang   =   31;
         $user_login     =   Auth::guard('admin')->user();
@@ -109,7 +112,7 @@ class APIDichVuController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(UpdateAdminRequest $request)
     {
         $id_chuc_nang   =   32;
         $user_login     =   Auth::guard('admin')->user();
@@ -149,7 +152,7 @@ class APIDichVuController extends Controller
         }
     }
 
-    public function status(Request $request)
+    public function status(DeleteDichVuRequest $request)
     {
         $id_chuc_nang   =   33;
         $user_login     =   Auth::guard('admin')->user();
