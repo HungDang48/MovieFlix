@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BaiVietController;
+use App\Http\Controllers\blogcontroller;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DanhSachTaiKhoanController;
 use App\Http\Controllers\DichVuController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\LienHeController;
 use App\Http\Controllers\PhimController;
 use App\Http\Controllers\PhongChieuController;
 use App\Http\Controllers\QuyenController;
+use App\Http\Controllers\TapPhimController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ThanhToanController;
 use App\Http\Controllers\ThongKeController;
@@ -22,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 use PHPUnit\Event\Code\TestCollection;
 
 Route::get('/auto-thanh-toan', [ThanhToanController::class, 'index']);
+
+Route::get('/blog',[blogcontroller::class, 'index']);
 
 Route::get('/create', [TestController::class, 'create']);
 Route::get('/read', [TestController::class, 'read']);
@@ -49,10 +53,10 @@ Route::get('/list-bill', [CustomerController::class, 'viewListBill'])->middlewar
 Route::group(['prefix'  =>  '/admin', 'middleware' => 'WebAdmin'], function() {
     Route::get('/', [AdminController::class, 'index']);
     // Quản Lý Phim
-    Route::group(['prefix'  =>  '/phim'], function() {
-        Route::get('/', [PhimController::class, 'index']);
-        Route::get('/vue', [PhimController::class, 'indexVue']);
-    });
+    // Route::group(['prefix'  =>  '/phim'], function() {
+    //     Route::get('/', [PhimController::class, 'index']);
+    //     Route::get('/vue', [PhimController::class, 'indexVue']);
+    // });
     Route::group(['prefix'  =>  '/phong-chieu'], function() {
         Route::get('/', [PhongChieuController::class, 'index']);
         Route::get('/vue', [PhongChieuController::class, 'indexVue']);
@@ -87,5 +91,9 @@ Route::group(['prefix'  =>  '/admin', 'middleware' => 'WebAdmin'], function() {
         Route::get('/bt-4', [ThongKeController::class, 'bt4']);
         Route::get('/bt-5', [ThongKeController::class, 'bt5']);
     });
+
+
+        Route::get('/tapphim', [TapPhimController::class, 'index']);
+
 
 });

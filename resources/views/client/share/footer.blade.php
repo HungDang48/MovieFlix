@@ -45,7 +45,7 @@
                     <div class="col-md-5">
                         <div class="footer-social">
                             <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=100010292342770&locale=vi_VN"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
                                 <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>

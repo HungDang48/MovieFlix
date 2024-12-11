@@ -1,4 +1,4 @@
-@extends("admin.share.master")
+    @extends("admin.share.master")
 @section('noi_dung')
 <div class="row" id="app">
     <div class="col-md-7">

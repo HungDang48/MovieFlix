@@ -29,7 +29,12 @@
                                     </li>
                                 </ul>
                             </div>
-                            <p>@{{ phim.mo_ta }}</p>
+
+                            <li class="detail">
+                                <div>@{{phim.mo_ta}}</div>
+                            </li>
+
+                            {{-- <span>@{{ phim.mo_ta }}</span> --}}
                             <template v-for="(v, k) in ds_lich">
                                 <button v-on:click="getTT(v)" class="btn m-2" data-toggle="modal" data-target="#exampleModal">@{{ v.gio_bat_dau }}</button>
                             </template>

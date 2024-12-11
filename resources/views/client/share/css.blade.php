@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/assets_client/css/flaticon.css">
 <link rel="stylesheet" href="/assets_client/css/odometer.css">
 <link rel="stylesheet" href="/assets_client/css/aos.css">
+
+
+
 <link rel="stylesheet" href="/assets_client/css/slick.css">
 <link rel="stylesheet" href="/assets_client/css/default.css">
 <link rel="stylesheet" href="/assets_client/css/style.css">
